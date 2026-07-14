@@ -692,9 +692,29 @@ All three courses built on the SD course design playbook · Theme v3 "Startup Ed
 
   async function getBank(cid) {
     if (bankCache[cid]) return bankCache[cid];
-    const bank = await SDM.loadBank(PAGES_BASE + COURSES[cid].dir + 'bank.json');
+    let bank = null;
+    try {
+      bank = await SDM.loadBank(PAGES_BASE + COURSES[cid].dir + 'bank.json');
+    } catch (e) {
+      // file:// blocks fetch of local JSON; fall back to the generated script shim
+      bank = await loadBankShim(cid);
+    }
     bankCache[cid] = bank;
     return bank;
+  }
+
+  function loadBankShim(cid) {
+    return new Promise((resolve, reject) => {
+      if (window.SDM_BANKS && window.SDM_BANKS[cid]) { resolve(window.SDM_BANKS[cid]); return; }
+      const tag = document.createElement('script');
+      tag.src = PAGES_BASE + COURSES[cid].dir + 'bank.js';
+      tag.onload = () => {
+        if (window.SDM_BANKS && window.SDM_BANKS[cid]) resolve(window.SDM_BANKS[cid]);
+        else reject(new Error('bank shim loaded but empty'));
+      };
+      tag.onerror = () => reject(new Error('bank shim failed to load'));
+      document.head.appendChild(tag);
+    });
   }
 
   function esc(str) {

@@ -19,8 +19,9 @@ index.html        the LMS viewer (also the reference implementation): sidebar ou
 shared/           theme CSS (sd_course_v3_theme.css + v3_addons.css), scoring.js (SDM:
                   storage, sampling, scoring), interact.js (SDM2), app_bridge.js (SDMB, §4)
 c01/  c02/  c03/  one folder per course: 12 content pages (s00_intro … s11_myth_callout),
-                  bank.json (assessment bank · single source of truth), stories_register.md
-                  (source citations), videos/ (poster jpgs; mp4s stream from GCS)
+                  bank.json (assessment bank · single source of truth), bank.js (generated
+                  file:// fallback shim of the same data; apps should use bank.json),
+                  stories_register.md (source citations), videos/ (poster jpgs; mp4s on GCS)
 ```
 
 There are no assessment pages: the final assessment is rendered by the host (the viewer does
