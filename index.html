@@ -167,11 +167,9 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
   if (window.SDM) { try { SDM.applyStoredTheme(); } catch(e){} }
 
   // ---------- Course maps ----------
-  // Base URL for course pages. '' = same-origin relative paths (local preview).
-  // After GitHub Pages is live, set to the public base, e.g.
-  // 'https://ORG.github.io/REPO/' (trailing slash required) so this index
-  // embeds the SAME public pages the app will iframe. See HANDOFF.md step 3.
-  const PAGES_BASE = '';
+  // Base URL for course pages. The reference player embeds the SAME public
+  // pages the app iframes. Set to '' for same-origin relative paths (local dev).
+  const PAGES_BASE = 'https://nelle3549.github.io/b2c-courses/';
 
   const COURSES = {
     c01: {
