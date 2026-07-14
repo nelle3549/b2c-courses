@@ -66,10 +66,10 @@ replicate them in the app:
   attempt is submitted.
 - **Theme toggle** available at all times (sidebar on desktop, top bar on mobile).
 
-Implementation note: the viewer tracks reading position because its iframes are same-origin
-(`PAGES_BASE = ''`). The pages themselves carry NO gating logic, so a cross-origin host (the
-app) must implement its own read/scroll gate on its side of the iframe if it wants the same
-behavior.
+Implementation note: the reading gate is driven by the bridge's `scrollState` messages, so it
+works for ANY host, including cross-origin iframes and native WebViews. Gate `Next` on
+`scrollState.atBottom === true`, and wire your "Scroll ↓" button to post `scrollBy` back to
+the page. The pages themselves enforce nothing; the host decides.
 
 ## 4 · Integration contract (`shared/app_bridge.js`)
 
@@ -82,6 +82,7 @@ Every content page loads the bridge and needs NO other wiring. Messages use
 |---|---|---|
 | `{type:'requestTheme'}` | page load | reply with `theme` |
 | `{type:'visit', course, slot}` | page load | e.g. `{course:'c01', slot:'s03'}` |
+| `{type:'scrollState', course, slot, atBottom}` | page load, scroll, resize (throttled) | `atBottom: true` once the learner reaches the end of the page; drives a scroll-gated Next button |
 | `{type:'fieldSaved', course, field, value}` | artifact field saved (debounced) | field ids `f1`–`f9` |
 | `{type:'attemptSubmitted', course, attempt}` | assessment scored | full attempt: score, per-Bloom breakdown, item ids, timestamps. Sent by the viewer too when the viewer itself is iframed. |
 | `{type:'printCard', course}` | learner taps Print (s10 card pages) | see print rules below |
@@ -91,6 +92,7 @@ Every content page loads the bridge and needs NO other wiring. Messages use
 | Message | Effect |
 |---|---|
 | `{type:'theme', value:'light'\|'dark'}` | switches page theme instantly |
+| `{type:'scrollBy', amount?}` | scrolls the page down (host "Scroll ↓" button); defaults to ~85% of the viewport |
 | `{type:'printHandled'}` | suppresses the page's `window.print()` fallback for that tap |
 
 **Print rules:** on tap the page posts `printCard`, then falls back to `window.print()` after

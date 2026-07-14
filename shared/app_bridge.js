@@ -5,12 +5,17 @@
 // Outbound (page → app):
 //   {type:'requestTheme'}                          sent by every page on load (existing)
 //   {type:'visit',   course, slot}                 page opened
+//   {type:'scrollState', course, slot, atBottom}   reading position; sent on load, on scroll,
+//                                                  and on resize (throttled). atBottom means
+//                                                  the learner has reached the end of the page.
 //   {type:'fieldSaved', course, field, value}      artifact field saved
 //   {type:'attemptSubmitted', course, attempt}     assessment attempt scored (full attempt object)
 //   {type:'printCard', course}                     learner tapped Print
 //
 // Inbound (app → page):
 //   {type:'theme', value:'light'|'dark'}           handled by every page (existing)
+//   {type:'scrollBy', amount?}                     scroll this page down (host "Scroll" button);
+//                                                  defaults to ~85% of the viewport height
 //   {type:'printHandled'}                          app took over printing; suppresses the
 //                                                  window.print() fallback for that tap
 //
@@ -41,13 +46,45 @@
   }
 
   // ---- event relay (no page code changes needed) ----
+  var lastVisit = { course: null, slot: null };
   if (window.SDM && typeof window.SDM.markVisit === 'function') {
     var origVisit = window.SDM.markVisit;
     window.SDM.markVisit = function (courseId, slot) {
+      lastVisit = { course: courseId, slot: slot };
       post({ type: 'visit', course: courseId, slot: slot });
       return origVisit.apply(this, arguments);
     };
   }
+
+  // ---- reading position (drives the host's scroll-gated Next button) ----
+  function reportScroll() {
+    var el = document.scrollingElement || document.documentElement;
+    var atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 24;
+    post({ type: 'scrollState', course: lastVisit.course, slot: lastVisit.slot, atBottom: atBottom });
+  }
+  var scrollQueued = false;
+  function queueReport() {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    setTimeout(function () { scrollQueued = false; reportScroll(); }, 120);
+  }
+  window.addEventListener('scroll', queueReport, { passive: true });
+  window.addEventListener('resize', queueReport);
+  window.addEventListener('load', function () {
+    reportScroll();
+    // re-check after fonts/images settle (short pages report atBottom immediately)
+    setTimeout(reportScroll, 700);
+    setTimeout(reportScroll, 1800);
+  });
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'scrollBy') {
+      var amount = (typeof e.data.amount === 'number' && e.data.amount > 0)
+        ? e.data.amount
+        : Math.round(window.innerHeight * 0.85);
+      try { window.scrollBy({ top: amount, behavior: 'smooth' }); } catch (err) { window.scrollBy(0, amount); }
+      setTimeout(reportScroll, 450);
+    }
+  });
   if (window.SDM && typeof window.SDM.makeAttempt === 'function') {
     var origAttempt = window.SDM.makeAttempt;
     window.SDM.makeAttempt = function (courseId) {

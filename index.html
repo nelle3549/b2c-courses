@@ -504,6 +504,7 @@ All three courses built on the SD course design playbook · Theme v3 "Startup Ed
     } else {
       assessView.classList.add('hidden');
       frame.classList.remove('hidden');
+      resetGate();
       frame.src = PAGES_BASE + course.dir + s.file;
       try { SDM.markVisit(activeCourse, s.slot); } catch (e) {}
     }
@@ -537,7 +538,14 @@ All three courses built on the SD course design playbook · Theme v3 "Startup Ed
     renderSidebar();
   }
 
-  // ---------- reading gate (same-origin scroll tracking) ----------
+  // ---------- reading gate (bridge-driven; works cross-origin and on file://) ----------
+  // Every course page loads shared/app_bridge.js, which posts
+  // {type:'scrollState', atBottom} on load, scroll, and resize. The gate trusts
+  // those messages. Same-origin direct checks remain as a backup, and a timed
+  // fallback unlocks navigation if a page somehow reports nothing at all.
+  let gateFallbackTimer = null;
+  let bridgeSeen = false;
+
   function frameDocOrNull() {
     try {
       const d = frame.contentDocument;
@@ -545,40 +553,52 @@ All three courses built on the SD course design playbook · Theme v3 "Startup Ed
     } catch (e) {}
     return null;
   }
-  function atBottom(doc) {
-    const el = doc.scrollingElement || doc.documentElement;
-    return el.scrollTop + el.clientHeight >= el.scrollHeight - 24;
-  }
-  function checkRead() {
+  function currentContentSlot() {
     const s = COURSES[activeCourse].slots[current];
-    if (!s || s.assess || isRead(activeCourse, s.slot)) return;
+    return (s && !s.assess) ? s : null;
+  }
+  function directCheckRead() {
+    const s = currentContentSlot();
+    if (!s || isRead(activeCourse, s.slot)) return;
     const doc = frameDocOrNull();
-    if (!doc) { markRead(s.slot); return; } // cross-origin fallback: never brick navigation
-    if (atBottom(doc)) markRead(s.slot);
+    if (!doc) return;
+    const el = doc.scrollingElement || doc.documentElement;
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 24) markRead(s.slot);
+  }
+  function resetGate() {
+    bridgeSeen = false;
+    if (gateFallbackTimer) { clearTimeout(gateFallbackTimer); gateFallbackTimer = null; }
   }
   frame.addEventListener('load', () => {
     // theme handshake
     const theme = document.documentElement.getAttribute('data-theme') || 'light';
     try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
     // reading gate
-    const doc = frameDocOrNull();
-    const s = COURSES[activeCourse].slots[current];
-    if (!s || s.assess) return;
-    if (!doc) { markRead(s.slot); return; }
-    try { frame.contentWindow.addEventListener('scroll', checkRead, { passive: true }); } catch (e) {}
-    // short pages (no scrollbar) count as read; re-check after fonts/images settle
-    checkRead();
-    setTimeout(checkRead, 700);
-    setTimeout(checkRead, 1800);
+    const s = currentContentSlot();
+    if (!s) return;
+    try { frame.contentWindow.addEventListener('scroll', directCheckRead, { passive: true }); } catch (e) {}
+    directCheckRead();
+    setTimeout(directCheckRead, 700);
+    // safety valve: if the page never reports (bridge missing or broken) and we
+    // can't see into it either, don't brick navigation
+    if (gateFallbackTimer) clearTimeout(gateFallbackTimer);
+    gateFallbackTimer = setTimeout(() => {
+      const cs = currentContentSlot();
+      if (cs && !bridgeSeen && !frameDocOrNull() && !isRead(activeCourse, cs.slot)) markRead(cs.slot);
+    }, 5000);
   });
 
   function scrollFrameDown() {
-    const doc = frameDocOrNull();
-    if (!doc) { checkRead(); return; }
-    try {
-      frame.contentWindow.scrollBy({ top: Math.round(frame.clientHeight * 0.85), behavior: 'smooth' });
-    } catch (e) {}
-    setTimeout(checkRead, 450);
+    // ask the page (via its bridge) to scroll itself; works across origins
+    try { frame.contentWindow.postMessage({ type: 'scrollBy' }, '*'); } catch (e) {}
+    if (!bridgeSeen) {
+      // backup for a bridge-less page when we can see inside it
+      const doc = frameDocOrNull();
+      if (doc) {
+        try { frame.contentWindow.scrollBy({ top: Math.round(frame.clientHeight * 0.85), behavior: 'smooth' }); } catch (e) {}
+        setTimeout(directCheckRead, 450);
+      }
+    }
   }
 
   // ---------- sidebar ----------
@@ -637,11 +657,20 @@ All three courses built on the SD course design playbook · Theme v3 "Startup Ed
   });
   document.getElementById('exit-btn').addEventListener('click', closePlayer);
 
-  // theme relay: pages inside the iframe ask the parent for the current theme
+  // messages from the page inside the iframe (theme handshake + reading gate)
   window.addEventListener('message', (e) => {
-    if (e.data && e.data.type === 'requestTheme') {
+    if (!e.data || e.source !== frame.contentWindow) return;
+    if (e.data.type === 'requestTheme') {
       const theme = document.documentElement.getAttribute('data-theme') || 'light';
       try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
+    }
+    if (e.data.type === 'scrollState') {
+      bridgeSeen = true;
+      if (gateFallbackTimer) { clearTimeout(gateFallbackTimer); gateFallbackTimer = null; }
+      if (e.data.atBottom) {
+        const s = currentContentSlot();
+        if (s && !isRead(activeCourse, s.slot)) markRead(s.slot);
+      }
     }
   });
 
