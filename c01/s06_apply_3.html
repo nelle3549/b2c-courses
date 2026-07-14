@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Apply §3 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 3</span>
+<h2>Run the cost test, then call your own verdict.</h2>
+<p class="apply-intro">Sort four ventures with the cost test, then write fields 4 and 5: the honest middle of your card.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Sort</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Growing or scaling?</p>
+<p class="ix-sub">Ask the test question each time: what happens to costs when customers double?</p>
+
+<div class="cl-row" data-answer="g">
+<p class="cl-text">A tutoring agency doubles its students by hiring one new tutor for every 15 enrollees.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="g">Growing</button><button class="cl-btn" data-val="s">Scaling</button></div>
+<p class="cl-explain">Growing: the cost curve chases revenue. Every 15 students force a new hire, so doubling students roughly doubles payroll.</p>
+</div>
+
+<div class="cl-row" data-answer="s">
+<p class="cl-text">A review-app adds 10,000 new users in a month on the same servers and the same team of four.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="g">Growing</button><button class="cl-btn" data-val="s">Scaling</button></div>
+<p class="cl-explain">Scaling: the engine was built once; 10,000 more users cost server pennies. Revenue can climb while the cost line stays nearly flat.</p>
+</div>
+
+<div class="cl-row" data-answer="g">
+<p class="cl-text">An online carinderia-ordering app expands, but each new neighborhood needs a new manual partnership, a redesigned menu, and on-site training.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="g">Growing</button><button class="cl-btn" data-val="s">Scaling</button></div>
+<p class="cl-explain">Growing, despite the app. The next neighborhood costs the same lakad as the last one. Technology on top of a flat cost curve is a digitized small business, not a scaling startup.</p>
+</div>
+
+<div class="cl-row" data-answer="s">
+<p class="cl-text">A stock-learning platform serves its next 10,000 members with the same charts, lessons, and three founders.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="g">Growing</button><button class="cl-btn" data-val="s">Scaling</button></div>
+<p class="cl-explain">Scaling: the Investagrams shape. Users multiplied year after year while the team stayed a handful; the product did the serving.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 4 of 7</span></div>
+<p class="af-title">My scale check</p>
+<p class="af-trigger">When your customers double, what stays nearly flat, and what unavoidably doubles? Name both sides honestly. The flat side is your engine; the doubling side is your drag.</p>
+<textarea class="af-input" data-af="c01.f4" rows="3" placeholder="Stays flat: [what]. Doubles with customers: [what]..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"Stays flat: the app, the report templates, the server bill (barely moves). Doubles with customers: onboarding visits to each new stall, unless I replace them with a 3-minute video."</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 5 of 7</span></div>
+<p class="af-title">My honest verdict</p>
+<p class="af-trigger">Call it: is this a startup, or a small business (or SME) as currently designed? Both answers are respectable; only the honest one is useful, because it decides which door you knock on next. If it's "small business for now," add what would have to change to make it scale.</p>
+<textarea class="af-input" data-af="c01.f5" rows="3" placeholder="As designed today, this is a [startup / small business], because..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"As designed today, this is a small business: I'd be doing each stall's books myself. It becomes a startup if the receipt-snap feature replaces me, so my pilot must test whether owners will snap receipts without me standing there."</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's06'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

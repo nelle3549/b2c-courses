@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · §3 Growing is not scaling · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Section 3</span>
+<h2>The third mark: growing is not scaling.</h2>
+
+<!-- Primer -->
+<div class="ix pv-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Predict</span><span class="ix-hint">Tap an answer</span></div>
+<p class="ix-q">A milk-tea brand doubles its revenue by opening a second branch. What most likely happened to its costs?</p>
+<ul class="pv-opts">
+<li><button class="pv-opt" data-good>They nearly doubled too: new rent, new staff, new stock</button></li>
+<li><button class="pv-opt">They stayed about the same, since the brand was already built</button></li>
+<li><button class="pv-opt">They dropped, because two branches share suppliers</button></li>
+</ul>
+<div class="pv-reveal">
+They nearly doubled. A second branch is a second copy of every cost: rent, staff, stock, utilities. Revenue
+went up, so the business <strong>grew</strong>. But nothing got cheaper per customer, so it did not
+<strong>scale</strong>. That difference is the whole section, and it's the mark investors and grant panels
+check hardest.
+</div>
+</div>
+
+<p>
+  The deck version of this mark reads: <strong>poised for rapid growth</strong>, able to reach many people
+  and generate revenue, usually riding technology with low market-entry costs. Useful, but the working test
+  is sharper. Watch what the costs do:
+</p>
+<p>
+  <strong>Growing</strong> means revenue rises because you keep buying the things that produce it: another
+  branch, another hire, another van. Revenue and costs climb the same hill together, and every push needs new
+  investment. <strong>Scaling</strong> means revenue rises while costs stay nearly flat, because the engine
+  was built once and each new customer is another cheap copy. One curve pulls away from the other.
+</p>
+
+<figure class="diagram-fig">
+<svg viewBox="0 0 720 448" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two charts. Growing: revenue and cost curves rise together, with repeated investment bars below the axis. Scaling: revenue climbs steeply while costs stay nearly flat, with a single investment bar. The test: what happens to your costs when customers double?">
+  <defs>
+    <linearGradient id="d3green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4CC492"/><stop offset="1" stop-color="#1CA46B"/>
+    </linearGradient>
+    <linearGradient id="d3gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F9A825"/><stop offset="1" stop-color="#DE8F00"/>
+    </linearGradient>
+    <filter id="d3soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0b1220" flood-opacity="0.14"/>
+    </filter>
+    <marker id="d3arrG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto">
+      <path d="M0.5,0.8 L8,4.5 L0.5,8.2" fill="none" stroke="#1CA46B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="d3arrI" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto">
+      <path d="M0.5,0.8 L8,4.5 L0.5,8.2" fill="none" stroke="var(--ink-600, #5B6572)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .d3-title { font: 800 11px "JetBrains Mono", monospace; letter-spacing: 0.14em; }
+    .d3-leg   { font: 700 9px "JetBrains Mono", monospace; letter-spacing: 0.06em; }
+    .d3-pill  { font: 600 12px 'Space Grotesk', Inter, sans-serif; letter-spacing: 0.1em; }
+    .d3-sub   { font: 700 9px "JetBrains Mono", monospace; letter-spacing: 0.06em; }
+    .d3-note  { font: 700 9px "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+    .d3-verd  { font: 800 10px "JetBrains Mono", monospace; letter-spacing: 0.08em; }
+  </style>
+
+  <rect x="0" y="0" width="720" height="448" rx="20" fill="var(--surface-warm, #FFF6EC)"/>
+  <text x="28" y="40" class="d3-title" fill="var(--ink-600, #5B6572)">MARK 3 · SCALABILITY: GROWING VS SCALING</text>
+
+  <!-- Legend (title row, right-aligned) -->
+  <circle cx="478" cy="36" r="4" fill="#1CA46B"/>
+  <text x="488" y="40" class="d3-leg" fill="var(--ink-600, #5B6572)">REVENUES</text>
+  <circle cx="558" cy="36" r="4" fill="var(--ink-600, #5B6572)"/>
+  <text x="568" y="40" class="d3-leg" fill="var(--ink-600, #5B6572)">COSTS</text>
+  <rect x="612" y="32" width="8" height="8" rx="2" fill="#F9A825"/>
+  <text x="626" y="40" class="d3-leg" fill="var(--ink-600, #5B6572)">INVESTMENTS</text>
+
+  <!-- ===== GROWING panel ===== -->
+  <g filter="url(#d3soft)">
+    <rect x="28" y="62" width="318" height="308" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+  </g>
+  <rect x="117" y="78" width="140" height="26" rx="13" fill="var(--ink-600, #5B6572)"/>
+  <text x="187" y="95" text-anchor="middle" class="d3-pill" fill="#ffffff">GROWING</text>
+  <text x="187" y="122" text-anchor="middle" class="d3-sub" fill="var(--ink-600, #5B6572)">MORE BRANCHES · MORE STAFF · MORE STOCK</text>
+
+  <!-- axes -->
+  <path d="M 66 132 L 66 252 L 322 252" fill="none" stroke="var(--ink-600, #5B6572)" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- costs curve (rises almost in step) -->
+  <path d="M 66 250 C 140 244, 230 220, 316 184" fill="none" stroke="var(--ink-600, #5B6572)" stroke-width="2.4" stroke-linecap="round" marker-end="url(#d3arrI)"/>
+  <!-- revenue curve (slightly above) -->
+  <path d="M 66 246 C 140 238, 230 206, 316 162" fill="none" stroke="#1CA46B" stroke-width="3" stroke-linecap="round" marker-end="url(#d3arrG)"/>
+  <!-- repeated investment bars below axis -->
+  <rect x="84" y="258" width="20" height="34" rx="4" fill="url(#d3gold)"/>
+  <rect x="146" y="258" width="16" height="22" rx="4" fill="url(#d3gold)"/>
+  <rect x="208" y="258" width="16" height="22" rx="4" fill="url(#d3gold)"/>
+  <rect x="270" y="258" width="16" height="22" rx="4" fill="url(#d3gold)"/>
+  <text x="187" y="312" text-anchor="middle" class="d3-note" fill="#B4700B">INVEST, AGAIN AND AGAIN</text>
+  <rect x="48" y="328" width="278" height="24" rx="12" fill="var(--surface-warm, #FFF6EC)"/>
+  <text x="187" y="344" text-anchor="middle" class="d3-note" fill="var(--ink-600, #5B6572)">NEW REVENUE DRAGS NEW COSTS WITH IT</text>
+
+  <!-- ===== SCALING panel ===== -->
+  <g filter="url(#d3soft)">
+    <rect x="374" y="62" width="318" height="308" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+  </g>
+  <rect x="463" y="78" width="140" height="26" rx="13" fill="url(#d3green)"/>
+  <text x="533" y="95" text-anchor="middle" class="d3-pill" fill="#ffffff">SCALING</text>
+  <text x="533" y="122" text-anchor="middle" class="d3-sub" fill="var(--ink-600, #5B6572)">SAME ENGINE · MANY MORE USERS</text>
+
+  <!-- axes -->
+  <path d="M 412 132 L 412 252 L 668 252" fill="none" stroke="var(--ink-600, #5B6572)" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- costs curve (nearly flat) -->
+  <path d="M 412 250 C 500 247, 590 243, 662 239" fill="none" stroke="var(--ink-600, #5B6572)" stroke-width="2.4" stroke-linecap="round" marker-end="url(#d3arrI)"/>
+  <!-- revenue curve (pulls away) -->
+  <path d="M 412 246 C 490 240, 574 200, 662 138" fill="none" stroke="#1CA46B" stroke-width="3" stroke-linecap="round" marker-end="url(#d3arrG)"/>
+  <!-- single investment bar -->
+  <rect x="430" y="258" width="20" height="34" rx="4" fill="url(#d3gold)"/>
+  <text x="533" y="312" text-anchor="middle" class="d3-note" fill="#B4700B">ONE ENGINE, BUILT ONCE</text>
+  <rect x="394" y="328" width="278" height="24" rx="12" fill="var(--success-soft, #E9F7F0)"/>
+  <text x="533" y="344" text-anchor="middle" class="d3-note" fill="#0E7A4F">REVENUE CLIMBS · COSTS STAY NEARLY FLAT</text>
+
+  <!-- Verdict strip -->
+  <g filter="url(#d3soft)">
+    <rect x="80" y="394" width="560" height="26" rx="13" fill="var(--surface-inverse, #1E2733)"/>
+  </g>
+  <text x="360" y="411" text-anchor="middle" class="d3-verd" fill="#F9A825">THE TEST: WHAT HAPPENS TO YOUR COSTS WHEN CUSTOMERS DOUBLE?</text>
+</svg>
+<figcaption><strong>Read the gap, not the slopes.</strong> Both ventures earn more over time. In the growing venture, the cost curve chases revenue and never lets go, so every peso of growth is bought with investment. In the scaling venture, the two curves separate: that widening gap is where startup returns, and startup funding, come from.</figcaption>
+</figure>
+
+<p>
+  The world's scoreboard already reflects this. In 2011, the ten most valuable companies on Earth were mostly
+  oil, mining, and banking businesses; only two were technology companies. By 2021 the list had flipped:
+  eight of the ten were technology platforms. Oil rigs and bank branches grow; software scales, because the
+  next copy costs almost nothing to serve.
+</p>
+
+<div class="wx-card">
+<div class="wx-head">Worked example · the margin scaling buys</div>
+<div class="wx-body">
+<table>
+<tr><th>Teardown</th><th>Parts cost</th><th>Retail price</th></tr>
+<tr><td>iPhone X (2017)</td><td>about $370</td><td>$999</td></tr>
+<tr><td>iPhone 16 Pro Max (2024)</td><td>about $485</td><td>$1,199</td></tr>
+</table>
+<p class="wx-anno" style="margin:10px 0 0;">Teardown analysts keep finding the same shape: the parts are barely a third of the sticker. The rest pays for what was built once and copied billions of times (the software, the design, the brand). The hardware is the delivery vehicle; the scaled thing rides inside it.</p>
+</div>
+</div>
+
+<!-- Story -->
+<div class="story-block">
+<div class="story-eyebrow">Field notes · real founders</div>
+<div class="story-who">JC Bisnar, JM Lapiña &amp; Airwyn Tin · Investagrams · Taguig, 2015–2019</div>
+<p>
+  Three students who learned stock trading in college kept meeting the same wall: fewer than one in a hundred
+  Filipinos invested in the market, and no platform existed to teach the rest. In 2015 they built
+  Investagrams, a free social platform with charts, virtual trading, and lessons in plain language. They had
+  almost no capital, so they refused every cost that didn't scale. No hires: they did everything themselves.
+  No ad budget: they partnered with a social network for free credits. No salaries: earnings went back into
+  the product.
+</p>
+<p class="story-turn">
+  The engine they built once kept serving new users at almost no new cost. By late 2016 the platform counted
+  50,000 users and about two million views a month; by 2018, more than 200,000 users; by 2019, over 360,000.
+  The team stayed a handful of people. Costs stayed nearly flat while the user curve climbed away from them:
+  the scaling chart above, drawn in real life.
+</p>
+<div class="story-principle">
+  Scalability isn't a funding trick; it's a <strong>design property</strong>. Investagrams could scale on
+  pocket money because the product, not the payroll, did the serving. If your idea can only grow by hiring,
+  it will grow like a branch business, whatever app it ships with.
+</div>
+<div class="story-sources">
+  Sources: <a href="https://ph.globallinker.com/bizforum/article/fintech-startup-makes-investing-in-stock-market-easier-for-filipinos-globally/16996/" target="_blank" rel="noopener">UnionBank GlobalLinker interview (2018)</a> ·
+  <a href="https://www.techshake.asia/stories/founder-spotlight-jc-bisnar-of-investagrams" target="_blank" rel="noopener">TechShake (2016)</a> ·
+  <a href="https://www.adobomagazine.com/philippine-news/events-high-impact-tech-startups-get-boost-from-inqbation-startup-showcase-2019-with-qbo-innovation-hub-j-p-morgan-dost-dti-and-ideaspace/" target="_blank" rel="noopener">adobo Magazine (2019)</a>
+</div>
+</div>
+
+<figure class="pull-quote">
+<q>Instead of hiring people, we did everything ourselves.</q>
+<cite><b>JM Lapiña</b> · Investagrams · UnionBank GlobalLinker interview, 2018</cite>
+</figure>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's05'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

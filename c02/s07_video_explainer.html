@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Video · What an empathy interview sounds like · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Mid-lesson explainer</span>
+<h2>What an empathy interview actually sounds like.</h2>
+
+<div class="video-card">
+<p class="video-card-title">The same question, asked two ways, and why only one of them returns real data.</p>
+<div class="video-frame">
+<video controls preload="metadata" poster="videos/v2_mid.jpg">
+<source src="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/What%20an%20empathy%20interview%20actually%20sounds%20like.mp4" type="video/mp4"/>
+Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/What%20an%20empathy%20interview%20actually%20sounds%20like.mp4">Open the video file</a>.
+</video>
+</div>
+<p class="video-desc">
+You'll hear <em>"Would you use an app that helps you find babysitters faster?"</em>, and the
+three ways that single sentence quietly ruins the answer. Then the empathy version of the same question,
+and the three follow-ups that pull the full story out of a user. This is Sections 2 and 3 turned into sound:
+the interview discipline, performed.
+</p>
+<div class="video-watchfor">
+<h3>Watch for</h3>
+<ol>
+<li>The three flaws named in the leading question (leading, hypothetical, solution-first) and the user's polite-but-empty reaction to it.</li>
+<li>The past-tense reframe (<em>"Tell me about the last time…"</em>) and how the user's body language changes when the question lands on a real memory.</li>
+<li>The closing rule: <strong>behavior, not opinions · past, not future · specifics, not generalities</strong>. The same three gates your Field-2 questions must pass.</li>
+</ol>
+</div>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's07'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

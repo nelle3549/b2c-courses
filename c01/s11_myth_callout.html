@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Myth callout · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<aside class="myth-callout">
+<span class="myth-label">Myth, busted</span>
+<p><strong>"You need to be in Manila, and funded, to start a startup."</strong></p>
+<p>
+  Neither is true, and the law says so. RA 11337's definition begins at "any person": no company, no capital,
+  no capital city required. DOST-PCIEERD funds TBIs across the regions (USTP and MSU-IIT in Mindanao, USC and
+  UPV in the Visayas, MMSU in Northern Luzon), and grant recipients have run whole funding cycles without
+  leaving their province. Packworks piloted with five sari-sari stores; Investagrams scaled on reinvested
+  earnings and free ad credits. The bottleneck was never location or money. It's whether your problem
+  statement is sharp enough for a panel to parse, and whether you've walked into the rooms where that
+  sharpening happens.
+</p>
+</aside>
+
+<div class="closing-callout">
+<p>
+  The ecosystem looks empty from the outside and crowded from the inside. Your card names your idea, your
+  verdict, and your door. The work of this course was to move you one step inside; the commitment on your
+  card is that step.
+</p>
+</div>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's11'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

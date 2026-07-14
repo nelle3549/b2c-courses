@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Your Startup Reality Check · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<style>
+  /* page-scoped: printing from this page outputs the card only */
+  @media print{ .no-print{display:none!important;} }
+</style>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<div class="no-print">
+<span class="section-label">Your artifact</span>
+<h2>Your Startup Reality Check.</h2>
+<p class="apply-intro">One last field turns your notes into a move. Your card is compiled below, printable, and ready to travel.</p>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 7 of 7</span></div>
+<p class="af-title">My commitment</p>
+<p class="af-trigger">One move through your Field-6 door within 7 days, with a day and a time. Specific plans get done; intentions don't.</p>
+<textarea class="af-input" data-af="c01.f7" rows="2" placeholder="I will [contact/visit/apply to] [door] on [day] at [time]."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"I will email the USTP TBI coordinator my one-page pilot plan on Thursday at 4 PM, and ask for 20 minutes next week."</div>
+</details>
+</div>
+</div>
+
+<section class="hypo-card" id="phc-card">
+<div class="hypo-card-head"><h3>Startup Reality Check</h3><span id="phc-status">C01 · Printable</span></div>
+<div id="phc-fields"></div>
+</section>
+
+<div class="hypo-actions no-print">
+<button class="btn-primary" id="print-card">Print / Save as PDF</button>
+</div>
+<p class="apply-intro no-print">Fields 1–6 were written on the Apply pages. Step back if you want to edit them; this card updates live.</p>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's10'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+
+  const SPEC = [
+    { id: 'f1', label: '01 · My idea, one sentence' },
+    { id: 'f2', label: '02 · The project it starts as' },
+    { id: 'f3', label: '03 · My non-obvious edge' },
+    { id: 'f4', label: '04 · My scale check' },
+    { id: 'f5', label: '05 · My honest verdict' },
+    { id: 'f6', label: '06 · My first door' },
+    { id: 'f7', label: '07 · My commitment' }
+  ];
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function renderCard() {
+    const fields = SDM2.readAllFields('c01');
+    const wrap = document.getElementById('phc-fields');
+    let filled = 0;
+    wrap.innerHTML = SPEC.map(f => {
+      const val = (fields[f.id] || '').trim();
+      if (val) filled += 1;
+      return '<div class="hypo-row"><p class="hypo-label">' + f.label + '</p>' +
+             '<p class="hypo-value' + (val ? '' : ' empty') + '">' + esc(val) + '</p></div>';
+    }).join('');
+    document.getElementById('phc-status').textContent = 'C01 · ' + filled + ' of 7 filled';
+  }
+  renderCard();
+  document.addEventListener('sdm:fieldsaved', renderCard);
+
+  document.getElementById('print-card').addEventListener('click', () => SDMB.requestPrint('c01'));
+</script>
+</body>
+</html>

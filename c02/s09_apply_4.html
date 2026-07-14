@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Apply §4 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 4</span>
+<h2>Frame it: your HMW, and the statement a weekend could kill.</h2>
+<p class="apply-intro">Everything you've written becomes two sentences you can act on this week.</p>
+
+<div class="ix gen-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Write, then grade</span><span class="ix-hint">Type, then compare</span></div>
+<p class="ix-q">Write your own HMW from your Field-3 answer. Count your solution directions (60 seconds), then compare.</p>
+<textarea class="gen-input" rows="2" placeholder="How might we..."></textarea>
+<button class="gen-btn">Check against the four gates</button>
+<div class="gen-model">
+<strong>The four gates:</strong>
+<ul>
+<li>Names a specific user, not "people" or "Filipinos".</li>
+<li>Names a job or moment, not a feature. (If a product noun appears, like button, app, or AI, it's a solution in disguise.)</li>
+<li>No unbounded words: <em>all, every, always, never</em>.</li>
+<li>60-second count lands between 4 and 8 directions.</li>
+</ul>
+Failed a gate? Edit and recount. That loop <em>is</em> the skill.
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 4 of 7</span></div>
+<p class="af-title">My How-Might-We</p>
+<p class="af-trigger">The version that passed the four gates. Carry the user, the job, and the context in one sentence.</p>
+<textarea class="af-input" data-af="c02.f4" rows="2" placeholder="How might we..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"How might we let food-stall owners settle a week of supplier receipts in one 15-minute sitting?"</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 5 of 7</span></div>
+<p class="af-title">My falsifiable problem statement</p>
+<p class="af-trigger">Who + observable pain + how much + checkable in 7 days. Write the sentence your interviews could kill. If it survives the week, you've earned the right to ideate.</p>
+<textarea class="af-input" data-af="c02.f5" rows="3" placeholder="[Specific segment] currently [observable behavior/pain] [frequency/severity] ..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"Food-stall owners in Cagayan de Oro who restock twice a week spend 60+ minutes every Friday night reconciling handwritten supplier receipts, and at least half of the ten I interview this week will name it their most-hated task." (Falsifiable: five clean interviews could break it by Sunday.)</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's09'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

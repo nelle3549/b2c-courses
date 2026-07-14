@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Apply §3 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 3</span>
+<h2>Reliever or creator, then map your own three.</h2>
+<p class="apply-intro">Three exercises: classify four outcomes, then write the relievers that match your ranked pains and the creators that match your gains.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Sort</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Pain reliever or gain creator? Read the customer's job first.</p>
+<p class="ix-sub">Tap one answer per row.</p>
+
+<div class="cl-row" data-answer="r">
+<p class="cl-text">Job: "I need to stop losing money to spoiled stock." Outcome: the app flags items near expiry.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="r">Pain reliever</button><button class="cl-btn" data-val="c">Gain creator</button></div>
+<p class="cl-explain">Reliever: the customer is escaping an active loss. The pitch sounds like "stop losing money to spoilage."</p>
+</div>
+
+<div class="cl-row" data-answer="c">
+<p class="cl-text">Job: "I want my sari-sari store to feel like a real business I can be proud of." Outcome: printed monthly sales reports.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="r">Pain reliever</button><button class="cl-btn" data-val="c">Gain creator</button></div>
+<p class="cl-explain">Creator: nothing hurts here. The report enables a new positive outcome, pride and legitimacy. The pitch sounds like "run it like the business it is."</p>
+</div>
+
+<div class="cl-row" data-answer="r">
+<p class="cl-text">Job: "I dread the Friday receipt pile." Outcome: books close in 15 minutes.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="r">Pain reliever</button><button class="cl-btn" data-val="c">Gain creator</button></div>
+<p class="cl-explain">Reliever: the Friday dread is an active pain, and the 15-minute close removes it. "Stop spending Friday night on receipts."</p>
+</div>
+
+<div class="cl-row" data-answer="c">
+<p class="cl-text">Job: "I'd love Saturday mornings with my kids." Outcome: groceries plan and order themselves during the week.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="r">Pain reliever</button><button class="cl-btn" data-val="c">Gain creator</button></div>
+<p class="cl-explain">Creator: the same time-saving feature, but this job reaches for a new good thing. "Spend Saturday morning with your kids, not in the aisle."</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 5 of 9</span></div>
+<p class="af-title">My 3 pain relievers, mapped 1:1</p>
+<div class="af-echo" data-af-echo="c03.f3" data-echo-label="Your ranked pains (field 3)"></div>
+<p class="af-trigger">One reliever per ranked pain above, in the same order. Resist the fourth. If a reliever does not point at a ranked pain, it floats, and floating features wait.</p>
+<div class="af-multi" data-af-multi="c03.f5">
+<input class="af-input af-line" type="text" placeholder="Reliever for Pain 1..."/>
+<input class="af-input af-line" type="text" placeholder="Reliever for Pain 2..."/>
+<input class="af-input af-line" type="text" placeholder="Reliever for Pain 3..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">1. Snap-a-receipt capture that closes the books in one 15-minute sitting. 2. A per-product earnings view, updated as she sells. 3. Utang list on the phone, backed up automatically.</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 6 of 9</span></div>
+<p class="af-title">My gain creators, mapped 1:1</p>
+<div class="af-echo" data-af-echo="c03.f4" data-echo-label="Your top gains (field 4)"></div>
+<p class="af-trigger">One creator per gain above, in the same order. Remember the video's rule: a creator enables a new good thing the customer is reaching for, it does not just remove a pain.</p>
+<div class="af-multi" data-af-multi="c03.f6">
+<input class="af-input af-line" type="text" placeholder="Creator for Gain 1..."/>
+<input class="af-input af-line" type="text" placeholder="Creator for Gain 2..."/>
+<input class="af-input af-line" type="text" placeholder="Creator for Gain 3..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">1. Friday close done by 7 p.m., so the evening belongs to the family. 2. A weekly "kumita ka" summary she can trust. 3. A clean printed record to show the supplier.</div>
+</details>
+</div>
+</section>
+</main>
+
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's06'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

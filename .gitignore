@@ -1,0 +1,9 @@
+# never commit videos (GitHub rejects >100MB; they stream from GCS)
+*.mp4
+*.mov
+
+# macOS / Google Drive artifacts
+Icon
+Icon?
+Icon\r
+.DS_Store

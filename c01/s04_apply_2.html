@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Apply §2 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 2</span>
+<h2>Spot the mark, then shrink your idea to a project.</h2>
+<p class="apply-intro">One sorting exercise, then fields 2 and 3 of your Startup Reality Check.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Sort</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Which mark is doing the work in each mini-case?</p>
+<p class="ix-sub">Tap one answer per row.</p>
+
+<div class="cl-row" data-answer="p">
+<p class="cl-text">A thesis prototype gets tested with one municipal office before any company is registered.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="p">Initiated as a project</button><button class="cl-btn" data-val="i">Innovative solution</button></div>
+<p class="cl-explain">Project origin: experiment first, company later. The pilot with one LGU is the search in action, exactly how the famous ones started.</p>
+</div>
+
+<div class="cl-row" data-answer="i">
+<p class="cl-text">A bookkeeping app works fully offline because its users' stores sit where signal doesn't reach.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="p">Initiated as a project</button><button class="cl-btn" data-val="i">Innovative solution</button></div>
+<p class="cl-explain">Innovative solution: the non-obvious move is offline-first, built from a constraint competitors ignored. That's process innovation, and RA 11337 counts it.</p>
+</div>
+
+<div class="cl-row" data-answer="i">
+<p class="cl-text">A payments service moves money over SMS so that a bank account is never required.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="p">Initiated as a project</button><button class="cl-btn" data-val="i">Innovative solution</button></div>
+<p class="cl-explain">Innovative solution: the GCash move. No new hardware, no laboratory; the innovation lives in the process (money at the speed and cost of a text) and the business model around it.</p>
+</div>
+
+<div class="cl-row" data-answer="p">
+<p class="cl-text">Three riders test a store app with five sari-sari partners before quitting anything.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="p">Initiated as a project</button><button class="cl-btn" data-val="i">Innovative solution</button></div>
+<p class="cl-explain">Project origin: Packworks' actual start. Five stores is small enough to run while employed and big enough to learn from. That's what "initiated as a project" looks like in practice.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 2 of 7</span></div>
+<p class="af-title">The project it starts as</p>
+<p class="af-trigger">Shrink your Field-1 idea to an experiment you could run within 30 days with what you already have. Name the pilot: who's in it, how many, what you're trying to find out.</p>
+<textarea class="af-input" data-af="c01.f2" rows="3" placeholder="A pilot with [how many] [who], to find out [what]..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"A 3-week pilot with 5 food stalls near campus: I photograph their supplier receipts daily and hand back a weekly summary, to find out if a clean Friday report is worth paying for."</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 3 of 7</span></div>
+<p class="af-title">My non-obvious edge</p>
+<p class="af-trigger">What's the bet under your solution that most people would doubt or haven't noticed? If your answer is something everyone already agrees with, it's not an edge yet; dig once more. Product, process, or business model all count.</p>
+<textarea class="af-input" data-af="c01.f3" rows="3" placeholder="Most people think [x]. I'm betting [y], because I've seen [z]..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"Most people think stall owners won't pay for software. I'm betting they'll pay for a clean Friday report, because I've watched three of them pay a nephew in food and load just to total receipts."</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's04'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Video · Pains and gains are not opposites · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Mid-lesson explainer</span>
+<h2>Pains and gains are not opposites.</h2>
+
+<div class="video-card">
+<p class="video-card-title">Same feature, two different propositions. The customer's job decides which one you're holding.</p>
+<div class="video-frame">
+<video controls preload="metadata" poster="videos/v2_mid.jpg">
+<source src="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Pains%20and%20gains%20aren%27t%20opposites.mp4" type="video/mp4"/>
+Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Pains%20and%20gains%20aren%27t%20opposites.mp4">Open the video file</a>.
+</video>
+</div>
+<p class="video-desc">
+A customer says grocery shopping eats two hours every Saturday. Is "saves two hours" a pain reliever or a
+gain creator? The honest answer is: it depends on the job. This video walks the same feature through two
+different customer jobs and shows how the proposition, the message, and even the product change with the
+answer.
+</p>
+<div class="video-watchfor">
+<h3>Watch for</h3>
+<ol>
+<li>The rule: if you can't decide which side of the canvas an outcome belongs on, you don't know the customer's job well enough yet. Go back to your empathy notes.</li>
+<li>The two competing pitches for the same feature: "Stop wasting your weekend on groceries" versus "Spend Saturday morning with your kids, not in the aisle."</li>
+<li>Which of the two a customer is more likely to forward to a friend, and why that matters for your Field-5 proposition.</li>
+</ol>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's07'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

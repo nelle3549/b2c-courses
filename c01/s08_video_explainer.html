@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Video · Three SGF recipients, three doors · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Mid-lesson explainer</span>
+<h2>Three SGF recipients. Three different doors.</h2>
+
+<div class="video-card">
+<p class="video-card-title">The ecosystem map is in your head. Now watch three founders actually walk it.</p>
+<div class="video-frame">
+<video controls preload="metadata" poster="videos/v2_mid.jpg">
+<source src="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Three%20SGF%20recipients%20%C2%B7%20Three%20different%20doors.mp4" type="video/mp4"/>
+Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Three%20SGF%20recipients%20%C2%B7%20Three%20different%20doors.mp4">Open the video file</a>.
+</video>
+</div>
+<p class="video-desc">
+Three real Startup Grant Fund recipients, three starting positions. One came through a university TBI with a
+thesis prototype and a faculty mentor. One came in cold, got rejected, rewrote the problem statement, and got
+in on the second try. One came through an accelerator with traction, using the grant for the critical feature
+no VC wanted to fund. Different paths, one shared move: each named a real problem in language a grant panel
+could parse without translation.
+</p>
+<div class="video-watchfor">
+<h3>Watch for</h3>
+<ol>
+<li>What each founder <em>already had</em> before applying: a mentor inside the network, a co-founder who could build, public traction. The door matched the assets, not the ambition.</li>
+<li>The second founder's rejection: what changed between attempt one and attempt two was the <strong>problem statement</strong>, not the idea.</li>
+<li>The closing rule, which is also your Field-6 rule: <strong>the right door is the one you can credibly walk through given what you have today</strong>.</li>
+</ol>
+</div>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's08'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

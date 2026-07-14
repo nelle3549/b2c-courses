@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Intro & Objectives · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<header class="lesson-hero" data-num="01">
+<span class="lesson-number">Mini-Course 01</span>
+<h1 class="lesson-title">Startup PH: Inside the Filipino Innovation Ecosystem</h1>
+</header>
+
+<div class="video-card quarter-anchor">
+<p class="video-card-title">Course Intro · There's a startup ecosystem you didn't know existed.</p>
+<div class="video-frame">
+<video controls preload="metadata" poster="videos/v1_intro.jpg">
+<source src="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Startup%20PH%20%C2%B7%20Course%20Intro.mp4" type="video/mp4"/>
+Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Startup%20PH%20%C2%B7%20Course%20Intro.mp4">Open the video file</a>.
+</video>
+</div>
+<p class="video-desc">
+Most students think "startup" means Silicon Valley: a hoodie, a pitch deck, funding in dollars. This
+opener dismantles that picture. There's a Philippine ecosystem running right now, with a law behind it
+(the Innovative Startup Act), government grant money, and incubators sitting inside universities you may
+already attend. Watch before Section 1.
+</p>
+</div>
+
+<section class="lesson-summary-section">
+<p class="lesson-summary">
+  "Startup" is the most misused word in Filipino business conversation. This course pins it down: the working
+  definition, the legal one written into RA 11337, and the three marks that separate a startup from every
+  other kind of venture (born as a project, built on a non-obvious solution, and able to scale instead of
+  just grow). Then it hands you the map of the PH ecosystem and the doors already open to you, with the real
+  moves of Coins.ph, Packworks, Investagrams, and Mayani as your worked examples. As you go, you'll fill in a
+  <strong>Startup Reality Check</strong> for your own idea: what it is, what makes it non-obvious, whether it
+  scales, and which door you'll walk through first. It compiles on its own page near the end: printable, and
+  pointed at your first real move.
+</p>
+</section>
+
+<div class="objectives">
+<h3>By the end, you'll know exactly what kind of venture you're holding, and which door in the PH ecosystem it opens.</h3>
+<ol>
+<li><div><span class="bloom-tag b-understand">Understand</span> State both definitions of a startup (the working one and RA 11337's legal one) and tell startups, small businesses, and SMEs apart.</div></li>
+<li><div><span class="bloom-tag b-apply">Apply</span> Test any venture against the three marks: project origin, innovative solution, scalability.</div></li>
+<li><div><span class="bloom-tag b-analyze">Analyze</span> Take a venture's cost curve apart to tell scaling from growing.</div></li>
+<li><div><span class="bloom-tag b-evaluate">Evaluate</span> Choose the ecosystem door (TBI, grant, accelerator, community) a founder can credibly walk through today.</div></li>
+</ol>
+</div>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's00'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Apply §3 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 3</span>
+<h2>Draw the line, then dig under your own symptom.</h2>
+<p class="apply-intro">Two exercises: sort four statements, then dig under your own Field-1 symptom.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Sort</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Symptom or underlying problem?</p>
+<p class="ix-sub">Tap one answer per row.</p>
+
+<div class="cl-row" data-answer="s">
+<p class="cl-text">"Nobody finishes our sign-up process."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="s">Symptom</button><button class="cl-btn" data-val="u">Underlying problem</button></div>
+<p class="cl-explain">Symptom: it describes what's visible in the funnel, not why. It's the top of an iceberg; the why lives below.</p>
+</div>
+
+<div class="cl-row" data-answer="u">
+<p class="cl-text">"Sign-up demands a TIN and two IDs before showing any value, and our users are unregistered micro-sellers."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="s">Symptom</button><button class="cl-btn" data-val="u">Underlying problem</button></div>
+<p class="cl-explain">Underlying problem: it names the structural mismatch between what the flow demands and who the users actually are. You can design against this.</p>
+</div>
+
+<div class="cl-row" data-answer="s">
+<p class="cl-text">"Customers keep saying it's too expensive."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="s">Symptom</button><button class="cl-btn" data-val="u">Underlying problem</button></div>
+<p class="cl-explain">Symptom: "too expensive" is usually a stand-in for "I don't see enough value to justify the cost." The underlying problem is which value driver is missing, not the peso figure.</p>
+</div>
+
+<div class="cl-row" data-answer="u">
+<p class="cl-text">"The product's value only shows up after three weeks of use, but the free trial ends in seven days."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="s">Symptom</button><button class="cl-btn" data-val="u">Underlying problem</button></div>
+<p class="cl-explain">Underlying problem: a structural gap between time-to-value and the trial window. Notice how it immediately suggests design directions; symptoms never do.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 3 of 7</span></div>
+<p class="af-title">The underlying problem I suspect</p>
+<p class="af-trigger">Run the 5 Whys on your Field-1 symptom on paper, anchoring each <em>why</em> in something you've actually heard or seen. Then write the root as one sentence about the <strong>situation</strong>, not the complaint. If you can't anchor the whys yet, write your best hypothesis and mark it with a "?". Your Field-2 interviews will test it.</p>
+<textarea class="af-input" data-af="c02.f3" rows="3" placeholder="The situation underneath the complaint is..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">Symptom: "Every Friday night I reconcile supplier receipts until midnight." Underlying problem (hypothesis?): suppliers deliver with handwritten receipts in different formats, and the stall owner's only free block for paperwork is Friday close, so errors pile up all week and get paid for in one painful sitting.</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's06'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

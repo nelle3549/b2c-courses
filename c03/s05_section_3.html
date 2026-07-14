@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · §3 The value map, one to one · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Section 3</span>
+<h2>The value map: one reliever per pain, and nothing floating.</h2>
+
+<!-- Primer -->
+<div class="ix pv-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Predict</span><span class="ix-hint">Tap an answer</span></div>
+<p class="ix-q">Your customer ranked three pains. You have the budget to build six features. What does the canvas say to do?</p>
+<ul class="pv-opts">
+<li><button class="pv-opt">Build all six, more value is more value</button></li>
+<li><button class="pv-opt" data-good>Build three, one reliever per ranked pain</button></li>
+<li><button class="pv-opt">Build the three easiest ones first</button></li>
+<li><button class="pv-opt">Ask the customer to vote on the six</button></li>
+</ul>
+<div class="pv-reveal">
+Three, mapped one to one. Extra features are not free value; they cost focus, money, and a describable product. If a feature does not point at a top-ranked pain or gain, the canvas says it floats, and floating features are how feature soup starts. The founders below built a hit by subtracting.
+</div>
+</div>
+
+<!-- Story -->
+<div class="story-block">
+<div class="story-eyebrow">Field notes · real founders</div>
+<div class="story-who">Nel Laygo &amp; Aiko Reyes · Peddlr · Catbalogan, Samar, 2021</div>
+<p>
+  Nel Laygo and Aiko Reyes built Peddlr for the stores of their hometown, shops they describe as stuck in
+  time for more than 30 years, running on pen and paper. The app launched in July 2021 and the first week's
+  data was rough: users were quitting after about seven days. So Laygo did the Course 2 move: he phoned
+  them. The calls revealed one dominant job. People had downloaded a whole point-of-sale app because they
+  wanted a single thing, inventory tracking. Many also feared typing their numbers into an internet app
+  because of scams.
+</p>
+<p class="story-turn">
+  The response was subtraction, not addition. Peddlr went offline-first so it worked without signal and the
+  data stayed on the owner's phone. The basic features stayed free. The core stayed at POS plus inventory,
+  and the extras waited. Rest of World reported the result: 2.1 million downloads, around a million
+  registered merchants, more than half of them sari-sari stores, and a US$4.3M seed round behind a team from
+  Samar.
+</p>
+<div class="story-principle">
+  Every design choice answers a ranked pain: offline-first answers the signal and trust pains, free answers
+  the cash pain, and the inventory core answers the job people actually came for. A value map with
+  <strong>no floating features</strong>.
+</div>
+<div class="story-sources">
+  Sources: <a href="https://restofworld.org/2022/how-a-female-founder-convinced-tiny-stores-to-digitalize-mid-pandemic/" target="_blank" rel="noopener">Rest of World (2022)</a> ·
+  <a href="https://fintech.global/2022/08/02/philippines-based-peddlr-scores-seed-funding/" target="_blank" rel="noopener">Fintech Global (2022)</a> ·
+  <a href="https://www.bworldonline.com/the-nation/2025/08/06/689978/mercato-centrale-peddlr-to-provide-digital-tools-for-small-food-enterprises/" target="_blank" rel="noopener">BusinessWorld (2025)</a>
+</div>
+</div>
+
+<figure class="pull-quote">
+<q>Our core product is inventory management; most of these shopkeepers have been doing business for decades without even knowing the peso value of their current inventory.</q>
+<cite><b>Aiko Reyes</b> · Peddlr · to Rest of World, 2022</cite>
+</figure>
+
+<!-- Principle + diagram -->
+<p>
+  The value map is the square on the left of the canvas, and it mirrors the circle. <strong>Pain
+  relievers</strong> are the specific ways your offer removes a pain. <strong>Gain creators</strong> are the
+  specific ways it produces a gain. <strong>Products and services</strong> are what you actually ship to
+  deliver them. The discipline is one to one: for each of the top three pains, design one reliever; for
+  each of the top three gains, one creator. Six items, six lines, nothing floating.
+</p>
+
+<figure class="diagram-fig">
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One-to-one mapping: three ranked customer pains on the left each connect to exactly one pain reliever on the right. A fourth floating feature with no matching pain is marked to be cut.">
+  <defs>
+    <linearGradient id="c5g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4CC492"/><stop offset="1" stop-color="#1CA46B"/>
+    </linearGradient>
+    <filter id="c5soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0b1220" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <style>
+    .m-title { font: 800 11px "JetBrains Mono", monospace; letter-spacing: 0.14em; }
+    .m-col   { font: 700 10px "JetBrains Mono", monospace; letter-spacing: 0.1em; }
+    .m-card  { font: 600 12.5px Inter, sans-serif; }
+    .m-cut   { font: 800 10px "JetBrains Mono", monospace; letter-spacing: 0.08em; }
+  </style>
+
+  <rect x="0" y="0" width="720" height="400" rx="20" fill="var(--surface-warm, #FFF6EC)"/>
+  <text x="28" y="40" class="m-title" fill="var(--ink-600, #5B6572)">THE 1:1 RULE</text>
+
+  <text x="28" y="76" class="m-col" fill="var(--ink-600, #5B6572)">RANKED PAINS (THE CIRCLE)</text>
+  <text x="428" y="76" class="m-col" fill="var(--ink-600, #5B6572)">PAIN RELIEVERS (THE SQUARE)</text>
+
+  <g filter="url(#c5soft)">
+    <rect x="28" y="92" width="264" height="52" rx="12" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="28" y="160" width="264" height="52" rx="12" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="28" y="228" width="264" height="52" rx="12" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="428" y="92" width="264" height="52" rx="12" fill="url(#c5g)"/>
+    <rect x="428" y="160" width="264" height="52" rx="12" fill="url(#c5g)"/>
+    <rect x="428" y="228" width="264" height="52" rx="12" fill="url(#c5g)"/>
+  </g>
+  <text x="46" y="123" class="m-card" fill="var(--ink-900, #1E2733)">No signal in the store</text>
+  <text x="46" y="191" class="m-card" fill="var(--ink-900, #1E2733)">Afraid of online scams</text>
+  <text x="46" y="259" class="m-card" fill="var(--ink-900, #1E2733)">Inventory lives in a notebook</text>
+  <text x="446" y="123" class="m-card" fill="#ffffff">Works offline-first</text>
+  <text x="446" y="191" class="m-card" fill="#ffffff">Data stays on your phone</text>
+  <text x="446" y="259" class="m-card" fill="#ffffff">One-tap inventory count</text>
+
+  <line x1="292" y1="118" x2="428" y2="118" stroke="#1CA46B" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="292" y1="186" x2="428" y2="186" stroke="#1CA46B" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="292" y1="254" x2="428" y2="254" stroke="#1CA46B" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- floating feature -->
+  <rect x="428" y="310" width="264" height="52" rx="12" fill="var(--surface-card, #FFFFFF)" stroke="var(--ink-400, #98A1AC)" stroke-dasharray="6 5"/>
+  <text x="446" y="341" class="m-card" fill="var(--ink-400, #98A1AC)">Loyalty points and badges</text>
+  <line x1="292" y1="336" x2="428" y2="336" stroke="var(--ink-400, #98A1AC)" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+  <rect x="180" y="322" width="104" height="26" rx="13" fill="var(--surface-card, #FFFFFF)" stroke="#D0342C"/>
+  <text x="232" y="339" text-anchor="middle" class="m-cut" fill="#B02A23">NO PAIN? CUT.</text>
+</svg>
+<figcaption><strong>Count the lines.</strong> Three pains, three relievers, three lines. The fourth feature points at nothing the customer ranked, so it waits, no matter how fun it would be to build.</figcaption>
+</figure>
+
+<p>
+  One more distinction before you map your own: a reliever and a creator can hide inside the same feature.
+  Saving a customer two hours of grocery time is pain relief if their job is escaping a weekend chore, and a
+  gain creator if their job is winning Saturday mornings with their kids. Same feature, opposite emotional
+  posture, different pitch. The video on the next page makes that call concrete, and it is the single most
+  common mistake founders make on this canvas.
+</p>
+</section>
+</main>
+
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's05'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · §3 Reframing · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Section 3</span>
+<h2>Reframing: from symptom to problem.</h2>
+
+<!-- Primer -->
+<div class="ix pv-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Predict</span><span class="ix-hint">Tap an answer</span></div>
+<p class="ix-q">A user tells you: <em>"Ang bagal ng app niyo."</em> What's your first move?</p>
+<ul class="pv-opts">
+<li><button class="pv-opt">Schedule a performance sprint</button></li>
+<li><button class="pv-opt" data-good>Ask when it was last slow, and what they were doing</button></li>
+<li><button class="pv-opt">Add a nicer loading animation</button></li>
+<li><button class="pv-opt">Offer a discount before they churn</button></li>
+</ul>
+<div class="pv-reveal">
+Ask first. "Slow" is a symptom: a true sentence pointing at something it doesn't name. The performance sprint, the animation, and the discount all treat the sentence. The question treats the situation: last Tuesday, 6 p.m., MRT signal, trying to order dinner before the station. Same five words, completely different problem.
+</div>
+</div>
+
+<!-- Story -->
+<div class="story-block">
+<div class="story-eyebrow">Field notes · a real founder</div>
+<div class="story-who">Patrick Lynch · First Circle · Manila, 2016–2018</div>
+<p>
+  When Patrick Lynch launched First Circle in 2016, the complaint from Philippine SMEs was unanimous:
+  <em>"we need a loan."</em> Banks took a month to say no; for 80% of First Circle's early customers, this was
+  their first formal relationship with any financial institution. So First Circle did the obvious: fast,
+  unsecured working-capital loans, first to Lazada and Zalora sellers.
+</p>
+<p class="story-turn">
+  Then the loan data started talking. Borrowers weren't broke. Their money existed, it was just trapped:
+  big buyers were paying invoices in 90 to 120 days. The
+  complaint said <em>loan</em>. The problem was <em>locked receivables</em>. In 2018 First Circle rebuilt
+  around it: purchase-order and invoice financing, funding the wait itself. By 2026 it had disbursed over
+  ₱25 billion to 5,000+ SMEs and marked its tenth year.
+</p>
+<div class="story-principle">
+  The move Lynch's team made has a name, <strong>reframing</strong>: refusing to accept the stated complaint
+  as the problem, and digging until the situation underneath it shows its structure.
+</div>
+<div class="story-sources">
+  Sources: <a href="https://techcrunch.com/2018/10/02/first-circle-raises-26m/" target="_blank" rel="noopener">TechCrunch (2018)</a> ·
+  <a href="https://business.inquirer.net/222605/young-irish-finds-calling-ph" target="_blank" rel="noopener">Inquirer (2017)</a> ·
+  <a href="https://www.firstcircle.ph/blog/first-circle-celebrating-a-decade-of-empowering-filipino-smes" target="_blank" rel="noopener">First Circle (2026)</a>
+</div>
+</div>
+
+<figure class="pull-quote">
+<q>A fairly brutal wait.</q>
+<cite><b>Patrick Lynch</b> · First Circle · to TechCrunch, on 90–120-day buyer payment terms, 2018</cite>
+</figure>
+
+<!-- Principle + diagram -->
+<p>
+  This is the single highest-leverage move in design thinking. <strong>The symptom is what the user says;
+  the underlying problem is what the situation is.</strong> Users are excellent witnesses and unreliable
+  diagnosticians: they experience the pain precisely and locate its cause loosely.
+</p>
+
+<figure class="diagram-fig">
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Iceberg diagram: the spoken complaint floats above the waterline; the user's context, constraints, and workarounds sit below it, where the underlying problem lives.">
+  <defs>
+    <linearGradient id="s5ice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#E5E9EE"/>
+    </linearGradient>
+    <linearGradient id="s5deep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#98A1AC"/><stop offset="1" stop-color="#3D4754"/>
+    </linearGradient>
+    <linearGradient id="s5water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3D4754" stop-opacity="0.14"/><stop offset="1" stop-color="#3D4754" stop-opacity="0.30"/>
+    </linearGradient>
+    <linearGradient id="s5root" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#28323F"/><stop offset="1" stop-color="#1E2733"/>
+    </linearGradient>
+    <filter id="s5soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0b1220" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <style>
+    .s5-title { font: 800 11px "JetBrains Mono", monospace; letter-spacing: 0.14em; }
+    .s5-say   { font: 600 15px 'Space Grotesk', Inter, sans-serif; }
+    .s5-zone  { font: 800 10px "JetBrains Mono", monospace; letter-spacing: 0.12em; }
+    .s5-chip  { font: 600 11px Inter, sans-serif; }
+    .s5-rootk { font: 800 9.5px "JetBrains Mono", monospace; letter-spacing: 0.14em; }
+    .s5-rootv { font: 600 14.5px 'Space Grotesk', Inter, sans-serif; }
+  </style>
+
+  <rect x="0" y="0" width="720" height="470" rx="20" fill="var(--surface-warm, #FFF6EC)"/>
+  <text x="28" y="38" class="s5-title" fill="var(--ink-600, #5B6572)">SYMPTOM vs UNDERLYING PROBLEM</text>
+
+  <!-- water body -->
+  <path d="M 0 190 L 720 190 L 720 450 Q 720 470 700 470 L 20 470 Q 0 470 0 450 Z" fill="url(#s5water)"/>
+
+  <!-- speech bubble -->
+  <g filter="url(#s5soft)">
+    <rect x="240" y="58" width="240" height="40" rx="20" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <path d="M 350 98 L 366 98 L 356 114 Z" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+  </g>
+  <text x="360" y="84" text-anchor="middle" class="s5-say" fill="var(--ink-900, #1E2733)">"Ang bagal ng app niyo."</text>
+
+  <!-- iceberg above -->
+  <polygon points="360,118 412,190 308,190" fill="url(#s5ice)" stroke="#C3CBD4" stroke-width="1.5" filter="url(#s5soft)"/>
+
+  <!-- waterline -->
+  <path d="M 24 190 q 30 -9 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" fill="none" stroke="#3D4754" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <text x="560" y="176" class="s5-zone" fill="#3D4754">WATERLINE</text>
+  <text x="28" y="150" class="s5-zone" fill="var(--ink-600, #5B6572)">THE SYMPTOM · WHAT IS SAID</text>
+  <text x="28" y="226" class="s5-zone" fill="#3D4754">THE SITUATION · WHAT IS TRUE</text>
+
+  <!-- iceberg below -->
+  <polygon points="308,190 412,190 462,282 396,352 300,322 268,238" fill="url(#s5deep)" opacity="0.92" stroke="#3D4754" stroke-width="1.5"/>
+
+  <!-- context chips -->
+  <g filter="url(#s5soft)">
+    <rect x="486" y="230" width="206" height="28" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="486" y="268" width="206" height="28" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="486" y="306" width="206" height="28" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="40" y="252" width="196" height="28" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+    <rect x="40" y="290" width="196" height="28" rx="14" fill="var(--surface-card, #FFFFFF)" stroke="var(--line, #EDE6DC)"/>
+  </g>
+  <text x="589" y="248" text-anchor="middle" class="s5-chip" fill="var(--ink-900, #1E2733)">shops during her commute</text>
+  <text x="589" y="286" text-anchor="middle" class="s5-chip" fill="var(--ink-900, #1E2733)">signal degrades at peak hour</text>
+  <text x="589" y="324" text-anchor="middle" class="s5-chip" fill="var(--ink-900, #1E2733)">no offline mode</text>
+  <text x="138" y="270" text-anchor="middle" class="s5-chip" fill="var(--ink-900, #1E2733)">20-min dinner window</text>
+  <text x="138" y="308" text-anchor="middle" class="s5-chip" fill="var(--ink-900, #1E2733)">workaround: napkin list</text>
+
+  <!-- root callout -->
+  <g filter="url(#s5soft)">
+    <rect x="90" y="386" width="540" height="58" rx="14" fill="url(#s5root)"/>
+  </g>
+  <text x="360" y="410" text-anchor="middle" class="s5-rootk" fill="#F9A825">UNDERLYING PROBLEM</text>
+  <text x="360" y="430" text-anchor="middle" class="s5-rootv" fill="#ffffff">The app assumes a context the user doesn't live in.</text>
+</svg>
+<figcaption><strong>Interviews and observation put you below the waterline.</strong> Everything above it is quotable; everything below it is designable.</figcaption>
+</figure>
+
+<p>
+  Two tools take you under the waterline, and they sometimes disagree. <strong>The 5 Whys</strong> is
+  mechanical and fast: ask <em>why</em> five times, anchoring each answer in something the user said or did.
+  Its failure mode is drift: one unanchored <em>why</em> and the chain leads somewhere arbitrary.
+  <strong>Jobs-to-be-Done (JTBD)</strong> asks instead: <em>what is this user trying to accomplish in this
+  situation?</em> Slower, but harder to derail, because it stays anchored to the user's outcome. When the two
+  tools disagree, trust JTBD. Usually the 5 Whys has drifted.
+</p>
+
+<!-- Worked example -->
+<div class="wx-card">
+<div class="wx-head">Worked example · "The grocery app is too slow," dug twice</div>
+<div class="wx-body">
+<ol class="why-chain">
+<li><strong>Why slow?</strong> Loading takes forever. <span class="wx-anno">(anchored: she showed the spinner)</span></li>
+<li><strong>Why long loads?</strong> Connection keeps dropping. <span class="wx-anno">(anchored: phone status bar in her screen recording)</span></li>
+<li><strong>Why dropping?</strong> She shops during her commute. <span class="wx-anno">(anchored: "pag-uwi ko, sa MRT")</span></li>
+<li><strong>Why then?</strong> It's her only free 20 minutes to plan dinner. <span class="wx-anno">(anchored: her schedule, not our guess)</span></li>
+<li><strong>Why does that break the app?</strong> The app assumes a stable connection she never has at that hour.</li>
+<li class="why-root"><strong>Root:</strong> the architecture assumes a context the user doesn't live in: no offline mode fits her actual shopping window.</li>
+</ol>
+<p style="margin: 12px 0 0;"><strong>JTBD check:</strong> the job is "plan dinner during a 20-minute commute on a bad connection." The app's real competitor isn't another grocery app. It's a napkin list. Both tools land on the same root here. When they don't, re-anchor the whys.</p>
+</div>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's05'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

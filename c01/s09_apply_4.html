@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C1 · Apply §4 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 4</span>
+<h2>Match the founder to the door, then name yours.</h2>
+<p class="apply-intro">One matching exercise, then field 6: the door you'll actually knock on.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Match</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Which first door fits each founder?</p>
+<p class="ix-sub">Use the rule from the video: the right door is the one they can credibly walk through today.</p>
+
+<div class="cl-row" data-answer="t">
+<p class="cl-text">A BS Engineering senior in Cagayan de Oro with a working thesis prototype, no company, no revenue.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="t">Campus TBI</button><button class="cl-btn" data-val="a">Accelerator</button><button class="cl-btn" data-val="g">SGF direct</button><button class="cl-btn" data-val="c">Community first</button></div>
+<p class="cl-explain">Campus TBI: it converts what she already has (a prototype and a university) into what she lacks (mentors and a grant path). USTP's incubator is a few buildings away, not a Manila flight away.</p>
+</div>
+
+<div class="cl-row" data-answer="a">
+<p class="cl-text">A bank employee who has complained about the same broken process for six years, with a developer best friend ready to build.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="t">Campus TBI</button><button class="cl-btn" data-val="a">Accelerator</button><button class="cl-btn" data-val="g">SGF direct</button><button class="cl-btn" data-val="c">Community first</button></div>
+<p class="cl-explain">Accelerator: the cohort's deadlines force the leap from complaining to building, and demo day puts capital in the room. The day job funds the runway until then.</p>
+</div>
+
+<div class="cl-row" data-answer="g">
+<p class="cl-text">A 15-year logistics veteran who can name, from the inside, exactly why provincial shippers lose money every week.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="t">Campus TBI</button><button class="cl-btn" data-val="a">Accelerator</button><button class="cl-btn" data-val="g">SGF direct</button><button class="cl-btn" data-val="c">Community first</button></div>
+<p class="cl-explain">SGF direct: her career already validated the problem, which is the hardest part of a grant application. Her job is to write it in language the panel can parse, and the video's second founder shows the rewrite loop.</p>
+</div>
+
+<div class="cl-row" data-answer="c">
+<p class="cl-text">A returning OFW with ₱800,000 in savings and a business idea formed entirely while abroad.</p>
+<div class="cl-btns"><button class="cl-btn" data-val="t">Campus TBI</button><button class="cl-btn" data-val="a">Accelerator</button><button class="cl-btn" data-val="g">SGF direct</button><button class="cl-btn" data-val="c">Community first</button></div>
+<p class="cl-explain">Community first: the savings can wait; the assumptions can't. Ten years away means the idea needs local ground truth (and the founder friends who supply it) before any application or spend.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 6 of 7</span></div>
+<p class="af-title">My first door</p>
+<p class="af-trigger">Name the specific door you can credibly walk through with what you have today: an actual TBI, accelerator, grant window, or community, and why it fits your position. If your Field-5 verdict said "small business for now," your door might be DTI's MSME programs instead, and that's a real answer too.</p>
+<textarea class="af-input" data-af="c01.f6" rows="3" placeholder="My door is [specific name], because today I have [assets] and lack [gaps]..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"My door is the USTP TBI: I'm a student here, my prototype came from my thesis, and what I lack (a mentor and a grant path) is exactly what a TBI provides. VC is a door for a different year."</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c01', 's09'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

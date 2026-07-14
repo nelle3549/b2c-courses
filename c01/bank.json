@@ -1,0 +1,322 @@
+{
+  "course_id": "c01",
+  "course_title": "Startup PH: Inside the Filipino Innovation Ecosystem",
+  "version": "2.0-v2build",
+  "items": [
+    {
+      "id": "c01_b01",
+      "bloom": "remember",
+      "lo": null,
+      "competency": "Recall RA 11337's short title",
+      "stem": "Republic Act No. 11337, the 2019 law that defines a startup in the Philippines and created the Startup Grant Fund, is also known as the...",
+      "options": {
+        "A": "Barangay Micro Business Enterprises Act",
+        "B": "Innovative Startup Act",
+        "C": "Ease of Doing Business Act",
+        "D": "Go Negosyo Act"
+      },
+      "key": "B",
+      "explanation": "RA 11337 is the Innovative Startup Act (2019). It defines \"startup,\" authorizes subsidies, and creates Startup Grant Funds under DOST, DICT, and DTI.",
+      "explanations": {
+        "A": "The BMBE Act (RA 9178) supports micro businesses like sari-sari stores. Different law, different animal: it serves small businesses, not startups.",
+        "B": "Correct: the Innovative Startup Act, approved in 2019. It carries the legal definition of a startup and the grant machinery this course mapped.",
+        "C": "The Ease of Doing Business Act (RA 11032) speeds up government transactions for all businesses. It doesn't define startups.",
+        "D": "The Go Negosyo Act (RA 10644) created Negosyo Centers for MSMEs. Helpful, but not the startup law."
+      }
+    },
+    {
+      "id": "c01_b02",
+      "bloom": "remember",
+      "lo": null,
+      "competency": "Recall the three marks of a startup",
+      "stem": "Which set names the three marks of a startup taught in this course?",
+      "options": {
+        "A": "Initiated as a project · innovative solution · scalability",
+        "B": "Registered · funded · profitable",
+        "C": "Young · small · digital",
+        "D": "Team · product · market"
+      },
+      "key": "A",
+      "explanation": "The three marks: born as an experimental project, built on a non-obvious solution, and able to scale (revenue climbs while costs stay nearly flat).",
+      "explanations": {
+        "A": "Correct: project origin, non-obvious solution, and scalability. Every case in the course (Google's PhD project, Packworks' five stores, Investagrams' flat costs) sits under one of these.",
+        "B": "Registration, funding, and profit are outcomes and paperwork, not marks. RA 11337 counts even an unregistered, unfunded person as a startup.",
+        "C": "Young, small, and digital describe most new ventures, including ones that will never scale. Surface features, not marks.",
+        "D": "Every business has a team, product, and market, including the laundry shop by the church. These don't separate startups from anything."
+      }
+    },
+    {
+      "id": "c01_b03",
+      "bloom": "understand",
+      "lo": "lo1",
+      "competency": "Explain why not all new or small companies are startups",
+      "stem": "\"Not all new or small companies are startups, but most startups start small.\" What actually separates the startup from the rest?",
+      "options": {
+        "A": "Startups must be technology companies; small businesses are not allowed to use technology.",
+        "B": "Startups employ fewer people than small businesses do.",
+        "C": "A startup is searching for a repeatable model where the next customer costs less to serve; a small business plans to stay the size its owner can run.",
+        "D": "Startups are registered with DOST while small businesses register with DTI."
+      },
+      "key": "C",
+      "explanation": "The separator is the growth model: a startup searches for a repeatable, scalable engine. Size, age, and tech presence are surface features.",
+      "explanations": {
+        "A": "Technology is a common tool, not the test. A carinderia with an app can still be a small business, and the course showed exactly that case.",
+        "B": "Headcount runs in every direction: some startups out-hire some SMEs. Size is how the types get confused, not how they come apart.",
+        "C": "Correct: the growth model is the test. Does the next customer cost less to serve than the last? The startup is built to answer yes.",
+        "D": "Registration agencies don't define the animal. RA 11337's definition starts at \"any person,\" registered or not."
+      }
+    },
+    {
+      "id": "c01_b04",
+      "bloom": "understand",
+      "lo": "lo1",
+      "competency": "Interpret the scope of RA 11337's definition",
+      "stem": "RA 11337 defines a startup as \"any person or registered entity in the Philippines which aims to develop an innovative product, process, or business model.\" Which statement correctly reads that definition?",
+      "options": {
+        "A": "Only corporations registered with the SEC can qualify as startups.",
+        "B": "Only ventures selling a physical technology gadget qualify.",
+        "C": "Only ventures that have already raised investor funding qualify.",
+        "D": "Even one unregistered person qualifies, and the innovation can live in a product, a process, or a business model."
+      },
+      "key": "D",
+      "explanation": "The legal definition is deliberately wide: \"any person\" (no company needed yet) and three kinds of innovation (product, process, business model).",
+      "explanations": {
+        "A": "The law says \"any person or registered entity.\" The first two words exist precisely so students and solo builders qualify before incorporating.",
+        "B": "The definition names product, process, AND business model. GCash's SMS money transfer was process and business-model innovation, no gadget involved.",
+        "C": "Funding appears nowhere in the definition. The law exists to route money TO qualifying ventures, not to require money first.",
+        "D": "Correct on both counts: \"any person\" opens the door before registration, and innovation counts in three forms, not just gadgets."
+      }
+    },
+    {
+      "id": "c01_b05",
+      "bloom": "understand",
+      "lo": null,
+      "competency": "Distinguish invention from commercialization",
+      "stem": "Invention is a technical solution to a technical problem. Commercialization is...",
+      "options": {
+        "A": "the process of deriving income from a technology.",
+        "B": "the act of registering a patent for the invention.",
+        "C": "the publication of the research behind the invention.",
+        "D": "the moment the invention wins a startup competition."
+      },
+      "key": "A",
+      "explanation": "Commercialization is deriving income from a technology, repeatedly. A startup is the bridge between a working invention and paying customers.",
+      "explanations": {
+        "A": "Correct: commercialization ends with \"they keep paying,\" not with \"it works.\" Grant panels fund the bridge between the two.",
+        "B": "A patent protects the invention; it doesn't earn from it. Plenty of patented inventions never see a customer.",
+        "C": "Publication spreads knowledge and wins citations. Income requires manufacturing, pricing, distribution, and support: the unglamorous column.",
+        "D": "Competitions award trophies and sometimes seed money, but a win is not a revenue model. The course's rule: a brilliant invention with no path to income is a science-fair entry."
+      }
+    },
+    {
+      "id": "c01_b06",
+      "bloom": "understand",
+      "lo": null,
+      "competency": "Recall and interpret the working definition",
+      "stem": "In the working definition, a startup is \"a temporary organization designed to ___ a repeatable and scalable business model.\" Which word completes it, and why does it matter?",
+      "options": {
+        "A": "\"protect\": the model must be patented early.",
+        "B": "\"search for\": the model is not known yet, and the startup exists to find it.",
+        "C": "\"copy\": the model should be taken from a proven foreign startup.",
+        "D": "\"advertise\": the model spreads through marketing."
+      },
+      "key": "B",
+      "explanation": "A startup searches: the repeatable, scalable model is unknown at the start, and the venture is the experiment that finds it. That's also why the phase is temporary.",
+      "explanations": {
+        "A": "Nothing exists to protect yet. Protection matters later; the early venture is an experiment, not a vault.",
+        "B": "Correct: \"search for.\" Coins.ph in 2014 didn't know its model; by 2019 the search was over and the startup phase ended. Both halves of the definition in one arc.",
+        "C": "Copying a proven model skips the search but usually imports the wrong assumptions. The Filipino cases won by fitting local reality, not by copying.",
+        "D": "Advertising amplifies a model that already works. It can't find one for you."
+      }
+    },
+    {
+      "id": "c01_b07",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Classify ventures using the startup definition",
+      "stem": "Four ventures. Applying the course's test, which one is the startup?",
+      "options": {
+        "A": "A milk-tea shop opening its third branch, each with its own staff and stock.",
+        "B": "A freelance design studio taking on more client projects every month.",
+        "C": "A two-person team testing an app that matches farmers to city buyers, where the engine serves each new farmer at almost no added cost.",
+        "D": "A 60-person distributor that has served the same corporate clients for 12 years."
+      },
+      "key": "C",
+      "explanation": "The farmer-matching team is searching for a repeatable, scalable model: the next customer costs less to serve. The others grow by adding costs.",
+      "explanations": {
+        "A": "Branch three is a full copy of branch two's costs. A healthy small business becoming an SME, and a different animal.",
+        "B": "Every new client needs new hours; services grow with headcount. It can become a startup only by turning the service into a product.",
+        "C": "Correct: small and unproven, but designed to repeat at falling unit cost. That design, not the size, is what makes it a startup.",
+        "D": "Stable model, same customers, operational scale: a textbook SME. Respectable, and not searching for anything."
+      }
+    },
+    {
+      "id": "c01_b08",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Recognize the project-origin mark in practice",
+      "stem": "Which venture below shows the mark \"initiated as a project\"?",
+      "options": {
+        "A": "A thesis prototype piloted with one municipal office before any company is registered.",
+        "B": "A venture that begins with a launch party, a press release, and a leased office.",
+        "C": "A founder who incorporates first and plans to decide on the product later.",
+        "D": "A team that hires ten developers before talking to a single user."
+      },
+      "key": "A",
+      "explanation": "Project origin means experiment first, company later: a trial or pilot built to find something out, like Google's PhD project or Packworks' five stores.",
+      "explanations": {
+        "A": "Correct: a pilot with one LGU is the search in action. The company comes after the experiment works, the same order as Google, Facebook, GCash, and Packworks.",
+        "B": "Launch-first is company-before-experiment: the exact reverse of the mark. Nothing has been tested yet except the catering.",
+        "C": "Incorporation is paperwork, not learning. A registered company with no experiment is a shell around a guess.",
+        "D": "Ten hires before one user is the expensive way to discover the wrong problem. Projects exist to make that discovery cheap."
+      }
+    },
+    {
+      "id": "c01_b09",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Recognize innovation in RA 11337's wide sense",
+      "stem": "RA 11337 counts product, process, and business-model innovation. Which venture shows an innovative solution WITHOUT inventing any new hardware?",
+      "options": {
+        "A": "Opening another laundry branch in the next barangay.",
+        "B": "Lowering prices below every competitor in the palengke.",
+        "C": "Copying a rival's delivery app with a new color scheme.",
+        "D": "Moving money over SMS so that customers never need a bank account."
+      },
+      "key": "D",
+      "explanation": "The GCash move: no gadget, no laboratory. The innovation lives in the process (money by text) and the business model built around it.",
+      "explanations": {
+        "A": "Another branch of an existing format is expansion, not innovation. Obvious answers already have owners.",
+        "B": "A price cut is a lever anyone can pull tomorrow. It's neither non-obvious nor defensible.",
+        "C": "A recolor of a rival's app is imitation. Nothing new in product, process, or model.",
+        "D": "Correct: SMS money transfer was a non-obvious process and business-model innovation for the unbanked, and it qualifies under the law's own wording."
+      }
+    },
+    {
+      "id": "c01_b10",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Apply the growing-vs-scaling cost test",
+      "stem": "Apply the cost test: what happens to costs when customers double? Which venture is SCALING?",
+      "options": {
+        "A": "A tutoring agency that hires one new tutor for every 15 additional students.",
+        "B": "A carinderia-ordering app that needs a manual partnership and on-site training for each new neighborhood.",
+        "C": "A review platform that adds 10,000 users on the same servers and the same team of four.",
+        "D": "A milk-tea brand that doubles revenue by opening a second branch."
+      },
+      "key": "C",
+      "explanation": "Scaling means revenue climbs while costs stay nearly flat. Only the review platform serves its next 10,000 customers at almost no added cost.",
+      "explanations": {
+        "A": "Payroll rises in lockstep with students: the cost curve chases revenue. Growing, by design.",
+        "B": "The app doesn't change the cost curve: each neighborhood costs the same lakad as the last. A digitized small business.",
+        "C": "Correct: the engine was built once and the next 10,000 users ride it for pennies. The gap between the revenue and cost curves is the scaling signature.",
+        "D": "A second branch is a second copy of every cost. Revenue doubled and so did the bills: growing, not scaling."
+      }
+    },
+    {
+      "id": "c01_b11",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Analyze why the branch model grows instead of scales",
+      "stem": "A food chain doubles its branches and doubles its revenue. Why does the course still call this GROWING rather than scaling?",
+      "options": {
+        "A": "Because food businesses can never become startups.",
+        "B": "Because each new branch adds a full copy of the costs, so serving the next customer never gets cheaper.",
+        "C": "Because its revenue grew more slowly than inflation.",
+        "D": "Because the expansion was not funded by venture capital."
+      },
+      "key": "B",
+      "explanation": "The branch model buys revenue with matching cost: rent, staff, and stock duplicate per branch, so unit cost stays flat and the curves never separate.",
+      "explanations": {
+        "A": "Sector doesn't decide it; the cost curve does. A food business with a central engine (say, one commissary serving 100 pop-ups) could scale.",
+        "B": "Correct: doubling branches doubles rent, staff, and stock. Revenue and costs climb the same hill together, which is the growing chart exactly.",
+        "C": "Inflation is beside the point; the comparison is between the venture's own revenue and cost curves.",
+        "D": "Funding source doesn't change the shape of the cost curve. VC money poured into a branch model just buys more branches."
+      }
+    },
+    {
+      "id": "c01_b12",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Analyze the 2011-to-2021 market-cap flip",
+      "stem": "In 2011, two of the world's ten most valuable companies were technology companies; by 2021, eight were. Using the course's cost-curve lens, which explanation fits best?",
+      "options": {
+        "A": "Software platforms serve their next customer at near-zero cost, so revenue pulls away from costs at a pace branch-and-barrel businesses can't match.",
+        "B": "Technology companies simply ran better advertising campaigns than oil companies.",
+        "C": "Governments worldwide subsidized software companies more than banks.",
+        "D": "The world ran out of oil to sell between 2011 and 2021."
+      },
+      "key": "A",
+      "explanation": "The flip is scalability winning: near-zero marginal cost lets platform revenue climb while costs stay nearly flat, and a decade of that compounding rewrote the list.",
+      "explanations": {
+        "A": "Correct: the widening gap between revenue and cost curves compounds year after year. Oil rigs and branches grow; copies of software scale.",
+        "B": "Advertising moves demand at the margin; it doesn't change what the next customer costs to serve. The flip is structural, not promotional.",
+        "C": "No subsidy story covers eight of ten across different countries and decades. The shared trait is the cost curve, not the government.",
+        "D": "Oil remained abundantly for sale (one oil company is still on the 2021 list). What changed is what investors will pay for: engines that scale."
+      }
+    },
+    {
+      "id": "c01_b13",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Diagnose which mark fails in a digitized small business",
+      "stem": "A founder builds an ordering app for carinderias. The app works, users like it, but every new neighborhood requires a manual partnership, a redesigned menu, and on-site training. Which mark of a startup FAILS here?",
+      "options": {
+        "A": "Initiated as a project",
+        "B": "Innovative solution",
+        "C": "Legal registration",
+        "D": "Scalability"
+      },
+      "key": "D",
+      "explanation": "The venture may be a fine project with a decent idea, but its cost-per-neighborhood never falls: the third mark, scalability, is the one that fails.",
+      "explanations": {
+        "A": "If anything, this venture IS a project being piloted neighborhood by neighborhood. That mark passes.",
+        "B": "The offline-friendly ordering idea may well be non-obvious. The concept isn't the failure point.",
+        "C": "Registration is not one of the three marks, and RA 11337 doesn't require it to call something a startup.",
+        "D": "Correct: the next neighborhood costs the same as the last, so the cost curve tracks revenue forever. Growing with an app on top, not scaling."
+      }
+    },
+    {
+      "id": "c01_b14",
+      "bloom": "evaluate",
+      "lo": "lo4",
+      "competency": "Choose the right first door for a student founder",
+      "stem": "A second-year engineering student has a working prototype from her thesis and needs ₱500,000 for a pilot. No revenue, no co-founder, no investor contacts. Which door should she approach FIRST?",
+      "options": {
+        "A": "A Series A venture capital firm, with a 30-slide deck and financial projections.",
+        "B": "Her university's Technology Business Incubator, for mentorship and the grant pipeline.",
+        "C": "A commercial bank business loan secured by her family's savings.",
+        "D": "An angel syndicate reached through her parents' contacts."
+      },
+      "key": "B",
+      "explanation": "At pre-revenue with no team, the TBI converts what she has (a prototype, a university) into what she lacks (mentors, a credible SGF application), without equity or collateral.",
+      "explanations": {
+        "A": "Series A firms fund proven engines, not thesis pilots. This door requires her to pretend to be a different founder.",
+        "B": "Correct: the TBI is the door her actual position opens. It costs time, not equity, and it walks her application into the RA 11337 grant machinery.",
+        "C": "Banks price risk with collateral. Betting the family savings on an unvalidated pilot is the most expensive money available to her.",
+        "D": "Angels want signals she doesn't have yet, and borrowed credibility isn't hers. The credible version of this door comes later, after the pilot."
+      }
+    },
+    {
+      "id": "c01_b15",
+      "bloom": "evaluate",
+      "lo": "lo4",
+      "competency": "Judge how grant money complements equity money",
+      "stem": "A founder has been through an accelerator, has public traction, and needs to build an unglamorous but critical feature her VC does not want to fund. What is her most defensible move?",
+      "options": {
+        "A": "Drop the feature, since investors know best what deserves funding.",
+        "B": "Raise another equity round and accept the extra dilution to fund it.",
+        "C": "Apply to a Startup Grant Fund window: grants are non-dilutive and can fund exactly what VCs won't.",
+        "D": "Take a personal bank loan against her own assets to pay for it."
+      },
+      "key": "C",
+      "explanation": "The SGF doesn't compete with VC money; it complements it. Non-dilutive grant money is built for the critical, unsexy work equity investors skip.",
+      "explanations": {
+        "A": "Investor appetite measures return stories, not criticality. Dropping critical infrastructure to match a pitch narrative is backwards.",
+        "B": "Possible but costly: she'd sell ownership to fund something a grant would cover for free. Sequencing grants and equity is the smarter stack.",
+        "C": "Correct: this is the video's third founder. Accelerator credibility makes the application strong, and the grant funds the feature without giving up a share.",
+        "D": "Personal collateral for company infrastructure confuses her balance sheet with the company's, and it's the least protected money she owns."
+      }
+    }
+  ]
+}

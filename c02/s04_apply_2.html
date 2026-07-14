@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Apply §2 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 2</span>
+<h2>Interview hygiene, hands on.</h2>
+<p class="apply-intro">Three exercises: find the bad questions, fix one, then write your own three.</p>
+
+<div class="ix hs-wrap">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Spot the flaws</span><span class="ix-hint">Tap the 3 bad questions</span></div>
+<p class="ix-q" style="margin-bottom:4px;">A founder interviews a sari-sari store owner. Six sample questions (written for this exercise).</p>
+<p class="ix-sub">Three are bad questions. Tap the ones you would cut.</p>
+
+<div class="hs-item">
+<button class="hs-phrase" data-id="q1"><span class="hs-num">1</span><span>"Thanks for making time, Ate. Walk me through last Saturday, from the moment you opened the store."</span></button>
+<p class="hs-note good" data-for="q1">Good question: past tense, one specific day, no product in sight. Keep it.</p>
+</div>
+<div class="hs-item">
+<button class="hs-phrase" data-id="q2" data-flaw="hypothetical"><span class="hs-num">2</span><span>"Would you use an app that automatically reorders your inventory?"</span></button>
+<p class="hs-note" data-for="q2">Bad: a "would you" question about an imaginary app. You'll get politeness, not facts. Ask instead: "What did you do the last time stock ran out?"</p>
+</div>
+<div class="hs-item">
+<button class="hs-phrase" data-id="q3"><span class="hs-num">3</span><span>"What did you do when the delivery didn't arrive that day?"</span></button>
+<p class="hs-note good" data-for="q3">Good question: follows her story, asks what she actually did. Keep it.</p>
+</div>
+<div class="hs-item">
+<button class="hs-phrase" data-id="q4" data-flaw="leading"><span class="hs-num">4</span><span>"Don't you think the suppliers charge too much?"</span></button>
+<p class="hs-note" data-for="q4">Bad: a leading question. You handed her your answer and asked her to agree. Whatever she says next is spoiled.</p>
+</div>
+<div class="hs-item">
+<button class="hs-phrase" data-id="q5"><span class="hs-num">5</span><span>"How much time did the whole thing eat up?"</span></button>
+<p class="hs-note good" data-for="q5">Good question: puts a number on something that really happened. Keep it.</p>
+</div>
+<div class="hs-item">
+<button class="hs-phrase" data-id="q6" data-flaw="future"><span class="hs-num">6</span><span>"Going forward, how often do you think you'd reorder through your phone?"</span></button>
+<p class="hs-note" data-for="q6">Bad: asks her to predict her future self. Nobody can, not even Ate. Ask what she did, not what she'll do.</p>
+</div>
+<p class="hs-status"></p>
+</div>
+
+<div class="ix gen-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Rewrite</span><span class="ix-hint">Type, then compare</span></div>
+<p class="ix-q">Rewrite this into an empathy-interview question: <em>"Would you pay ₱99/month for a tutor-finder app?"</em></p>
+<textarea class="gen-input" rows="2" placeholder="Your rewrite..."></textarea>
+<button class="gen-btn">Compare with a strong rewrite</button>
+<div class="gen-model">
+<strong>One strong version:</strong> "Kwento mo naman: the last time you looked for a tutor for your kid, what did you do? What did it end up costing you?"
+<ul>
+<li>Past tense, one specific episode, not a forecast.</li>
+<li>Zero mention of any app or price. The ₱99 question comes much later, from a different test.</li>
+<li>"What did it cost you?" surfaces the pain's real price in money, time, and lakad, which tells you what relief is worth.</li>
+</ul>
+Yours doesn't need these exact words. Check it against the three bullets.
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 2 of 7</span></div>
+<p class="af-title">My three behavioral questions</p>
+<p class="af-trigger">Write three questions you could ask a real person tomorrow about your Field-1 symptom. Each must pass all three gates: <strong>past tense · specific recent moment · no mention of any solution.</strong></p>
+<div class="af-multi" data-af-multi="c02.f2">
+<input class="af-input af-line" type="text" placeholder="Question 1..."/>
+<input class="af-input af-line" type="text" placeholder="Question 2..."/>
+<input class="af-input af-line" type="text" placeholder="Question 3..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example set</summary>
+<div class="af-example-body">For the receipt-reconciliation symptom: 1. "Walk me through last Friday night. How did you settle the supplier receipts?" 2. "What did you try before settling on the notebook system?" 3. "Kailan ka huling nagkamali sa tugma? What happened after?"</div>
+</details>
+</div>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's04'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

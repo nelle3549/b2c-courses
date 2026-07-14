@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Your Problem Hypothesis Card · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<style>
+  /* page-scoped: printing from this page outputs the card only */
+  @media print{ .no-print{display:none!important;} }
+</style>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<div class="no-print">
+<span class="section-label">Your artifact</span>
+<h2>Your Problem Hypothesis Card.</h2>
+<p class="apply-intro">Two last fields turn your notes into a plan. Your card is compiled below, printable, and ready to travel.</p>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 6 of 7</span></div>
+<p class="af-title">Five people I'll interview this week</p>
+<p class="af-trigger">Real names or real roles you can actually reach ("Kuya Dan, canteen owner" counts; "SME owners" doesn't).</p>
+<div class="af-multi" data-af-multi="c02.f6">
+<input class="af-input af-line" type="text" placeholder="Person 1..."/>
+<input class="af-input af-line" type="text" placeholder="Person 2..."/>
+<input class="af-input af-line" type="text" placeholder="Person 3..."/>
+<input class="af-input af-line" type="text" placeholder="Person 4..."/>
+<input class="af-input af-line" type="text" placeholder="Person 5..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your card · field 7 of 7</span></div>
+<p class="af-title">My commitment</p>
+<p class="af-trigger">A plan with a day and a time. Specific plans get done; intentions don't.</p>
+<textarea class="af-input" data-af="c02.f7" rows="2" placeholder="I will run my first interview with [who] on [day] at [time]."></textarea>
+<div class="af-saved">Saved ✓</div>
+</div>
+</div>
+
+<section class="hypo-card" id="phc-card">
+<div class="hypo-card-head"><h3>Problem Hypothesis Card</h3><span id="phc-status">C02 · Printable</span></div>
+<div id="phc-fields"></div>
+</section>
+
+<div class="hypo-actions no-print">
+<button class="btn-primary" id="print-card">Print / Save as PDF</button>
+</div>
+<p class="apply-intro no-print">Fields 1–5 were written on the Apply pages. Step back if you want to edit them; this card updates live.</p>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's10'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+
+  const SPEC = [
+    { id: 'f1', label: '01 · The symptom I keep hearing' },
+    { id: 'f2', label: '02 · My three behavioral questions' },
+    { id: 'f3', label: '03 · The underlying problem I suspect' },
+    { id: 'f4', label: '04 · My How-Might-We' },
+    { id: 'f5', label: '05 · My falsifiable problem statement' },
+    { id: 'f6', label: '06 · Five people I\'ll interview this week' },
+    { id: 'f7', label: '07 · My commitment' }
+  ];
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function renderCard() {
+    const fields = SDM2.readAllFields('c02');
+    const wrap = document.getElementById('phc-fields');
+    let filled = 0;
+    wrap.innerHTML = SPEC.map(f => {
+      const val = (fields[f.id] || '').trim();
+      if (val) filled += 1;
+      return '<div class="hypo-row"><p class="hypo-label">' + f.label + '</p>' +
+             '<p class="hypo-value' + (val ? '' : ' empty') + '">' + esc(val) + '</p></div>';
+    }).join('');
+    document.getElementById('phc-status').textContent = 'C02 · ' + filled + ' of 7 filled';
+  }
+  renderCard();
+  document.addEventListener('sdm:fieldsaved', renderCard);
+
+  document.getElementById('print-card').addEventListener('click', () => SDMB.requestPrint('c02'));
+</script>
+</body>
+</html>

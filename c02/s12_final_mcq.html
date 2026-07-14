@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C2 · Final assessment · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<style>
+  .assessment-wrap { max-width: 760px; margin: 0 auto; padding: 8px 0; }
+  .assessment-hero { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 14px; padding: 22px 24px; margin-bottom: 18px; }
+  .assessment-hero h1 { margin: 0 0 8px; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+  .assessment-hero p { margin: 6px 0; color: var(--ink-600, #5B6572); font-size: 0.95rem; }
+  .assessment-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; font-size: 0.82rem; }
+  .assessment-meta span { background: var(--surface-soft, #FDEDE0); color: var(--brand-700, #C6430E); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+  .item-num { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-600, #5B6572); text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
+  .submit-row { margin: 22px 0 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .progress-pill { font-size: 0.82rem; color: var(--ink-600, #5B6572); }
+  .result-card { background: linear-gradient(180deg, var(--surface-soft, #FDEDE0) 0%, var(--surface-card, #FFFFFF) 100%); border: 1px solid var(--brand-700, #C6430E); border-radius: 14px; padding: 22px 24px; margin-bottom: 18px; }
+  .result-score { font-size: 2.6rem; font-weight: 700; margin: 4px 0; color: var(--brand-700, #C6430E); font-family: 'Space Grotesk', sans-serif; }
+  .result-pct { font-size: 1rem; color: var(--ink-600, #5B6572); font-weight: 600; }
+  .result-mastery { font-size: 0.98rem; margin: 12px 0 0; line-height: 1.55; }
+  .bloom-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0 0; }
+  .bloom-cell { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 10px; padding: 10px 8px; text-align: center; }
+  .bloom-cell-label { font-size: 0.72rem; color: var(--ink-600, #5B6572); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .bloom-cell-score { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+  .bloom-cell.full { background: var(--success-soft); border-color: var(--success); }
+  .bloom-cell.partial { background: var(--warning-soft); border-color: var(--warning); }
+  .bloom-cell.zero { background: var(--danger-soft); border-color: var(--danger); }
+  @media (max-width: 560px) { .bloom-grid { grid-template-columns: repeat(2, 1fr); } }
+  .hidden { display: none !important; }
+  .wrap-card { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 14px; padding: 20px 24px; margin-bottom: 18px; }
+  .wrap-card h2 { font-size: 1.05rem; margin: 0 0 10px; }
+  .wrap-card ul { margin: 0 0 0 18px; padding: 0; }
+  .wrap-card li { margin: 8px 0; font-size: 0.93rem; line-height: 1.55; }
+  .action-line { background: var(--success-soft, #E9F7F0); border: 1px solid var(--success, #1CA46B); border-radius: 10px; padding: 12px 16px; margin-top: 14px; font-size: 0.94rem; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<div class="assessment-wrap">
+
+<section class="assessment-hero" id="hero-start">
+<h1>Final assessment · Problem First</h1>
+<p>
+  Seven questions, drawn fresh from a bank of 15. Every set covers all four skills this course promised,
+  from recall to judgment. Unlimited retakes, new questions each time; most learners take two tries to hit 7/7.
+</p>
+<div class="assessment-meta">
+<span>7 questions</span>
+<span>~8 min</span>
+<span>Unlimited retakes</span>
+</div>
+<div class="submit-row">
+<button class="btn-primary" id="start-btn">Start</button>
+</div>
+</section>
+
+<div id="taking" class="hidden">
+<div id="items-container"></div>
+<div class="submit-row">
+<button class="btn-primary" id="submit-btn" disabled>Submit assessment</button>
+<span class="progress-pill" id="progress-pill">0 of 7 answered</span>
+</div>
+</div>
+
+<div id="result" class="hidden">
+<section class="result-card">
+<div class="item-num">Result</div>
+<div class="result-score" id="score-line">0 / 7</div>
+<div class="result-pct" id="score-pct">0%</div>
+<p class="result-mastery" id="mastery-line"></p>
+<div class="bloom-grid" id="bloom-grid"></div>
+<div class="submit-row">
+<button class="btn-primary" id="retake-btn">Retake (fresh batch)</button>
+<button class="btn-ghost" id="review-btn">Review answers ↓</button>
+</div>
+</section>
+
+<section class="wrap-card">
+<h2>What you're walking out with</h2>
+<ul>
+<li><strong>The build order that survives contact with reality:</strong> validate the problem before you build. Kalibrr's pivot is the tuition you now don't have to pay.</li>
+<li><strong>The data-quality ladder:</strong> observed behavior &gt; recalled behavior &gt; stated intent &gt; opinions. Interviews get you level-3 data; GrowSari-style fieldwork gets level 4.</li>
+<li><strong>The reframe-and-falsify loop:</strong> dig from symptom to situation (First Circle's locked receivables), then write the statement a weekend could kill (PayMongo's ten-merchant launch).</li>
+</ul>
+<div class="action-line" id="action-line">
+Do one thing today: message one of the five people on your card and set your first interview. The card below is ready to travel.
+</div>
+</section>
+
+<section class="hypo-card" id="phc-card">
+<div class="hypo-card-head"><h3>Problem Hypothesis Card</h3><span id="phc-status">C02 · Printable</span></div>
+<div id="phc-fields"></div>
+</section>
+<div class="hypo-actions">
+<button class="btn-primary" id="print-card">Print / Save as PDF</button>
+<span class="progress-pill">To edit, go back two steps to &ldquo;Your card.&rdquo;</span>
+</div>
+
+<div id="review-container" class="hidden"></div>
+</div>
+
+</div>
+</main>
+
+<script src="bank.js"></script>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+<script>
+  // Theme
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c02', 's12'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+
+  const COURSE_ID = "c02";
+  let bank = null;
+  let batch = [];
+  let responses = {};
+  let startedAt = null;
+
+  const heroStart = document.getElementById('hero-start');
+  const takingDiv = document.getElementById('taking');
+  const resultDiv = document.getElementById('result');
+  const itemsContainer = document.getElementById('items-container');
+  const submitBtn = document.getElementById('submit-btn');
+  const startBtn = document.getElementById('start-btn');
+  const progressPill = document.getElementById('progress-pill');
+
+  startBtn.addEventListener('click', () => {
+    bank = window.SDM_BANK_C02;
+    if (!bank) { alert('Could not load assessment bank. Please refresh and try again.'); return; }
+    heroStart.classList.add('hidden');
+    startAttempt();
+  });
+
+  function startAttempt() {
+    batch = SDM.sampleBatch(bank.items);
+    responses = {};
+    startedAt = new Date().toISOString();
+    renderBatch();
+    heroStart.classList.add('hidden');
+    resultDiv.classList.add('hidden');
+    takingDiv.classList.remove('hidden');
+    submitBtn.disabled = true;
+    progressPill.textContent = '0 of ' + batch.length + ' answered';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderBatch() {
+    itemsContainer.innerHTML = '';
+    batch.forEach((item, idx) => {
+      const card = document.createElement('article');
+      card.className = 'mcq-card';
+      card.dataset.itemId = item.id;
+      card.innerHTML = `
+        <div class="item-num">Item ${idx + 1} of ${batch.length}</div>
+        <p class="mcq-stem">${item.stem}</p>
+        <ul class="mcq-options" role="radiogroup">
+          ${['A','B','C','D'].map(letter => `
+            <li>
+              <button class="mcq-option" data-letter="${letter}">
+                <span class="mcq-letter">${letter}</span>
+                <span>${item.options[letter]}</span>
+              </button>
+            </li>
+          `).join('')}
+        </ul>
+      `;
+      card.querySelectorAll('.mcq-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const letter = btn.dataset.letter;
+          responses[item.id] = letter;
+          card.querySelectorAll('.mcq-option').forEach(b => b.classList.remove('user-picked'));
+          btn.classList.add('user-picked');
+          updateProgress();
+        });
+      });
+      itemsContainer.appendChild(card);
+    });
+  }
+
+  function updateProgress() {
+    const answered = Object.keys(responses).length;
+    progressPill.textContent = answered + ' of ' + batch.length + ' answered';
+    submitBtn.disabled = answered < batch.length;
+  }
+
+  submitBtn.addEventListener('click', () => {
+    const attempt = SDM.makeAttempt(COURSE_ID, batch, responses, startedAt);
+    showResult(attempt);
+  });
+
+  function masteryLine(attempt) {
+    const n = attempt.correct_count;
+    const weak = [];
+    Object.keys(attempt.per_bloom).forEach(b => {
+      const c = attempt.per_bloom[b];
+      if (c.n > 0 && c.correct < c.n) weak.push(b);
+    });
+    if (n === 7) return 'Perfect batch. You can name why problem-first wins, run a clean interview, split symptom from situation, and judge a statement\'s falsifiability: the four skills this course promised.';
+    if (n >= 5) return 'Strong. The review below shows exactly which move slipped' + (weak.length ? ' (' + weak.join(', ') + ')' : '') + '. Read the explanations, then take a fresh batch. Most learners hit 7/7 on the second.';
+    if (n >= 3) return 'The core is there. Each miss below names its misconception. Read those explanations first; they were written for exactly this moment. Then retake: new batch, same coverage.';
+    return 'Rough batch? It happens, and it costs nothing here. Review below, revisit the section each miss points to, and come back for a fresh batch. Unlimited means unlimited.';
+  }
+
+  function showResult(attempt) {
+    takingDiv.classList.add('hidden');
+    resultDiv.classList.remove('hidden');
+    document.getElementById('score-line').textContent = attempt.correct_count + ' / ' + attempt.total;
+    document.getElementById('score-pct').textContent = Math.round(attempt.score_pct * 100) + '% · this set covered all 4 skills';
+    document.getElementById('mastery-line').textContent = masteryLine(attempt);
+
+    const grid = document.getElementById('bloom-grid');
+    grid.innerHTML = '';
+    const order = ['remember', 'understand', 'apply', 'analyze', 'evaluate'];
+    order.forEach(b => {
+      const cell = attempt.per_bloom[b];
+      if (!cell || cell.n === 0) return;
+      const div = document.createElement('div');
+      const ratio = cell.correct / cell.n;
+      const tier = ratio === 1 ? 'full' : ratio === 0 ? 'zero' : 'partial';
+      div.className = 'bloom-cell ' + tier;
+      div.innerHTML = `
+        <div class="bloom-cell-label">${b}</div>
+        <div class="bloom-cell-score">${cell.correct} / ${cell.n}</div>
+      `;
+      grid.appendChild(div);
+    });
+
+    renderCard();
+    renderReview(attempt);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderCard() {
+    const spec = [
+      { id: 'f1', label: '01 · The symptom I keep hearing' },
+      { id: 'f2', label: '02 · My three behavioral questions' },
+      { id: 'f3', label: '03 · The underlying problem I suspect' },
+      { id: 'f4', label: '04 · My How-Might-We' },
+      { id: 'f5', label: '05 · My falsifiable problem statement' },
+      { id: 'f6', label: '06 · Five people I\'ll interview this week' },
+      { id: 'f7', label: '07 · My commitment' }
+    ];
+    const fields = SDM2.readAllFields(COURSE_ID);
+    let filled = 0;
+    const wrap = document.getElementById('phc-fields');
+    wrap.innerHTML = spec.map(f => {
+      const val = (fields[f.id] || '').trim();
+      if (val) filled += 1;
+      return '<div class="hypo-row"><p class="hypo-label">' + f.label + '</p>' +
+             '<p class="hypo-value' + (val ? '' : ' empty') + '">' + esc(val) + '</p></div>';
+    }).join('');
+    document.getElementById('phc-status').textContent = 'C02 · ' + filled + ' of 7 filled';
+  }
+
+  document.getElementById('print-card').addEventListener('click', () => SDMB.requestPrint('c02'));
+
+  function renderReview(attempt) {
+    const container = document.getElementById('review-container');
+    container.innerHTML = '';
+    batch.forEach((item, idx) => {
+      const userPick = responses[item.id];
+      const correct = userPick === item.key;
+      const card = document.createElement('article');
+      card.className = 'mcq-card item-reveal';
+      let fb;
+      if (item.explanations) {
+        fb = correct
+          ? '<strong>Correct: ' + item.key + '.</strong> ' + item.explanations[item.key]
+          : '<strong>You picked ' + userPick + ':</strong> ' + item.explanations[userPick] +
+            '<br/><strong>The key is ' + item.key + ':</strong> ' + item.explanations[item.key];
+      } else {
+        fb = '<strong>Correct: ' + item.key + '.</strong> ' + item.explanation;
+      }
+      card.innerHTML = `
+        <div class="item-num">Item ${idx + 1} · ${item.bloom} · ${correct ? '✓ correct' : '✗ incorrect'}</div>
+        <p class="mcq-stem">${item.stem}</p>
+        <ul class="mcq-options">
+          ${['A','B','C','D'].map(letter => {
+            const isKey = letter === item.key;
+            const isPicked = letter === userPick;
+            let cls = 'mcq-option';
+            if (isKey) cls += ' correct';
+            if (isPicked && !isKey) cls += ' incorrect';
+            if (isPicked) cls += ' user-picked';
+            return `
+              <li>
+                <button class="${cls}" disabled>
+                  <span class="mcq-letter">${letter}</span>
+                  <span>${item.options[letter]}</span>
+                </button>
+              </li>
+            `;
+          }).join('')}
+        </ul>
+        <div class="mcq-feedback show">${fb}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  document.getElementById('retake-btn').addEventListener('click', startAttempt);
+  document.getElementById('review-btn').addEventListener('click', () => {
+    const rc = document.getElementById('review-container');
+    rc.classList.toggle('hidden');
+    if (!rc.classList.contains('hidden')) {
+      rc.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>

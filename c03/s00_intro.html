@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Intro & Objectives · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<header class="lesson-hero" data-num="03">
+<span class="lesson-number">Mini-Course 03</span>
+<h1 class="lesson-title">Value Crafted: The Value Proposition Canvas</h1>
+</header>
+
+<div class="video-card quarter-anchor">
+<p class="video-card-title">Course Intro · The trap that catches founders right after they validate.</p>
+<div class="video-frame">
+<video controls preload="metadata" poster="videos/v1_intro.jpg">
+<source src="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Value%20Crafted%20%C2%B7%20Course%20Intro.mp4" type="video/mp4"/>
+Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/startupreneurship/courses/b2c-courses/videos/Value%20Crafted%20%C2%B7%20Course%20Intro.mp4">Open the video file</a>.
+</video>
+</div>
+<p class="video-desc">
+You've validated a problem. The trap is what happens next: you leap straight to features, and six weeks
+later customers stare at you, polite but lost. This video introduces the canvas that slows that leap by
+24 hours, long enough to map your solution to what the customer actually ranks first. Watch before Section 1.
+</p>
+</div>
+
+<section class="lesson-summary-section">
+<p class="lesson-summary">
+  You found the problem in Course 2. This course is about the translation step: turning a validated problem
+  into an offer the customer recognizes the second they hear it. You'll work on the official
+  <strong>Value Proposition Canvas</strong>, the same tool used by product teams worldwide, with the real
+  moves of edamama, Angkas, Peddlr, and Kumu as your worked examples. As you go, you'll fill in
+  <strong>your own Value Proposition Canvas</strong>, box by box: your customer's jobs, their top pains and
+  gains ranked, your relievers and creators mapped one-to-one, what you ship, and a proposition written in
+  your customer's own words. By the final page it's compiled in the canvas format, printable, and ready to
+  be read aloud to a real customer.
+</p>
+</section>
+
+<div class="objectives">
+<h3>By the end, you'll be able to turn a validated problem into a proposition your customer recognizes, without building features nobody ranked.</h3>
+<ol>
+<li><div><span class="bloom-tag">Understand</span> Explain why the canvas sits between problem validation and business-model design.</div></li>
+<li><div><span class="bloom-tag">Apply</span> Rank customer pains and gains by frequency, severity, and addressability.</div></li>
+<li><div><span class="bloom-tag">Analyze</span> Diagnose a misaligned canvas where the value side does not match the ranked pains and gains one-to-one.</div></li>
+<li><div><span class="bloom-tag">Evaluate</span> Judge which value proposition best shows fit and customer-language wording.</div></li>
+</ol>
+</div>
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's00'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

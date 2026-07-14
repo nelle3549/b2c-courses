@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>SD Mini-Courses · v2 Pilot</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="shared/v3_addons.css" rel="stylesheet"/>
+<style>
+  /* ---- landing (page-specific layout; tokens only) ---- */
+  .home-hero{margin-top:var(--sp-5);}
+  .home-hero h1{
+    font-family:var(--font-display); font-weight:700; font-size:var(--fs-hero);
+    letter-spacing:-.03em; line-height:1.08;
+  }
+  .home-hero h1 .u{
+    text-decoration:underline; text-decoration-color:var(--brand-600);
+    text-decoration-thickness:4px; text-underline-offset:6px;
+  }
+  .home-hero p{color:var(--ink-600); margin-top:var(--sp-3); font-size:var(--fs-body);}
+  .pilot-note{
+    margin-top:var(--sp-4); font-family:var(--font-mono); font-size:var(--fs-micro);
+    color:var(--ink-600); background:var(--surface-warm); border:1px solid var(--line);
+    border-radius:var(--radius-s); padding:var(--sp-3) var(--sp-4); line-height:1.6;
+  }
+  .course-card{
+    margin-top:var(--sp-6); background:var(--surface-card);
+    border:1px solid var(--line-strong); border-radius:var(--radius-m);
+    padding:var(--sp-5) var(--sp-4); box-shadow:var(--shadow-card);
+  }
+  @media (min-width:720px){ .course-card{padding:var(--sp-6) var(--sp-5);} }
+  .chips{display:flex; gap:var(--sp-2); flex-wrap:wrap;}
+  .chips span{
+    font-family:var(--font-mono); font-size:var(--fs-micro); color:var(--brand-700);
+    background:var(--surface-soft); border-radius:var(--radius-pill); padding:4px 12px;
+    letter-spacing:.04em;
+  }
+  .course-card h2{
+    font-family:var(--font-display); font-weight:700; font-size:var(--fs-h2);
+    letter-spacing:-.02em; margin-top:var(--sp-4); line-height:1.15;
+  }
+  .course-card .tagline{color:var(--ink-600); font-size:var(--fs-small); margin-top:var(--sp-2);}
+  .status-line{
+    margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line);
+    font-size:var(--fs-small); color:var(--ink-600);
+  }
+  .status-line strong{color:var(--ink-900);}
+  .card-actions{display:flex; gap:var(--sp-3); flex-wrap:wrap; margin-top:var(--sp-4);}
+  .history{margin-top:var(--sp-7);}
+  .history h3{
+    font-family:var(--font-display); font-weight:600; font-size:var(--fs-h3);
+    letter-spacing:-.01em; border-top:2px solid var(--line-strong); padding-top:var(--sp-4);
+  }
+  .history table{width:100%; border-collapse:collapse; font-size:var(--fs-small); margin-top:var(--sp-3);}
+  .history th{
+    text-align:left; font-family:var(--font-mono); font-size:var(--fs-micro); font-weight:500;
+    text-transform:uppercase; letter-spacing:.08em; color:var(--ink-600);
+    padding:var(--sp-2) var(--sp-2);
+  }
+  .history td{text-align:left; padding:var(--sp-3) var(--sp-2); border-top:1px solid var(--line);}
+  .history .empty{color:var(--ink-400); font-style:italic; margin-top:var(--sp-3); font-size:var(--fs-small);}
+  .settings-row{display:flex; gap:var(--sp-3); margin-top:var(--sp-6); flex-wrap:wrap;}
+
+  /* ---- player ---- */
+  #player{position:fixed; inset:0; z-index:50; display:none; flex-direction:column; background:var(--surface-page);}
+  #player.open{display:flex;}
+  body.player-open{overflow:hidden;}
+  .player-exit{
+    font-family:var(--font-mono); font-size:var(--fs-micro); letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-600); background:none; border:none;
+    cursor:pointer; min-height:44px; padding:0 var(--sp-2);
+  }
+  .player-exit:hover{color:var(--brand-700);}
+  #player-frame{flex:1; width:100%; border:none; background:var(--surface-page);}
+  .player-btns{display:flex; gap:var(--sp-2);}
+  @media (max-width:520px){
+    .player-btns .btn-ghost, .player-btns .btn-primary{padding:11px 18px; font-size:.88rem;}
+  }
+</style>
+</head>
+<body>
+<main>
+<div class="home-wrap" id="landing">
+
+<header class="home-hero">
+<span class="lesson-number">SD Mini-Courses · v2 pilot</span>
+<h1>Short courses for <span class="u">Filipino founders</span>.</h1>
+<p>Real founder stories, hands-on practice, and a card you keep.</p>
+</header>
+<div class="pilot-note">
+V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · Theme v3 "Startup Editorial". The original v1 lives untouched in <code>sd-mini-courses/</code>; progress here is stored separately.
+</div>
+
+<section class="course-card" id="c01-card">
+<div class="chips"><span>Foundations</span><span>~45 min</span><span>2 short videos</span><span>7-question assessment</span><span>You keep: your reality check</span></div>
+<h2>Startup PH: Inside the Filipino Innovation Ecosystem</h2>
+<p class="tagline">What a startup really is (by definition and by law), the growing-vs-scaling test, and the PH doors already open to you, with Coins.ph, Packworks, Investagrams, and Mayani as your worked examples.</p>
+<div class="status-line" id="status-c01">Not started</div>
+<div class="card-actions">
+<button class="btn-primary" data-start="c01">Start course</button>
+<button class="btn-ghost" data-assess="c01" style="display:none;">Take assessment</button>
+</div>
+</section>
+
+<section class="course-card" id="c02-card">
+<div class="chips"><span>Discovery</span><span>~45 min</span><span>2 short videos</span><span>7-question assessment</span><span>You keep: your card</span></div>
+<h2>Problem First: Design Thinking for Founders</h2>
+<p class="tagline">The discipline of finding problems worth solving, with Kalibrr, GrowSari, First Circle, and PayMongo as your worked examples.</p>
+<div class="status-line" id="status-c02">Not started</div>
+<div class="card-actions">
+<button class="btn-primary" data-start="c02">Start course</button>
+<button class="btn-ghost" data-assess="c02" style="display:none;">Take assessment</button>
+</div>
+</section>
+
+<section class="course-card" id="c03-card">
+<div class="chips"><span>Design</span><span>~40 min</span><span>2 short videos</span><span>7-question assessment</span><span>You keep: your filled canvas</span></div>
+<h2>Value Crafted: The Value Proposition Canvas</h2>
+<p class="tagline">From customer insight to a proposition people choose, on the official Strategyzer canvas, with edamama, Angkas, Peddlr, and Kumu as your worked examples.</p>
+<div class="status-line" id="status-c03">Not started</div>
+<div class="card-actions">
+<button class="btn-primary" data-start="c03">Start course</button>
+<button class="btn-ghost" data-assess="c03" style="display:none;">Take assessment</button>
+</div>
+</section>
+
+<section class="history">
+<h3>Assessment history</h3>
+<div id="history-mount"><p class="empty">No attempts yet. Your scores will appear here.</p></div>
+</section>
+
+<div class="settings-row">
+<button class="btn-ghost" id="theme-btn">Light / dark</button>
+<button class="btn-ghost" id="reset-btn">Reset progress</button>
+</div>
+
+</div>
+</main>
+
+<div id="player">
+<iframe id="player-frame" title="Course content"></iframe>
+<div class="player-nav">
+<div class="player-nav-inner">
+<button class="player-exit" id="exit-btn" aria-label="Exit course">✕ Exit</button>
+<div class="player-progress">
+<span id="player-step">Step 1 of 13</span>
+<div class="bar" id="player-bar" style="--progress:8%"><i></i></div>
+</div>
+<div class="player-btns">
+<button class="btn-ghost" id="prev-btn" aria-label="Previous step">&larr; Back</button>
+<button class="btn-primary" id="next-btn">Next &rarr;</button>
+</div>
+</div>
+</div>
+</div>
+
+<script src="shared/scoring.js"></script>
+<script src="shared/interact.js"></script>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); } catch(e){} }
+
+  // ---------- Course maps ----------
+  // Base URL for course pages. '' = same-origin relative paths (local preview).
+  // After GitHub Pages is live, set to the public base, e.g.
+  // 'https://ORG.github.io/REPO/' (trailing slash required) so this index
+  // embeds the SAME public pages the app will iframe. See HANDOFF.md step 3.
+  const PAGES_BASE = '';
+
+  const COURSES = {
+    c01: {
+      dir: 'c01/', title: 'Startup PH',
+      slots: [
+        { slot: 's00', file: 's00_intro.html',           label: 'Intro',            left: '~45 min total' },
+        { slot: 's01', file: 's01_section_1.html',       label: 'Section 1',        left: '~42 min left' },
+        { slot: 's02', file: 's02_apply_1.html',         label: 'Apply 1',          left: '~38 min left' },
+        { slot: 's03', file: 's03_section_2.html',       label: 'Section 2',        left: '~35 min left' },
+        { slot: 's04', file: 's04_apply_2.html',         label: 'Apply 2',          left: '~31 min left' },
+        { slot: 's05', file: 's05_section_3.html',       label: 'Section 3',        left: '~28 min left' },
+        { slot: 's06', file: 's06_apply_3.html',         label: 'Apply 3',          left: '~24 min left' },
+        { slot: 's07', file: 's07_section_4.html',       label: 'Section 4',        left: '~21 min left' },
+        { slot: 's08', file: 's08_video_explainer.html', label: 'Explainer video',  left: '~17 min left' },
+        { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~14 min left' },
+        { slot: 's10', file: 's10_reality_check.html',   label: 'Your reality check', left: '~10 min left' },
+        { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~9 min left' },
+        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
+      ]
+    },
+    c02: {
+      dir: 'c02/', title: 'Problem First',
+      slots: [
+        { slot: 's00', file: 's00_intro.html',           label: 'Intro',            left: '~45 min total' },
+        { slot: 's01', file: 's01_section_1.html',       label: 'Section 1',        left: '~42 min left' },
+        { slot: 's02', file: 's02_apply_1.html',         label: 'Apply 1',          left: '~38 min left' },
+        { slot: 's03', file: 's03_section_2.html',       label: 'Section 2',        left: '~35 min left' },
+        { slot: 's04', file: 's04_apply_2.html',         label: 'Apply 2',          left: '~31 min left' },
+        { slot: 's05', file: 's05_section_3.html',       label: 'Section 3',        left: '~28 min left' },
+        { slot: 's06', file: 's06_apply_3.html',         label: 'Apply 3',          left: '~24 min left' },
+        { slot: 's07', file: 's07_video_explainer.html', label: 'Explainer video',  left: '~21 min left' },
+        { slot: 's08', file: 's08_section_4.html',       label: 'Section 4',        left: '~18 min left' },
+        { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~14 min left' },
+        { slot: 's10', file: 's10_hypothesis_card.html', label: 'Your card',        left: '~10 min left' },
+        { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~9 min left' },
+        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
+      ]
+    },
+    c03: {
+      dir: 'c03/', title: 'Value Crafted',
+      slots: [
+        { slot: 's00', file: 's00_intro.html',           label: 'Intro',            left: '~40 min total' },
+        { slot: 's01', file: 's01_section_1.html',       label: 'Section 1',        left: '~37 min left' },
+        { slot: 's02', file: 's02_apply_1.html',         label: 'Apply 1',          left: '~33 min left' },
+        { slot: 's03', file: 's03_section_2.html',       label: 'Section 2',        left: '~30 min left' },
+        { slot: 's04', file: 's04_apply_2.html',         label: 'Apply 2',          left: '~26 min left' },
+        { slot: 's05', file: 's05_section_3.html',       label: 'Section 3',        left: '~23 min left' },
+        { slot: 's06', file: 's06_apply_3.html',         label: 'Apply 3',          left: '~19 min left' },
+        { slot: 's07', file: 's07_video_explainer.html', label: 'Explainer video',  left: '~17 min left' },
+        { slot: 's08', file: 's08_section_4.html',       label: 'Section 4',        left: '~14 min left' },
+        { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~10 min left' },
+        { slot: 's10', file: 's10_canvas.html',          label: 'Your canvas',      left: '~7 min left' },
+        { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~5 min left' },
+        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
+      ]
+    }
+  };
+  let activeCourse = 'c02';
+  let current = 0;
+
+  const playerEl = document.getElementById('player');
+  const frame = document.getElementById('player-frame');
+  const stepEl = document.getElementById('player-step');
+  const barEl = document.getElementById('player-bar');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  function openPlayer(courseId, idx) {
+    activeCourse = courseId;
+    const slots = COURSES[courseId].slots;
+    current = Math.max(0, Math.min(idx, slots.length - 1));
+    render();
+    playerEl.classList.add('open');
+    document.body.classList.add('player-open');
+  }
+
+  function closePlayer() {
+    playerEl.classList.remove('open');
+    document.body.classList.remove('player-open');
+    frame.src = 'about:blank';
+    refreshLanding();
+  }
+
+  function render() {
+    const course = COURSES[activeCourse];
+    const s = course.slots[current];
+    frame.src = PAGES_BASE + course.dir + s.file;
+    stepEl.textContent = course.title + ' · Step ' + (current + 1) + ' of ' + course.slots.length + ' · ' + s.label + (s.left ? ' · ' + s.left : '');
+    barEl.style.setProperty('--progress', Math.round(((current + 1) / course.slots.length) * 100) + '%');
+    prevBtn.disabled = current === 0;
+    nextBtn.textContent = current === course.slots.length - 1 ? 'Finish ✓' : 'Next →';
+    try { SDM.markVisit(activeCourse, s.slot); } catch (e) {}
+    frame.focus();
+  }
+
+  prevBtn.addEventListener('click', () => { if (current > 0) { current -= 1; render(); } });
+  nextBtn.addEventListener('click', () => {
+    if (current === COURSES[activeCourse].slots.length - 1) { closePlayer(); return; }
+    current += 1; render();
+  });
+  document.getElementById('exit-btn').addEventListener('click', closePlayer);
+
+  // theme relay: pages inside the iframe ask the parent for the current theme
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'requestTheme') {
+      const theme = document.documentElement.getAttribute('data-theme') || 'light';
+      try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*' ); } catch (err) {}
+    }
+  });
+  frame.addEventListener('load', () => {
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
+  });
+
+  // ---------- Landing ----------
+  function refreshCourseCard(courseId) {
+    const store = SDM.readStore();
+    const c = store.courses[courseId] || {};
+    const slots = COURSES[courseId].slots;
+    const statusEl = document.getElementById('status-' + courseId);
+    const startBtn = document.querySelector('[data-start="' + courseId + '"]');
+    const assessBtn = document.querySelector('[data-assess="' + courseId + '"]');
+
+    const fields = (c.artifact) ? Object.keys(c.artifact).filter(k => c.artifact[k] && (c.artifact[k].value || '').trim()).length : 0;
+    const attempts = c.attempts || [];
+    const best = attempts.reduce((m, a) => Math.max(m, a.correct_count), 0);
+    const slotIdx = Math.max(0, slots.findIndex(s => s.slot === c.last_section));
+
+    if (!c.last_section) {
+      statusEl.textContent = 'Not started';
+      startBtn.textContent = 'Start course';
+    } else {
+      let s = '<strong>In progress</strong> · last at ' + slots[slotIdx].label;
+      s += ' · Card: ' + fields + ' of 7 fields';
+      if (attempts.length > 0) s += ' · Best score: <strong>' + best + '/7</strong> (' + attempts.length + ' attempt' + (attempts.length > 1 ? 's' : '') + ')';
+      statusEl.innerHTML = s;
+      startBtn.textContent = 'Resume';
+      assessBtn.style.display = 'inline-flex';
+    }
+    return slotIdx;
+  }
+
+  function refreshLanding() {
+    refreshCourseCard('c02');
+    refreshCourseCard('c03');
+
+    const store = SDM.readStore();
+    const rows = [];
+    ['c02', 'c03'].forEach(courseId => {
+      (store.courses[courseId] && store.courses[courseId].attempts || []).forEach(a => {
+        rows.push({ course: COURSES[courseId].title, a: a });
+      });
+    });
+    rows.sort((x, y) => new Date(y.a.submitted_at) - new Date(x.a.submitted_at));
+    const mount = document.getElementById('history-mount');
+    if (rows.length > 0) {
+      const html = rows.map(r => {
+        const d = new Date(r.a.submitted_at);
+        const bloom = ['remember','understand','apply','analyze','evaluate']
+          .filter(b => r.a.per_bloom[b] && r.a.per_bloom[b].n > 0)
+          .map(b => b.charAt(0).toUpperCase() + ' ' + r.a.per_bloom[b].correct + '/' + r.a.per_bloom[b].n).join(' · ');
+        return '<tr><td>' + r.course + '</td><td>' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) + '</td>' +
+               '<td><strong>' + r.a.correct_count + '/' + r.a.total + '</strong> (' + Math.round(r.a.score_pct * 100) + '%)</td>' +
+               '<td>' + bloom + '</td></tr>';
+      }).join('');
+      mount.innerHTML = '<table><tr><th>Course</th><th>When</th><th>Score</th><th>By skill level</th></tr>' + html + '</table>';
+    } else {
+      mount.innerHTML = '<p class="empty">No attempts yet. Your scores will appear here.</p>';
+    }
+  }
+
+  document.querySelectorAll('[data-start]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const courseId = btn.getAttribute('data-start');
+      const store = SDM.readStore();
+      const c = store.courses[courseId] || {};
+      const idx = c.last_section ? Math.max(0, COURSES[courseId].slots.findIndex(s => s.slot === c.last_section)) : 0;
+      openPlayer(courseId, idx);
+    });
+  });
+  document.querySelectorAll('[data-assess]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const courseId = btn.getAttribute('data-assess');
+      openPlayer(courseId, COURSES[courseId].slots.length - 1);
+    });
+  });
+
+  document.getElementById('theme-btn').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    SDM.setTheme(next);
+    try { frame.contentWindow.postMessage({ type: 'theme', value: next }, '*'); } catch (e) {}
+  });
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    if (confirm('Reset all v2 pilot progress? This clears scores and both course cards. The v1 courses are not affected.')) {
+      SDM.resetStore();
+      location.reload();
+    }
+  });
+
+  refreshLanding();
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+// c02 assessment bank · v2 pilot (playbook v1.0)
+// Loaded via <script> tag so the final MCQ works under file:// where fetch() of local JSON is blocked.
+// v2 changes: per-option `explanations` added (elaborated feedback); b01 stem scoped to the
+// original CB Insights analysis for unambiguity. `explanation` kept as key-summary fallback.
+window.SDM_BANK_C02 = {
+  "course_id": "c02",
+  "course_title": "Problem First: Design Thinking for Founders",
+  "version": "2.0-pilot",
+  "items": [
+    {
+      "id": "c02_b01",
+      "bloom": "remember",
+      "lo": null,
+      "competency": "Recall top startup failure reason",
+      "stem": "In CB Insights' original analysis of 100+ startup post-mortems, which was the most-cited reason for startup failure?",
+      "options": {
+        "A": "High employee turnover",
+        "B": "No market need",
+        "C": "Patent disputes",
+        "D": "Office overhead"
+      },
+      "key": "B",
+      "explanation": "In the original analysis, 42% of post-mortems cited &ldquo;no market need&rdquo;, the most-cited reason. Most failed startups built competently and chose the wrong problem.",
+      "explanations": {
+        "A": "Turnover hurts, but it barely registers in the post-mortem data, and teams tend to hold together when the market is pulling.",
+        "B": "42% of the original post-mortems cited &ldquo;no market need&rdquo;: teams that built competently for a problem nobody felt strongly enough to pay for. This is the number the whole course is built on.",
+        "C": "Patent disputes are rare enough in early-stage post-mortems to be a rounding error.",
+        "D": "Overhead kills late and slowly; &ldquo;no market need&rdquo; kills early and quietly. Founders' own post-mortems say so."
+      }
+    },
+    {
+      "id": "c02_b02",
+      "bloom": "remember",
+      "lo": null,
+      "competency": "Recall the first phase of design thinking",
+      "stem": "Which of the following is the <em>first</em> phase of the design-thinking cycle as taught in this course?",
+      "options": {
+        "A": "Empathize",
+        "B": "Define",
+        "C": "Ideate",
+        "D": "Prototype"
+      },
+      "key": "A",
+      "explanation": "The cycle starts with Empathize (observe behavior and listen to specific recent moments) before defining the problem or generating ideas.",
+      "explanations": {
+        "A": "Empathize comes first: gather behavioral evidence before naming the problem. Everything downstream inherits its quality from this phase.",
+        "B": "Define is second: you can only define a problem you've gathered evidence about. Defining first is guessing with confidence.",
+        "C": "Ideate is mid-cycle. Ideating first is the classic solution-first trap this course opened with.",
+        "D": "Prototype comes after ideas exist. Prototyping first is building, the expensive classroom."
+      }
+    },
+    {
+      "id": "c02_b03",
+      "bloom": "understand",
+      "lo": "lo1",
+      "competency": "Explain why problem-first beats solution-first",
+      "stem": "Why does the discipline of design thinking emphasize problem identification BEFORE solution design?",
+      "options": {
+        "A": "Because solutions take significantly longer to build than problem-discovery work does.",
+        "B": "Because problems are easier to patent than solutions in most legal jurisdictions.",
+        "C": "Because most failed startups built the product competently but chose the wrong problem.",
+        "D": "Because investors prefer to fund clearly-defined problems rather than clearly-defined solutions."
+      },
+      "key": "C",
+      "explanation": "The reason is empirical, not philosophical: the most common failure mode is shipping a product nobody actually felt the need to switch behavior for.",
+      "explanations": {
+        "A": "Often true, but it's not the reason. Even if building were fast, building the wrong thing fast just fails faster.",
+        "B": "Patents protect solutions, not problems, and patentability has nothing to do with why problem-first works.",
+        "C": "Exactly right: the argument is empirical. The dominant failure mode in founders' own post-mortems is competent execution against a problem nobody felt strongly enough to switch for.",
+        "D": "Investors fund traction and teams; some love a good solution story. The discipline exists for the founder's sake, not the pitch deck's."
+      }
+    },
+    {
+      "id": "c02_b04",
+      "bloom": "understand",
+      "lo": "lo1",
+      "competency": "Identify what data is useful in empathy phase",
+      "stem": "In the empathy phase, what kind of data is most useful?",
+      "options": {
+        "A": "Self-reported opinions from a large, statistically representative online survey.",
+        "B": "The founder's intuition shaped by months of immersion in the problem space.",
+        "C": "A focus group's collective hypothetical preferences about future product features.",
+        "D": "Observed behaviour from specific recent moments in the user's actual life."
+      },
+      "key": "D",
+      "explanation": "Behavioral data from specific past moments beats opinions, intuition, and hypotheticals. Humans are unreliable narrators of their own preferences.",
+      "explanations": {
+        "A": "Scale doesn't fix the flaw: a million self-reported opinions is still the bottom level of the data-quality ladder.",
+        "B": "Intuition picks where to look; it can't be the evidence itself. GrowSari's founders had years of channel intuition. They still drove the deliveries.",
+        "C": "Focus groups produce performed, hypothetical consensus, the least behavioral data format ever invented.",
+        "D": "The top of the ladder: what a specific person actually did, in a specific recent moment. This is the raw material underlying problems are found in."
+      }
+    },
+    {
+      "id": "c02_b05",
+      "bloom": "understand",
+      "lo": null,
+      "competency": "Identify clean empathy-interview hygiene",
+      "stem": "Which interview prompt is MOST consistent with empathy-interview hygiene?",
+      "options": {
+        "A": "&ldquo;How important would a babysitter-finding app be to your weekly routine?&rdquo;",
+        "B": "&ldquo;Walk me through the last time you needed a babysitter. What did you do?&rdquo;",
+        "C": "&ldquo;Wouldn't it be useful to have a faster way to find a babysitter today?&rdquo;",
+        "D": "&ldquo;Do you agree that finding babysitters is currently a problem in the Philippines?&rdquo;"
+      },
+      "key": "B",
+      "explanation": "(B) anchors on a specific recent moment and the user's actual behavior. The other three are leading, hypothetical, or opinion-seeking.",
+      "explanations": {
+        "A": "Hypothetical and product-first: it asks the user to imagine your app instead of replaying her life.",
+        "B": "Past tense, specific episode, zero product mention. It returns a story of real behavior: workarounds, dead ends, and all.",
+        "C": "&ldquo;Wouldn't it be useful&rdquo; is a leading question wearing a friendly face. The polite answer is pre-loaded.",
+        "D": "Asking for agreement gets agreement, especially in a culture where pakikisama is good manners. Agreement is not evidence."
+      }
+    },
+    {
+      "id": "c02_b06",
+      "bloom": "understand",
+      "lo": null,
+      "competency": "Explain why JTBD sometimes corrects the 5 Whys",
+      "stem": "Why does the 5 Whys tool sometimes mislead a team, and why does the Jobs-to-be-Done lens sometimes correct it?",
+      "options": {
+        "A": "5 Whys can drift if any &ldquo;why&rdquo; is unanchored; JTBD grounds the chain in the user's outcome.",
+        "B": "5 Whys is too slow for early discovery, while JTBD scales faster across many interviews.",
+        "C": "5 Whys requires expensive enterprise software, while JTBD can be done with pen and paper.",
+        "D": "5 Whys was formally deprecated by the Stanford d.school, and JTBD replaced it in 2019."
+      },
+      "key": "A",
+      "explanation": "The 5 Whys can drift if each layer is asked carelessly. JTBD grounds the inquiry by asking what outcome the user is trying to achieve.",
+      "explanations": {
+        "A": "One unanchored &ldquo;why&rdquo; and the chain walks to an arbitrary root. JTBD resists drift because every step stays tied to what the user is trying to accomplish.",
+        "B": "Speed is not the issue: the 5 Whys is actually the faster tool. Its weakness is drift, not pace.",
+        "C": "Both tools need nothing but a pen and honest anchoring. No software is involved in either.",
+        "D": "Nothing was deprecated; both tools are current. They coexist precisely because each covers the other's blind spot."
+      }
+    },
+    {
+      "id": "c02_b07",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Apply 5 Whys to surface underlying problem",
+      "stem": "A retail employee says, <em>&ldquo;I keep getting marked late, and it's been happening for three weeks since the jeepney route changed.&rdquo;</em> Applying the 5 Whys, which is MOST likely the underlying problem?",
+      "options": {
+        "A": "She does not own a reliable alarm clock and oversleeps her wake-up window.",
+        "B": "She oversleeps every weekday morning by between fifteen and twenty minutes.",
+        "C": "She leaves home five minutes later than her commute distance actually requires.",
+        "D": "The commute now takes unpredictably longer, and her workplace has no flexible-start policy."
+      },
+      "key": "D",
+      "explanation": "The first three are surface restatements. (D) names the structural factors (transit change plus rigid policy) that explain the recurring pattern.",
+      "explanations": {
+        "A": "An unanchored guess: nothing she said points at her alarm clock. This is the 5 Whys drifting on the first why.",
+        "B": "Contradicted by her own evidence: the lateness started when the route changed, not when her sleep did.",
+        "C": "Blames her margin-planning while ignoring the one fact she gave you: the route changed three weeks ago.",
+        "D": "Anchored in what she actually said (the route change) and paired with the structural factor (no flex-start) that turns a transit problem into a payroll problem."
+      }
+    },
+    {
+      "id": "c02_b08",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Apply reframing to a feature-rejection signal",
+      "stem": "A user says: <em>&ldquo;I never use the new dashboard feature.&rdquo;</em> Which reframing is most useful for the next iteration?",
+      "options": {
+        "A": "The dashboard simply needs more features added to drive engagement and use.",
+        "B": "The dashboard colour scheme and typography are unappealing to the user's eye.",
+        "C": "When does the user actually need this information, and is the dashboard there then?",
+        "D": "The user should be retrained on the dashboard with a guided onboarding flow."
+      },
+      "key": "C",
+      "explanation": "The behavioral question is when the information is needed, not how the dashboard looks or whether the user is trained. Solve the moment-of-need first.",
+      "explanations": {
+        "A": "More features on an unused feature is feature soup: you'd be decorating a room nobody enters.",
+        "B": "Aesthetics rarely explain zero usage. People tolerate ugly tools that meet them at the right moment.",
+        "C": "The reframe goes to context: which moment needs this information, and does the product exist in that moment? That's a question evidence can answer.",
+        "D": "Retraining assumes the user is wrong. In discovery, treat non-usage as data about the product, not a deficiency in the user."
+      }
+    },
+    {
+      "id": "c02_b09",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Apply empathy-interview script discipline",
+      "stem": "You have one hour to conduct three empathy interviews with parents about weekend logistics. Which question script is MOST consistent with the discipline taught in this course?",
+      "options": {
+        "A": "&ldquo;Walk me through last Saturday morning, step by step.&rdquo; &rarr; &ldquo;What was most annoying?&rdquo; &rarr; &ldquo;Did you ask anyone?&rdquo;",
+        "B": "&ldquo;Would you use a parenting-logistics app?&rdquo; &rarr; &ldquo;What features?&rdquo; &rarr; &ldquo;Would you pay ₱200/month?&rdquo;",
+        "C": "&ldquo;Rate this past weekend's stress 1–10.&rdquo; &rarr; &ldquo;Why?&rdquo; &rarr; &ldquo;What single change would lower it?&rdquo;",
+        "D": "&ldquo;Is weekend parenting harder than weekday?&rdquo; &rarr; &ldquo;Why?&rdquo; &rarr; &ldquo;Would technology help?&rdquo;"
+      },
+      "key": "A",
+      "explanation": "(A) anchors on a specific recent morning and asks for behavioral detail. The others are hypothetical, leading, or trivial-quantification.",
+      "explanations": {
+        "A": "One real morning, replayed step by step, then followed downhill into pain and workarounds. Three interviews like this beat three hundred survey rows.",
+        "B": "An app pitch with a price check, hypothetical from the first word. You'd collect politeness and imaginary pesos.",
+        "C": "A number for an opinion is still an opinion. The &ldquo;what would lower it&rdquo; closer invites solution-guessing, not evidence.",
+        "D": "A debate prompt, a why about an abstraction, and a leading tech question, all from the bottom levels of the ladder."
+      }
+    },
+    {
+      "id": "c02_b10",
+      "bloom": "apply",
+      "lo": "lo2",
+      "competency": "Apply behavioral-observation discipline",
+      "stem": "A team has been asked to find the underlying problem behind: <em>&ldquo;Customers complain our checkout is confusing.&rdquo;</em> Which next action best applies the discipline taught in this course?",
+      "options": {
+        "A": "Brainstorm at least ten checkout redesigns before talking to a single customer.",
+        "B": "Observe five customers attempting checkout, then ask them to narrate each step.",
+        "C": "Send a survey to past customers asking how confusing the checkout is from 1 to 10.",
+        "D": "Add a clearly labelled help button to every step of the existing checkout page."
+      },
+      "key": "B",
+      "explanation": "Direct behavioral observation followed by walking through the user's own narration produces the highest-fidelity data. The others either jump to solution or rely on self-report.",
+      "explanations": {
+        "A": "Ideating before evidence is the solution-first reflex: ten redesigns aimed at a problem nobody has located yet.",
+        "B": "Watch first, debrief second. The gap between what they did and what they say they did is where the underlying problem hides.",
+        "C": "A 1–10 confusion score restates the complaint with decimals. No moment, no behavior, no design direction.",
+        "D": "A help button treats the symptom and ends the investigation: you'd be bandaging a wound you haven't found."
+      }
+    },
+    {
+      "id": "c02_b11",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Distinguish symptom from underlying problem",
+      "stem": "A user complaint reads: <em>&ldquo;The grocery app is too slow.&rdquo;</em> Which statement is MOST likely the underlying problem rather than the symptom?",
+      "options": {
+        "A": "The loading screen animation is too long and the user grows impatient with the wait.",
+        "B": "The app loads too many high-resolution product images at once on the home screen.",
+        "C": "The user shops on a degraded commute-hour connection and the app has no offline mode.",
+        "D": "The user is on an older Android phone whose hardware cannot keep up with the app."
+      },
+      "key": "C",
+      "explanation": "The other three are restatements of the symptom (slowness). (C) names the structural mismatch between the app's design and the user's actual context.",
+      "explanations": {
+        "A": "&ldquo;Slow&rdquo; restated with an animation attached, still above the waterline.",
+        "B": "An engineer's guess at a mechanism, not a discovery about the user's situation. Fixing it might help and still miss the problem.",
+        "C": "Names the situation: commute-hour signal, a real shopping window, and an app architecture that assumes a connection she never has. Designable.",
+        "D": "Locates the problem in the user's phone, which ends the inquiry exactly where it should begin: her context."
+      }
+    },
+    {
+      "id": "c02_b12",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Analyze HMW for scope flaws",
+      "stem": "A team writes: <em>&ldquo;How might we eliminate all friction in onboarding?&rdquo;</em> What is the MAIN reason this HMW is poorly scoped?",
+      "options": {
+        "A": "The HMW statement uses too many words and would benefit from being shortened.",
+        "B": "&ldquo;All&rdquo; makes the scope unbounded: no solution satisfies it, and the team will drift.",
+        "C": "Onboarding is not a worthwhile problem to focus a design-thinking exercise on.",
+        "D": "The HMW does not name a specific user persona that the team is designing for."
+      },
+      "key": "B",
+      "explanation": "Unbounded scope words (&ldquo;all,&rdquo; &ldquo;every,&rdquo; &ldquo;always&rdquo;) make an HMW too vague. The 60-second count will surface more than 12 candidate directions.",
+      "explanations": {
+        "A": "Length isn't the flaw; some healthy HMWs are longer than this one.",
+        "B": "&ldquo;All&rdquo; is the unbounded scope word: run the 60-second count and directions never stop coming, none anchored to a job. The team scatters.",
+        "C": "Onboarding is a fine problem space. The flaw is in the framing, not the territory.",
+        "D": "True but secondary: even with a persona attached, &ldquo;eliminate all friction&rdquo; stays a wish. The MAIN flaw is the unbounded scope."
+      }
+    },
+    {
+      "id": "c02_b13",
+      "bloom": "analyze",
+      "lo": "lo3",
+      "competency": "Distinguish symptom from value-driver problem",
+      "stem": "A founder collects 10 interview transcripts and finds users say the product &ldquo;is too expensive.&rdquo; Applying the symptom-vs-problem lens, which interpretation is MOST defensible?",
+      "options": {
+        "A": "The team must lower the price by twenty percent across the catalogue immediately.",
+        "B": "Users do not understand the value; better marketing copy will fix the complaint.",
+        "C": "The price-to-value ratio is fixed and the founder should abandon this segment now.",
+        "D": "&ldquo;Too expensive&rdquo; usually means &ldquo;value is unclear&rdquo;: investigate value drivers, not price."
+      },
+      "key": "D",
+      "explanation": "Price complaints almost always carry a value statement underneath. The disciplined move is to investigate value perception, not to react to the surface price signal.",
+      "explanations": {
+        "A": "Reacting to the surface signal: a 20% cut answers a complaint you haven't diagnosed, and margin doesn't grow back easily.",
+        "B": "Half a reframe: it guesses the users are wrong and copy will fix them. The disciplined move investigates before it messages.",
+        "C": "Ten transcripts can't establish that the ratio is fixed; that's surrender dressed as analysis.",
+        "D": "&ldquo;Too expensive&rdquo; is usually a value sentence in price clothing. Find which value driver the customer ranks first and whether the product delivers it. Then talk price."
+      }
+    },
+    {
+      "id": "c02_b14",
+      "bloom": "evaluate",
+      "lo": "lo4",
+      "competency": "Evaluate falsifiability of problem statements",
+      "stem": "Read these four candidate problem statements. Which is MOST falsifiable, meaning it could be proven wrong by evidence within one week?",
+      "options": {
+        "A": "&ldquo;7 of 10 Cebu SMEs we interviewed spend 90+ minutes each Friday reconciling supplier receipts.&rdquo;",
+        "B": "&ldquo;Filipinos in general need better financial tools to manage their household budgets.&rdquo;",
+        "C": "&ldquo;There is a substantial opportunity for new fintech ventures across the Philippines.&rdquo;",
+        "D": "&ldquo;Most working adults want to save more money than they currently set aside each month.&rdquo;"
+      },
+      "key": "A",
+      "explanation": "Only (A) names a specific population, time-bound behavior, and a measurable claim. The others are too vague to be tested against evidence.",
+      "explanations": {
+        "A": "Specific segment, observable weekly behavior, measurable threshold: five clean interviews could break this sentence by Sunday. That's what falsifiable means.",
+        "B": "&ldquo;Filipinos in general&rdquo; and &ldquo;better&rdquo; can absorb any evidence. A statement that can't lose can't win either.",
+        "C": "An investor-deck sentence: no user, no behavior, no threshold. Nothing here could ever be proven wrong.",
+        "D": "Safely true of nearly everyone, everywhere, always. Unfalsifiable by design, and useless for the same reason."
+      }
+    },
+    {
+      "id": "c02_b15",
+      "bloom": "evaluate",
+      "lo": "lo4",
+      "competency": "Evaluate strength of validation",
+      "stem": "A founder claims: <em>&ldquo;I have validated my problem because 50 friends agreed it was a real issue when I described it to them.&rdquo;</em> Which assessment is MOST defensible?",
+      "options": {
+        "A": "The validation is strong: fifty respondents is a statistically sufficient sample.",
+        "B": "The validation is acceptable: friends are stakeholders with real skin in the game.",
+        "C": "The validation is weak: friends responded to a description, not actual behaviour.",
+        "D": "The validation is invalid: only paying users qualify as real problem-validators."
+      },
+      "key": "C",
+      "explanation": "Verbal agreement from a friendly sample to a founder's description is the weakest possible signal. Behavioral data (what people actually do, not what they say they would do) is what counts.",
+      "explanations": {
+        "A": "Sample size can't rescue a biased instrument: fifty agreements to a friend's pitch is fifty acts of kindness.",
+        "B": "Friends have skin in the friendship, not the problem. Their incentive is to encourage you, which is lovely and useless.",
+        "C": "Weak on both axes: a friendly sample, and agreement-to-a-description instead of observed behavior. It's bottom-level data wearing a lab coat.",
+        "D": "Too strict: behavioral evidence short of payment (workarounds, time spent, repeated actions) is real validation. The payment bar would reject GrowSari's first hundred store visits."
+      }
+    }
+  ]
+};

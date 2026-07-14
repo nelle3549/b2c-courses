@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Your Value Proposition Canvas · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<style>
+  @media print{ .no-print{display:none!important;} }
+</style>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<div class="no-print">
+<span class="section-label">Your artifact</span>
+<h2>Your Value Proposition Canvas.</h2>
+<p class="apply-intro">One last field turns the canvas into a commitment. Everything you wrote is compiled below in the canvas format: value map on the left, customer profile on the right.</p>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 9 of 9</span></div>
+<p class="af-title">My commitment</p>
+<p class="af-trigger">The wording test only counts with a real listener. Name the person (someone from your interviews) and the day you will read your value proposition aloud to them.</p>
+<textarea class="af-input" data-af="c03.f9" rows="2" placeholder="I will read my proposition to [who] on [day]."></textarea>
+<div class="af-saved">Saved ✓</div>
+</div>
+</div>
+
+<section class="hypo-card" id="phc-card">
+<div class="hypo-card-head"><h3>My Value Proposition Canvas</h3><span id="phc-status">C03 · Printable</span></div>
+<div class="vpc-strips">
+<div class="vpc-strip"><p class="hypo-label">Value proposition</p><p class="hypo-value" id="v-f8"></p></div>
+<div class="vpc-strip"><p class="hypo-label">Customer segment</p><p class="hypo-value" id="v-f1"></p></div>
+</div>
+<div class="vpc-grid">
+<div class="vpc-side vpc-square">
+<p class="vpc-side-label">Value map · the square</p>
+<div class="vpc-box"><p class="hypo-label">Products and services</p><p class="hypo-value" id="v-f7"></p></div>
+<div class="vpc-box"><p class="hypo-label">Pain relievers</p><p class="hypo-value" id="v-f5"></p></div>
+<div class="vpc-box"><p class="hypo-label">Gain creators</p><p class="hypo-value" id="v-f6"></p></div>
+</div>
+<div class="vpc-side vpc-circle">
+<p class="vpc-side-label">Customer profile · the circle</p>
+<div class="vpc-box"><p class="hypo-label">Customer jobs</p><p class="hypo-value" id="v-f2"></p></div>
+<div class="vpc-box"><p class="hypo-label">Pains</p><p class="hypo-value" id="v-f3"></p></div>
+<div class="vpc-box"><p class="hypo-label">Gains</p><p class="hypo-value" id="v-f4"></p></div>
+</div>
+</div>
+<div class="vpc-commit"><p class="hypo-label">My commitment</p><p class="hypo-value" id="v-f9"></p></div>
+</section>
+
+<div class="hypo-actions no-print">
+<button class="btn-primary" id="print-card">Print / Save as PDF</button>
+</div>
+<p class="apply-intro no-print">Fields 1 to 8 were written on the Apply pages. Step back if you want to edit them; this canvas updates live.</p>
+</section>
+
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's10'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+<script>
+  const SPEC = [
+    { id: 'f1', label: 'Customer segment' },
+    { id: 'f2', label: 'Customer jobs' },
+    { id: 'f3', label: 'Pains' },
+    { id: 'f4', label: 'Gains' },
+    { id: 'f5', label: 'Pain relievers' },
+    { id: 'f6', label: 'Gain creators' },
+    { id: 'f7', label: 'Products and services' },
+    { id: 'f8', label: 'Value proposition' },
+    { id: 'f9', label: 'My commitment' }
+  ];
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function renderCard() {
+    const fields = SDM2.readAllFields('c03');
+    let filled = 0;
+    SPEC.forEach(f => {
+      const val = (fields[f.id] || '').trim();
+      if (val) filled += 1;
+      const el = document.getElementById('v-' + f.id);
+      if (el) { el.textContent = val; el.classList.toggle('empty', !val); }
+    });
+    document.getElementById('phc-status').textContent = 'C03 · ' + filled + ' of 9 filled';
+  }
+  renderCard();
+  document.addEventListener('sdm:fieldsaved', renderCard);
+  document.getElementById('print-card').addEventListener('click', () => SDMB.requestPrint('c03'));
+</script>
+</body>
+</html>

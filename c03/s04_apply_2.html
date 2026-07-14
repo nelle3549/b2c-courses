@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Apply §2 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 2</span>
+<h2>Do the math, then rank your own.</h2>
+<p class="apply-intro">Two exercises: pick the winning pain from real scores, then rank your customer's top pains and gains.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Compute</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Multiply frequency × severity × addressability. Which pain ranks first?</p>
+<p class="ix-sub">Tap one answer per row.</p>
+
+<div class="cl-row" data-answer="b">
+<p class="cl-text">A: happens daily, mildly annoying, easy for you to fix (5 × 2 × 5). B: happens weekly, ruins the whole evening, easy for you to fix (3 × 5 × 5).</p>
+<div class="cl-btns"><button class="cl-btn" data-val="a">Pain A ranks first</button><button class="cl-btn" data-val="b">Pain B ranks first</button></div>
+<p class="cl-explain">B wins: 75 beats 50. Frequency alone fooled you if you picked A. A weekly pain that ruins an evening outranks a daily shrug.</p>
+</div>
+
+<div class="cl-row" data-answer="a">
+<p class="cl-text">A: hits every shift, costs real money, and your team can ship the fix this quarter (5 × 4 × 4). B: hits every shift, costs real money, but needs a banking license you do not have (5 × 4 × 1).</p>
+<div class="cl-btns"><button class="cl-btn" data-val="a">Pain A ranks first</button><button class="cl-btn" data-val="b">Pain B ranks first</button></div>
+<p class="cl-explain">A wins: 80 beats 20. Addressability is the honesty check. B is real and painful, but it is not your pain to solve this year.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 3 of 9</span></div>
+<p class="af-title">My customer's top 3 pains, ranked</p>
+<p class="af-trigger">Score every pain from your interviews (frequency × severity × addressability), then write the top three here, highest first. Add the score if you have it.</p>
+<div class="af-multi" data-af-multi="c03.f3">
+<input class="af-input af-line" type="text" placeholder="Pain 1 (highest score)..."/>
+<input class="af-input af-line" type="text" placeholder="Pain 2..."/>
+<input class="af-input af-line" type="text" placeholder="Pain 3..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">1. Friday-night receipt reconciliation eats the evening (5×5×4 = 100). 2. Never sure which products actually earn (5×4×4 = 80). 3. Utang tracking lives in a notebook that gets lost (4×4×4 = 64).</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 4 of 9</span></div>
+<p class="af-title">My customer's top 3 gains</p>
+<p class="af-trigger">Same math, with severity read as the size of the positive outcome. What are they reaching for, in their words?</p>
+<div class="af-multi" data-af-multi="c03.f4">
+<input class="af-input af-line" type="text" placeholder="Gain 1 (highest score)..."/>
+<input class="af-input af-line" type="text" placeholder="Gain 2..."/>
+<input class="af-input af-line" type="text" placeholder="Gain 3..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">1. Friday evenings back with the family. 2. Confidence that the store is actually earning. 3. Looking professional when the supplier asks for records.</div>
+</details>
+</div>
+</section>
+</main>
+
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's04'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

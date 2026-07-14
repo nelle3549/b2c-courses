@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Apply §1 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 1</span>
+<h2>Read the circle, then name your customer.</h2>
+<p class="apply-intro">Two exercises: sort four statements into the right canvas box, then start your own canvas with fields 1 and 2.</p>
+
+<div class="ix cl-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Sort</span><span class="ix-hint">Tap one per row</span></div>
+<p class="ix-q">Which box of the customer profile does each statement belong in?</p>
+<p class="ix-sub">Tap one answer per row.</p>
+
+<div class="cl-row" data-answer="j">
+<p class="cl-text">"I need to get from Cubao to Makati by 8 a.m., five days a week."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="j">Job</button><button class="cl-btn" data-val="p">Pain</button><button class="cl-btn" data-val="g">Gain</button></div>
+<p class="cl-explain">Job: a task the customer is trying to get done, stated without emotion. Pains and gains both hang off this job.</p>
+</div>
+
+<div class="cl-row" data-answer="p">
+<p class="cl-text">"I dread the Friday receipt pile. It eats my only free evening."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="j">Job</button><button class="cl-btn" data-val="p">Pain</button><button class="cl-btn" data-val="g">Gain</button></div>
+<p class="cl-explain">Pain: an active frustration the customer wants to escape while doing their job. The word "dread" is the tell.</p>
+</div>
+
+<div class="cl-row" data-answer="g">
+<p class="cl-text">"I'd love to have Saturday mornings free for my kids."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="j">Job</button><button class="cl-btn" data-val="p">Pain</button><button class="cl-btn" data-val="g">Gain</button></div>
+<p class="cl-explain">Gain: a positive outcome the customer wants to enable. Not the absence of a pain, a new good thing they are reaching for.</p>
+</div>
+
+<div class="cl-row" data-answer="j">
+<p class="cl-text">"Kailangan kong malaman kung kumikita ba talaga ang tindahan ko."</p>
+<div class="cl-btns"><button class="cl-btn" data-val="j">Job</button><button class="cl-btn" data-val="p">Pain</button><button class="cl-btn" data-val="g">Gain</button></div>
+<p class="cl-explain">Job: knowing whether the store makes money is a task to get done. The pains (receipt piles, guesswork) and gains (confidence, peace of mind) attach to it.</p>
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 1 of 9</span></div>
+<p class="af-title">Customer segment</p>
+<p class="af-trigger">Who is this canvas for? The specific customer from your Course 2 interviews, in one line. This fills the "Customer Segment" strip at the top of the canvas.</p>
+<textarea class="af-input" data-af="c03.f1" rows="2" placeholder="[Specific customer, specific place]..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"Food-stall owners in Cagayan de Oro who restock twice a week."</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 2 of 9</span></div>
+<p class="af-title">Customer jobs</p>
+<p class="af-trigger">What are they trying to get done? The main job first, then up to two more. Jobs are tasks, stated without emotion; the pains and gains hang off them.</p>
+<div class="af-multi" data-af-multi="c03.f2">
+<input class="af-input af-line" type="text" placeholder="Main job..."/>
+<input class="af-input af-line" type="text" placeholder="Job 2 (optional)..."/>
+<input class="af-input af-line" type="text" placeholder="Job 3 (optional)..."/>
+</div>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">1. Close the books every Friday without losing the evening. 2. Know which products actually earn. 3. Keep the utang list safe and current.</div>
+</details>
+</div>
+</section>
+</main>
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's02'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>C3 · Apply §4 · SD Mini-Courses</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/sd_course_v3_theme.css" rel="stylesheet"/>
+<link href="../shared/v3_addons.css" rel="stylesheet"/>
+<script src="../shared/scoring.js"></script>
+<script src="../shared/interact.js"></script>
+<script src="../shared/app_bridge.js"></script>
+</head>
+<body>
+<main>
+<section class="lesson-section">
+<span class="section-label">Apply · Section 4</span>
+<h2>Write it in their words.</h2>
+<p class="apply-intro">Three steps: rewrite a founder-speak proposition, list what you actually ship, then write your own proposition in their words.</p>
+
+<div class="ix gen-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Rewrite</span><span class="ix-hint">Type, then compare</span></div>
+<p class="ix-q">Your interviews produced these customer phrases: "gabi na ako nakakauwi", "hindi ko alam kung kumita ako", "nawawala ang listahan". Rewrite this proposition using them: <em>"A smart retail analytics platform that empowers micro-entrepreneurs."</em></p>
+<textarea class="gen-input" rows="2" placeholder="Your rewrite, in their words..."></textarea>
+<button class="gen-btn">Compare with a strong rewrite</button>
+<div class="gen-model">
+<strong>One strong version:</strong> "Alamin kung kumita ka talaga, bago ka pa umuwi. Your sales, your utang list, and your earnings in one app that never loses the listahan."
+<ul>
+<li>Every load-bearing phrase came from the interviews, not the pitch deck.</li>
+<li>The hated moments are named: going home late, not knowing if the day earned, the lost list.</li>
+<li>No platform, no empower, no analytics. The customer can say this sentence back to you.</li>
+</ul>
+Yours doesn't need these exact words. Check it against the three bullets.
+</div>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 7 of 9</span></div>
+<p class="af-title">Products and services</p>
+<div class="af-echo" data-af-echo="c03.f5" data-echo-label="Your pain relievers (field 5)"></div>
+<div class="af-echo" data-af-echo="c03.f6" data-echo-label="Your gain creators (field 6)"></div>
+<p class="af-trigger">What do you actually ship to deliver the relievers and creators above? One statement is enough: name the concrete thing and its key parts. This fills the last box of the square.</p>
+<textarea class="af-input" data-af="c03.f7" rows="2" placeholder="What you ship, in one statement..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"A free offline-first bookkeeping app with receipt-snap capture and a printable weekly report."</div>
+</details>
+</div>
+
+<div class="af-block">
+<div class="ix-head"><span class="ix-chip">Your turn</span><span class="ix-kind">Your canvas · field 8 of 9</span></div>
+<p class="af-title">My value proposition, in their words</p>
+<p class="af-trigger">One or two sentences for the "Value Proposition" strip of the canvas. Name the hated moment your top reliever removes, or the wanted moment your top creator enables, using phrases your customers actually said. If fewer than two phrases came from a real mouth, the proposition is still wearing your costume; rewrite it.</p>
+<textarea class="af-input" data-af="c03.f8" rows="3" placeholder="Write it the way your customer would say it..."></textarea>
+<div class="af-saved">Saved ✓</div>
+<details class="af-example"><summary>See an example</summary>
+<div class="af-example-body">"Stop spending Friday night on receipts. Snap them as they arrive, and the books close before you close the shop." (Real phrases used: "kada Biyernes ng gabi", "bago maisara ang tindahan".)</div>
+</details>
+</div>
+</section>
+</main>
+
+<script>
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'theme' && (e.data.value === 'light' || e.data.value === 'dark')) {
+      document.documentElement.setAttribute('data-theme', e.data.value);
+    }
+  });
+  if (window.parent !== window) {
+    try { window.parent.postMessage({type: 'requestTheme'}, '*'); } catch(e){}
+  }
+  if (window.SDM) { try { SDM.applyStoredTheme(); SDM.markVisit('c03', 's09'); window.addEventListener('storage', (e) => { if (e.key === SDM.STORAGE_KEY) SDM.applyStoredTheme(); }); } catch(e){} }
+</script>
+</body>
+</html>
