@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<title>SD Mini-Courses · v2 Pilot</title>
+<title>SD Mini-Courses</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
@@ -49,6 +49,11 @@
     font-size:var(--fs-small); color:var(--ink-600);
   }
   .status-line strong{color:var(--ink-900);}
+  .done-chip{
+    display:inline-block; font-family:var(--font-mono); font-size:var(--fs-micro);
+    background:var(--success-soft); color:var(--success); border:1px solid var(--success);
+    border-radius:var(--radius-pill); padding:2px 10px; margin-right:8px;
+  }
   .card-actions{display:flex; gap:var(--sp-3); flex-wrap:wrap; margin-top:var(--sp-4);}
   .history{margin-top:var(--sp-7);}
   .history h3{
@@ -65,21 +70,141 @@
   .history .empty{color:var(--ink-400); font-style:italic; margin-top:var(--sp-3); font-size:var(--fs-small);}
   .settings-row{display:flex; gap:var(--sp-3); margin-top:var(--sp-6); flex-wrap:wrap;}
 
-  /* ---- player ---- */
+  /* ---- LMS player shell ---- */
   #player{position:fixed; inset:0; z-index:50; display:none; flex-direction:column; background:var(--surface-page);}
   #player.open{display:flex;}
   body.player-open{overflow:hidden;}
+
+  .lms-iconbtn{
+    min-width:44px; min-height:44px; border:1px solid var(--line-strong); background:var(--surface-card);
+    border-radius:var(--radius-s); cursor:pointer; font-size:1.05rem; color:var(--ink-900);
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .lms-iconbtn:hover{border-color:var(--brand-600); color:var(--brand-700);}
+
+  .lms-top{
+    display:none; align-items:center; gap:var(--sp-3); padding:8px var(--sp-3);
+    border-bottom:1px solid var(--line); background:var(--surface-card); flex:0 0 auto;
+  }
+  .lms-top-title{
+    flex:1; min-width:0; font-family:var(--font-mono); font-size:var(--fs-micro);
+    color:var(--ink-600); letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+
+  .lms-body{flex:1; display:flex; min-height:0;}
+
+  #lms-side{
+    width:302px; flex:0 0 302px; border-right:1px solid var(--line); background:var(--surface-card);
+    display:flex; flex-direction:column; min-height:0;
+  }
+  .side-head{
+    display:flex; align-items:center; justify-content:space-between; gap:var(--sp-2);
+    padding:var(--sp-3) var(--sp-4); border-bottom:1px solid var(--line); flex:0 0 auto;
+  }
   .player-exit{
     font-family:var(--font-mono); font-size:var(--fs-micro); letter-spacing:.06em;
     text-transform:uppercase; color:var(--ink-600); background:none; border:none;
     cursor:pointer; min-height:44px; padding:0 var(--sp-2);
   }
   .player-exit:hover{color:var(--brand-700);}
-  #player-frame{flex:1; width:100%; border:none; background:var(--surface-page);}
-  .player-btns{display:flex; gap:var(--sp-2);}
-  @media (max-width:520px){
-    .player-btns .btn-ghost, .player-btns .btn-primary{padding:11px 18px; font-size:.88rem;}
+  .side-scroll{flex:1; overflow-y:auto; padding:var(--sp-4);}
+  .side-course{
+    font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em;
+    line-height:1.25;
   }
+  .side-progress{margin-top:var(--sp-3);}
+  .side-progress-line{
+    display:flex; justify-content:space-between; font-family:var(--font-mono);
+    font-size:var(--fs-micro); color:var(--ink-600); margin-bottom:6px;
+  }
+  .side-progress-line strong{color:var(--brand-700);}
+  .side-bar{height:6px; border-radius:999px; background:var(--surface-warm); border:1px solid var(--line); overflow:hidden;}
+  .side-bar i{display:block; height:100%; width:0%; background:var(--brand-600); border-radius:999px; transition:width .25s;}
+
+  .side-steps{list-style:none; margin:var(--sp-4) 0 0; padding:0;}
+  .side-steps li{margin:2px 0;}
+  .side-step{
+    display:flex; width:100%; gap:12px; align-items:center; padding:9px 10px;
+    border:1px solid transparent; background:none; border-radius:10px; cursor:pointer;
+    text-align:left; font-family:var(--font-body); font-size:.88rem; color:var(--ink-900);
+  }
+  .side-step:hover{background:var(--surface-warm);}
+  .side-step .ico{
+    width:24px; height:24px; flex:0 0 24px; border-radius:50%;
+    border:1.5px solid var(--line-strong); color:var(--ink-600);
+    font-family:var(--font-mono); font-size:.68rem; display:flex; align-items:center; justify-content:center;
+  }
+  .side-step .lbl{flex:1; min-width:0; line-height:1.3;}
+  .side-step .sub{display:block; font-family:var(--font-mono); font-size:var(--fs-micro); color:var(--ink-400); margin-top:1px;}
+  .side-step.done .ico{background:var(--success); border-color:var(--success); color:#fff;}
+  .side-step.current{border-color:var(--brand-600); background:var(--surface-soft);}
+  .side-step.current .ico{border-color:var(--brand-600); color:var(--brand-700);}
+  .side-step.locked{opacity:.45; cursor:not-allowed;}
+  .side-step.locked:hover{background:none;}
+
+  .lms-scrim{display:none; position:fixed; inset:0; background:rgba(15,20,30,.45); z-index:55;}
+
+  .lms-main{flex:1; display:flex; flex-direction:column; min-width:0; min-height:0;}
+  #player-frame{flex:1; width:100%; border:none; background:var(--surface-page);}
+  #assess-view{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:var(--sp-5) var(--sp-4) var(--sp-7);}
+  .player-nav2{
+    display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3);
+    padding:10px var(--sp-4); border-top:1px solid var(--line); background:var(--surface-card); flex:0 0 auto;
+  }
+  .nav-mid{
+    flex:1; text-align:center; font-family:var(--font-mono); font-size:var(--fs-micro);
+    color:var(--ink-600); letter-spacing:.04em; min-width:0; overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap;
+  }
+  .player-nav2 .btn-primary[disabled]{opacity:.5; cursor:not-allowed;}
+  @media (max-width:520px){
+    .player-nav2 .btn-ghost, .player-nav2 .btn-primary{padding:11px 16px; font-size:.86rem;}
+    .nav-mid{font-size:.62rem;}
+  }
+
+  @media (max-width:879px){
+    .lms-top{display:flex;}
+    #lms-side{
+      position:fixed; left:0; top:0; bottom:0; z-index:60; width:min(84vw, 320px);
+      transform:translateX(-105%); transition:transform .22s ease; box-shadow:var(--shadow-card);
+    }
+    #lms-side.open{transform:none;}
+    .lms-scrim.show{display:block;}
+    .side-theme{display:none;}
+  }
+  @media (min-width:880px){
+    .lms-top{display:none !important;}
+  }
+
+  /* ---- assessment (native to the viewer) ---- */
+  .assessment-wrap { max-width: 760px; margin: 0 auto; }
+  .assessment-hero { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 14px; padding: 22px 24px; margin-bottom: 18px; }
+  .assessment-hero h1 { margin: 0 0 8px; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+  .assessment-hero p { margin: 6px 0; color: var(--ink-600, #5B6572); font-size: 0.95rem; }
+  .assessment-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; font-size: 0.82rem; }
+  .assessment-meta span { background: var(--surface-soft, #FDEDE0); color: var(--brand-700, #C6430E); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+  .item-num { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-600, #5B6572); text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
+  .submit-row { margin: 22px 0 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .progress-pill { font-size: 0.82rem; color: var(--ink-600, #5B6572); }
+  .result-card { background: linear-gradient(180deg, var(--surface-soft, #FDEDE0) 0%, var(--surface-card, #FFFFFF) 100%); border: 1px solid var(--brand-700, #C6430E); border-radius: 14px; padding: 22px 24px; margin-bottom: 18px; }
+  .result-score { font-size: 2.6rem; font-weight: 700; margin: 4px 0; color: var(--brand-700, #C6430E); font-family: 'Space Grotesk', sans-serif; }
+  .result-pct { font-size: 1rem; color: var(--ink-600, #5B6572); font-weight: 600; }
+  .result-mastery { font-size: 0.98rem; margin: 12px 0 0; line-height: 1.55; }
+  .bloom-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0 0; }
+  .bloom-cell { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 10px; padding: 10px 8px; text-align: center; }
+  .bloom-cell-label { font-size: 0.72rem; color: var(--ink-600, #5B6572); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .bloom-cell-score { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+  .bloom-cell.full { background: var(--success-soft); border-color: var(--success); }
+  .bloom-cell.partial { background: var(--warning-soft); border-color: var(--warning); }
+  .bloom-cell.zero { background: var(--danger-soft); border-color: var(--danger); }
+  @media (max-width: 560px) { .bloom-grid { grid-template-columns: repeat(2, 1fr); } }
+  .hidden { display: none !important; }
+  .wrap-card { background: var(--surface-card, #FFFFFF); border: 1px solid var(--line, #EDE6DC); border-radius: 14px; padding: 20px 24px; margin-bottom: 18px; }
+  .wrap-card h2 { font-size: 1.05rem; margin: 0 0 10px; }
+  .wrap-card ul { margin: 0 0 0 18px; padding: 0; }
+  .wrap-card li { margin: 8px 0; font-size: 0.93rem; line-height: 1.55; }
+  .action-line { background: var(--success-soft, #E9F7F0); border: 1px solid var(--success, #1CA46B); border-radius: 10px; padding: 12px 16px; margin-top: 14px; font-size: 0.94rem; font-weight: 600; }
+  .gate-card{ background: var(--surface-warm); border:1px solid var(--line-strong); border-radius:14px; padding:22px 24px; }
 </style>
 </head>
 <body>
@@ -87,12 +212,12 @@
 <div class="home-wrap" id="landing">
 
 <header class="home-hero">
-<span class="lesson-number">SD Mini-Courses · v2 pilot</span>
+<span class="lesson-number">SD Mini-Courses</span>
 <h1>Short courses for <span class="u">Filipino founders</span>.</h1>
 <p>Real founder stories, hands-on practice, and a card you keep.</p>
 </header>
 <div class="pilot-note">
-V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · Theme v3 "Startup Editorial". The original v1 lives untouched in <code>sd-mini-courses/</code>; progress here is stored separately.
+All three courses built on the SD course design playbook · Theme v3 "Startup Editorial". Finish every step and the final assessment to complete a course.
 </div>
 
 <section class="course-card" id="c01-card">
@@ -142,16 +267,33 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
 </main>
 
 <div id="player">
-<iframe id="player-frame" title="Course content"></iframe>
-<div class="player-nav">
-<div class="player-nav-inner">
-<button class="player-exit" id="exit-btn" aria-label="Exit course">✕ Exit</button>
-<div class="player-progress">
-<span id="player-step">Step 1 of 13</span>
-<div class="bar" id="player-bar" style="--progress:8%"><i></i></div>
+<div class="lms-top">
+<button class="lms-iconbtn" id="menu-btn" aria-label="Course menu">☰</button>
+<div class="lms-top-title" id="top-title">Course</div>
+<button class="lms-iconbtn" id="theme-btn-top" aria-label="Toggle light or dark theme">◐</button>
 </div>
-<div class="player-btns">
+<div class="lms-body">
+<aside id="lms-side" aria-label="Course outline">
+<div class="side-head">
+<button class="player-exit" id="exit-btn" aria-label="Exit course">✕ Exit</button>
+<button class="lms-iconbtn side-theme" id="theme-btn-side" aria-label="Toggle light or dark theme">◐</button>
+</div>
+<div class="side-scroll">
+<div class="side-course" id="side-course">Course</div>
+<div class="side-progress">
+<div class="side-progress-line"><strong id="side-pct">0% complete</strong><span id="side-count">0 of 13</span></div>
+<div class="side-bar"><i id="side-bar-i"></i></div>
+</div>
+<ol class="side-steps" id="side-steps"></ol>
+</div>
+</aside>
+<div class="lms-scrim" id="lms-scrim"></div>
+<div class="lms-main">
+<iframe id="player-frame" title="Course content"></iframe>
+<div id="assess-view" class="hidden"><div class="assessment-wrap" id="assess-mount"></div></div>
+<div class="player-nav2">
 <button class="btn-ghost" id="prev-btn" aria-label="Previous step">&larr; Back</button>
+<div class="nav-mid" id="nav-mid">Step 1 of 13</div>
 <button class="btn-primary" id="next-btn">Next &rarr;</button>
 </div>
 </div>
@@ -167,28 +309,44 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
   if (window.SDM) { try { SDM.applyStoredTheme(); } catch(e){} }
 
   // ---------- Course maps ----------
-  // Base URL for course pages. The reference player embeds the SAME public
-  // pages the app iframes. Set to '' for same-origin relative paths (local dev).
-  const PAGES_BASE = 'https://nelle3549.github.io/b2c-courses/';
+  // Pages are same-origin relative paths so the viewer can track reading
+  // progress inside the iframe and share localStorage with the pages.
+  const PAGES_BASE = '';
 
   const COURSES = {
     c01: {
       dir: 'c01/', title: 'Startup PH',
       slots: [
-        { slot: 's00', file: 's00_intro.html',           label: 'Intro',            left: '~45 min total' },
-        { slot: 's01', file: 's01_section_1.html',       label: 'Section 1',        left: '~42 min left' },
-        { slot: 's02', file: 's02_apply_1.html',         label: 'Apply 1',          left: '~38 min left' },
-        { slot: 's03', file: 's03_section_2.html',       label: 'Section 2',        left: '~35 min left' },
-        { slot: 's04', file: 's04_apply_2.html',         label: 'Apply 2',          left: '~31 min left' },
-        { slot: 's05', file: 's05_section_3.html',       label: 'Section 3',        left: '~28 min left' },
-        { slot: 's06', file: 's06_apply_3.html',         label: 'Apply 3',          left: '~24 min left' },
-        { slot: 's07', file: 's07_section_4.html',       label: 'Section 4',        left: '~21 min left' },
-        { slot: 's08', file: 's08_video_explainer.html', label: 'Explainer video',  left: '~17 min left' },
-        { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~14 min left' },
+        { slot: 's00', file: 's00_intro.html',           label: 'Intro',              left: '~45 min total' },
+        { slot: 's01', file: 's01_section_1.html',       label: 'Section 1',          left: '~42 min left' },
+        { slot: 's02', file: 's02_apply_1.html',         label: 'Apply 1',            left: '~38 min left' },
+        { slot: 's03', file: 's03_section_2.html',       label: 'Section 2',          left: '~35 min left' },
+        { slot: 's04', file: 's04_apply_2.html',         label: 'Apply 2',            left: '~31 min left' },
+        { slot: 's05', file: 's05_section_3.html',       label: 'Section 3',          left: '~28 min left' },
+        { slot: 's06', file: 's06_apply_3.html',         label: 'Apply 3',            left: '~24 min left' },
+        { slot: 's07', file: 's07_section_4.html',       label: 'Section 4',          left: '~21 min left' },
+        { slot: 's08', file: 's08_video_explainer.html', label: 'Explainer video',    left: '~17 min left' },
+        { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',            left: '~14 min left' },
         { slot: 's10', file: 's10_reality_check.html',   label: 'Your reality check', left: '~10 min left' },
-        { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~9 min left' },
-        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
-      ]
+        { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',       left: '~9 min left' },
+        { slot: 's12', assess: true,                     label: 'Final assessment',   left: '~8 min' }
+      ],
+      mastery7: 'Perfect batch. You can state both definitions, test a venture against the three marks, take a cost curve apart, and pick a credible first door: the four skills this course promised.',
+      walkout: [
+        '<strong>Two definitions that decide doors:</strong> the working one (a temporary organization searching for a repeatable, scalable model) and RA 11337\'s legal one, which starts at "any person" and puts grant money behind the word.',
+        '<strong>The three marks:</strong> initiated as a project (Packworks\' five stores), a non-obvious solution (money over SMS), and scalability, tested by one question: what happens to costs when customers double?',
+        '<strong>The map and the rule:</strong> four layers, capital last, and the right door is the one you can credibly walk through today (Mayani\'s accelerator room became its seed round).'
+      ],
+      action: 'Do one thing today: make the Field-7 move on your card. One message to one door beats ten saved pitch decks.',
+      card: { title: 'Startup Reality Check', kind: 'rows', fields: [
+        { id: 'f1', label: '01 · My idea, one sentence' },
+        { id: 'f2', label: '02 · The project it starts as' },
+        { id: 'f3', label: '03 · My non-obvious edge' },
+        { id: 'f4', label: '04 · My scale check' },
+        { id: 'f5', label: '05 · My honest verdict' },
+        { id: 'f6', label: '06 · My first door' },
+        { id: 'f7', label: '07 · My commitment' }
+      ]}
     },
     c02: {
       dir: 'c02/', title: 'Problem First',
@@ -205,8 +363,24 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
         { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~14 min left' },
         { slot: 's10', file: 's10_hypothesis_card.html', label: 'Your card',        left: '~10 min left' },
         { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~9 min left' },
-        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
-      ]
+        { slot: 's12', assess: true,                     label: 'Final assessment', left: '~8 min' }
+      ],
+      mastery7: 'Perfect batch. You can name why problem-first wins, run a clean interview, split symptom from situation, and judge a statement\'s falsifiability: the four skills this course promised.',
+      walkout: [
+        '<strong>The build order that survives contact with reality:</strong> validate the problem before you build. Kalibrr\'s pivot is the tuition you now don\'t have to pay.',
+        '<strong>The data-quality ladder:</strong> observed behavior &gt; recalled behavior &gt; stated intent &gt; opinions. Interviews get you level-3 data; GrowSari-style fieldwork gets level 4.',
+        '<strong>The reframe-and-falsify loop:</strong> dig from symptom to situation (First Circle\'s locked receivables), then write the statement a weekend could kill (PayMongo\'s ten-merchant launch).'
+      ],
+      action: 'Do one thing today: message one of the five people on your card and set your first interview. The card below is ready to travel.',
+      card: { title: 'Problem Hypothesis Card', kind: 'rows', fields: [
+        { id: 'f1', label: '01 · The symptom I keep hearing' },
+        { id: 'f2', label: '02 · My three behavioral questions' },
+        { id: 'f3', label: '03 · The underlying problem I suspect' },
+        { id: 'f4', label: '04 · My How-Might-We' },
+        { id: 'f5', label: '05 · My falsifiable problem statement' },
+        { id: 'f6', label: '06 · Five people I\'ll interview this week' },
+        { id: 'f7', label: '07 · My commitment' }
+      ]}
     },
     c03: {
       dir: 'c03/', title: 'Value Crafted',
@@ -223,24 +397,84 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
         { slot: 's09', file: 's09_apply_4.html',         label: 'Apply 4',          left: '~10 min left' },
         { slot: 's10', file: 's10_canvas.html',          label: 'Your canvas',      left: '~7 min left' },
         { slot: 's11', file: 's11_myth_callout.html',    label: 'Myth callout',     left: '~5 min left' },
-        { slot: 's12', file: 's12_final_mcq.html',       label: 'Final assessment', left: '' }
-      ]
+        { slot: 's12', assess: true,                     label: 'Final assessment', left: '~8 min' }
+      ],
+      mastery7: 'Perfect set. You can read the canvas, rank pains and gains, keep the value map 1:1, and judge fit and wording: the four skills this course promised.',
+      walkout: [
+        '<strong>The 24-hour pause:</strong> map the solution to what the customer ranks first, the way edamama matched every offer choice to a named pain of new moms.',
+        '<strong>Ranking discipline:</strong> frequency × severity × addressability, then keep the top three. Angkas bet the whole company on the pain that scored highest, and Peddlr grew by cutting everything that floated.',
+        '<strong>The wording test:</strong> a proposition in the customer\'s own words, the way Kumu named itself from "Kumusta ka?". If they wouldn\'t say it back to you, keep rewriting.'
+      ],
+      action: 'Do one thing today: read your Field-5 proposition aloud to one person from your interviews. Their face is the test.',
+      card: { title: 'My Value Proposition Canvas', kind: 'vpc', fields: [
+        { id: 'f1' }, { id: 'f2' }, { id: 'f3' }, { id: 'f4' }, { id: 'f5' },
+        { id: 'f6' }, { id: 'f7' }, { id: 'f8' }, { id: 'f9' }
+      ]}
     }
   };
-  let activeCourse = 'c02';
+
+  let activeCourse = 'c01';
   let current = 0;
+  const readSession = {};   // courseId -> Set of slots read this session
+  const bankCache = {};     // courseId -> bank json
 
   const playerEl = document.getElementById('player');
   const frame = document.getElementById('player-frame');
-  const stepEl = document.getElementById('player-step');
-  const barEl = document.getElementById('player-bar');
+  const assessView = document.getElementById('assess-view');
+  const assessMount = document.getElementById('assess-mount');
+  const navMid = document.getElementById('nav-mid');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
+  const sideEl = document.getElementById('lms-side');
+  const scrimEl = document.getElementById('lms-scrim');
 
+  // ---------- progress store ----------
+  function getViewed(cid) {
+    const st = SDM.readStore();
+    return (st.courses[cid] && st.courses[cid].viewed) || [];
+  }
+  function addViewed(cid, slot) {
+    const st = SDM.readStore();
+    const c = st.courses[cid];
+    if (!c) return;
+    c.viewed = c.viewed || [];
+    if (!c.viewed.includes(slot)) { c.viewed.push(slot); SDM.writeStore(st); }
+  }
+  function attemptsOf(cid) {
+    const st = SDM.readStore();
+    return (st.courses[cid] && st.courses[cid].attempts) || [];
+  }
+  function isCompleted(cid) { return attemptsOf(cid).length > 0; }
+  function contentSlots(cid) { return COURSES[cid].slots.filter(s => !s.assess); }
+  function allContentViewed(cid) {
+    const v = getViewed(cid);
+    return contentSlots(cid).every(s => v.includes(s.slot));
+  }
+  function isRead(cid, slot) {
+    if (getViewed(cid).includes(slot)) return true;
+    return !!(readSession[cid] && readSession[cid].has(slot));
+  }
+  // Highest step index the learner may open: one past the last read step.
+  function furthestIdx(cid) {
+    const slots = COURSES[cid].slots;
+    for (let i = 0; i < slots.length; i++) {
+      if (slots[i].assess) return allContentViewed(cid) ? i : Math.max(0, i - 1);
+      if (!getViewed(cid).includes(slots[i].slot)) return i;
+    }
+    return slots.length - 1;
+  }
+  function progressCount(cid) {
+    const v = getViewed(cid);
+    let n = contentSlots(cid).filter(s => v.includes(s.slot)).length;
+    if (isCompleted(cid)) n += 1;
+    return n;
+  }
+
+  // ---------- player ----------
   function openPlayer(courseId, idx) {
     activeCourse = courseId;
-    const slots = COURSES[courseId].slots;
-    current = Math.max(0, Math.min(idx, slots.length - 1));
+    readSession[courseId] = readSession[courseId] || new Set();
+    current = Math.max(0, Math.min(idx, furthestIdx(courseId)));
     render();
     playerEl.classList.add('open');
     document.body.classList.add('player-open');
@@ -249,6 +483,7 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
   function closePlayer() {
     playerEl.classList.remove('open');
     document.body.classList.remove('player-open');
+    closeDrawer();
     frame.src = 'about:blank';
     refreshLanding();
   }
@@ -256,19 +491,149 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
   function render() {
     const course = COURSES[activeCourse];
     const s = course.slots[current];
-    frame.src = PAGES_BASE + course.dir + s.file;
-    stepEl.textContent = course.title + ' · Step ' + (current + 1) + ' of ' + course.slots.length + ' · ' + s.label + (s.left ? ' · ' + s.left : '');
-    barEl.style.setProperty('--progress', Math.round(((current + 1) / course.slots.length) * 100) + '%');
+    document.getElementById('side-course').textContent = course.title;
+    document.getElementById('top-title').textContent = course.title + ' · ' + s.label;
+    navMid.textContent = 'Step ' + (current + 1) + ' of ' + course.slots.length + ' · ' + s.label;
+
+    if (s.assess) {
+      frame.classList.add('hidden');
+      frame.src = 'about:blank';
+      assessView.classList.remove('hidden');
+      try { SDM.markVisit(activeCourse, s.slot); } catch (e) {}
+      renderAssessment();
+    } else {
+      assessView.classList.add('hidden');
+      frame.classList.remove('hidden');
+      frame.src = PAGES_BASE + course.dir + s.file;
+      try { SDM.markVisit(activeCourse, s.slot); } catch (e) {}
+    }
     prevBtn.disabled = current === 0;
-    nextBtn.textContent = current === course.slots.length - 1 ? 'Finish ✓' : 'Next →';
-    try { SDM.markVisit(activeCourse, s.slot); } catch (e) {}
-    frame.focus();
+    updateNextBtn();
+    renderSidebar();
   }
 
+  function updateNextBtn() {
+    const s = COURSES[activeCourse].slots[current];
+    if (s.assess) {
+      const done = isCompleted(activeCourse);
+      nextBtn.textContent = done ? 'Finish ✓' : 'Finish';
+      nextBtn.disabled = !done;
+      nextBtn.title = done ? '' : 'Submit the assessment to finish the course';
+    } else if (isRead(activeCourse, s.slot)) {
+      nextBtn.textContent = 'Next →';
+      nextBtn.disabled = false;
+      nextBtn.title = '';
+    } else {
+      nextBtn.textContent = 'Scroll ↓';
+      nextBtn.disabled = false;
+      nextBtn.title = 'Read to the bottom of the page to unlock the next step';
+    }
+  }
+
+  function markRead(slot) {
+    readSession[activeCourse].add(slot);
+    addViewed(activeCourse, slot);
+    updateNextBtn();
+    renderSidebar();
+  }
+
+  // ---------- reading gate (same-origin scroll tracking) ----------
+  function frameDocOrNull() {
+    try {
+      const d = frame.contentDocument;
+      if (d && d.documentElement) return d;
+    } catch (e) {}
+    return null;
+  }
+  function atBottom(doc) {
+    const el = doc.scrollingElement || doc.documentElement;
+    return el.scrollTop + el.clientHeight >= el.scrollHeight - 24;
+  }
+  function checkRead() {
+    const s = COURSES[activeCourse].slots[current];
+    if (!s || s.assess || isRead(activeCourse, s.slot)) return;
+    const doc = frameDocOrNull();
+    if (!doc) { markRead(s.slot); return; } // cross-origin fallback: never brick navigation
+    if (atBottom(doc)) markRead(s.slot);
+  }
+  frame.addEventListener('load', () => {
+    // theme handshake
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
+    // reading gate
+    const doc = frameDocOrNull();
+    const s = COURSES[activeCourse].slots[current];
+    if (!s || s.assess) return;
+    if (!doc) { markRead(s.slot); return; }
+    try { frame.contentWindow.addEventListener('scroll', checkRead, { passive: true }); } catch (e) {}
+    // short pages (no scrollbar) count as read; re-check after fonts/images settle
+    checkRead();
+    setTimeout(checkRead, 700);
+    setTimeout(checkRead, 1800);
+  });
+
+  function scrollFrameDown() {
+    const doc = frameDocOrNull();
+    if (!doc) { checkRead(); return; }
+    try {
+      frame.contentWindow.scrollBy({ top: Math.round(frame.clientHeight * 0.85), behavior: 'smooth' });
+    } catch (e) {}
+    setTimeout(checkRead, 450);
+  }
+
+  // ---------- sidebar ----------
+  function renderSidebar() {
+    const course = COURSES[activeCourse];
+    const total = course.slots.length;
+    const done = progressCount(activeCourse);
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('side-pct').textContent = pct + '% complete';
+    document.getElementById('side-count').textContent = done + ' of ' + total;
+    document.getElementById('side-bar-i').style.width = pct + '%';
+
+    const maxIdx = Math.max(furthestIdx(activeCourse), current);
+    const mount = document.getElementById('side-steps');
+    mount.innerHTML = '';
+    course.slots.forEach((s, i) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      const stepDone = s.assess ? isCompleted(activeCourse) : getViewed(activeCourse).includes(s.slot);
+      const locked = i > maxIdx;
+      btn.className = 'side-step' + (stepDone ? ' done' : '') + (i === current ? ' current' : '') + (locked ? ' locked' : '');
+      const ico = stepDone ? '✓' : (locked ? '🔒' : String(i + 1));
+      const sub = s.assess && isCompleted(activeCourse)
+        ? 'Completed · best ' + bestScore(activeCourse) + '/7'
+        : (s.left || '');
+      btn.innerHTML = '<span class="ico">' + ico + '</span>' +
+        '<span class="lbl">' + s.label + (sub ? '<span class="sub">' + sub + '</span>' : '') + '</span>';
+      if (!locked) {
+        btn.addEventListener('click', () => { current = i; closeDrawer(); render(); });
+      } else {
+        btn.setAttribute('aria-disabled', 'true');
+        btn.title = 'Finish the earlier steps first';
+      }
+      li.appendChild(btn);
+      mount.appendChild(li);
+    });
+  }
+  function bestScore(cid) {
+    return attemptsOf(cid).reduce((m, a) => Math.max(m, a.correct_count), 0);
+  }
+
+  // ---------- drawer (mobile) ----------
+  function openDrawer() { sideEl.classList.add('open'); scrimEl.classList.add('show'); }
+  function closeDrawer() { sideEl.classList.remove('open'); scrimEl.classList.remove('show'); }
+  document.getElementById('menu-btn').addEventListener('click', openDrawer);
+  scrimEl.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+  // ---------- navigation ----------
   prevBtn.addEventListener('click', () => { if (current > 0) { current -= 1; render(); } });
   nextBtn.addEventListener('click', () => {
-    if (current === COURSES[activeCourse].slots.length - 1) { closePlayer(); return; }
-    current += 1; render();
+    const s = COURSES[activeCourse].slots[current];
+    if (s.assess) { if (isCompleted(activeCourse)) closePlayer(); return; }
+    if (!isRead(activeCourse, s.slot)) { scrollFrameDown(); return; }
+    if (current < COURSES[activeCourse].slots.length - 1) { current += 1; render(); }
   });
   document.getElementById('exit-btn').addEventListener('click', closePlayer);
 
@@ -276,49 +641,303 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
   window.addEventListener('message', (e) => {
     if (e.data && e.data.type === 'requestTheme') {
       const theme = document.documentElement.getAttribute('data-theme') || 'light';
-      try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*' ); } catch (err) {}
+      try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
     }
   });
-  frame.addEventListener('load', () => {
-    const theme = document.documentElement.getAttribute('data-theme') || 'light';
-    try { frame.contentWindow.postMessage({ type: 'theme', value: theme }, '*'); } catch (err) {}
-  });
 
-  // ---------- Landing ----------
+  // ---------- theme toggle (landing + player, anytime) ----------
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    SDM.setTheme(next);
+    try { frame.contentWindow.postMessage({ type: 'theme', value: next }, '*'); } catch (e) {}
+  }
+  document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+  document.getElementById('theme-btn-top').addEventListener('click', toggleTheme);
+  document.getElementById('theme-btn-side').addEventListener('click', toggleTheme);
+
+  // ---------- assessment (native, from bank.json) ----------
+  let batch = [];
+  let responses = {};
+  let startedAt = null;
+
+  async function getBank(cid) {
+    if (bankCache[cid]) return bankCache[cid];
+    const bank = await SDM.loadBank(PAGES_BASE + COURSES[cid].dir + 'bank.json');
+    bankCache[cid] = bank;
+    return bank;
+  }
+
+  function esc(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderAssessment() {
+    if (!allContentViewed(activeCourse)) {
+      assessMount.innerHTML =
+        '<section class="gate-card"><div class="item-num">Locked</div>' +
+        '<h1 style="font-family:\'Space Grotesk\',sans-serif; font-size:1.4rem; margin:0 0 8px;">Finish the course steps first.</h1>' +
+        '<p style="color:var(--ink-600); margin:6px 0 0;">The final assessment unlocks once every step has been read to the bottom. Use the outline to jump back to any step you skipped.</p></section>';
+      return;
+    }
+    renderAssessHero();
+  }
+
+  function renderAssessHero() {
+    const done = isCompleted(activeCourse);
+    const best = bestScore(activeCourse);
+    assessMount.innerHTML =
+      '<section class="assessment-hero">' +
+      '<h1>Final assessment · ' + esc(COURSES[activeCourse].title) + '</h1>' +
+      '<p>Seven questions, drawn fresh from a bank of 15. Every set covers all four skills this course promised, from recall to judgment. Unlimited retakes, new questions each time; most learners take two tries to hit 7/7.</p>' +
+      '<div class="assessment-meta"><span>7 questions</span><span>~8 min</span><span>Unlimited retakes</span>' +
+      (done ? '<span>Best so far: ' + best + '/7</span>' : '') + '</div>' +
+      '<div class="submit-row"><button class="btn-primary" id="assess-start">' + (done ? 'Retake (fresh batch)' : 'Start') + '</button>' +
+      (done ? '<span class="progress-pill">Course already completed ✓</span>' : '') + '</div>' +
+      '</section>';
+    document.getElementById('assess-start').addEventListener('click', startAttempt);
+  }
+
+  async function startAttempt() {
+    let bank;
+    try {
+      bank = await getBank(activeCourse);
+    } catch (e) {
+      assessMount.innerHTML = '<section class="gate-card"><div class="item-num">Could not load</div><p style="margin:6px 0 0; color:var(--ink-600);">The question bank could not be loaded. Check your connection and try again.</p><div class="submit-row"><button class="btn-ghost" id="assess-retry">Try again</button></div></section>';
+      document.getElementById('assess-retry').addEventListener('click', renderAssessment);
+      return;
+    }
+    batch = SDM.sampleBatch(bank.items);
+    responses = {};
+    startedAt = new Date().toISOString();
+    renderBatch();
+    assessView.scrollTop = 0;
+  }
+
+  function renderBatch() {
+    let html = '<div id="items-container"></div>' +
+      '<div class="submit-row"><button class="btn-primary" id="submit-btn" disabled>Submit assessment</button>' +
+      '<span class="progress-pill" id="progress-pill">0 of ' + batch.length + ' answered</span></div>';
+    assessMount.innerHTML = html;
+    const itemsContainer = document.getElementById('items-container');
+    batch.forEach((item, idx) => {
+      const card = document.createElement('article');
+      card.className = 'mcq-card';
+      card.innerHTML =
+        '<div class="item-num">Item ' + (idx + 1) + ' of ' + batch.length + '</div>' +
+        '<p class="mcq-stem">' + item.stem + '</p>' +
+        '<ul class="mcq-options" role="radiogroup">' +
+        ['A','B','C','D'].map(letter =>
+          '<li><button class="mcq-option" data-letter="' + letter + '">' +
+          '<span class="mcq-letter">' + letter + '</span><span>' + item.options[letter] + '</span></button></li>'
+        ).join('') + '</ul>';
+      card.querySelectorAll('.mcq-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          responses[item.id] = btn.dataset.letter;
+          card.querySelectorAll('.mcq-option').forEach(b => b.classList.remove('user-picked'));
+          btn.classList.add('user-picked');
+          const answered = Object.keys(responses).length;
+          document.getElementById('progress-pill').textContent = answered + ' of ' + batch.length + ' answered';
+          document.getElementById('submit-btn').disabled = answered < batch.length;
+        });
+      });
+      itemsContainer.appendChild(card);
+    });
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      const attempt = SDM.makeAttempt(activeCourse, batch, responses, startedAt);
+      if (window.parent !== window) {
+        try { window.parent.postMessage({ type: 'attemptSubmitted', course: activeCourse, attempt: attempt }, '*'); } catch (e) {}
+      }
+      showResult(attempt);
+    });
+  }
+
+  function masteryLine(attempt) {
+    const n = attempt.correct_count;
+    const weak = [];
+    Object.keys(attempt.per_bloom).forEach(b => {
+      const c = attempt.per_bloom[b];
+      if (c.n > 0 && c.correct < c.n) weak.push(b);
+    });
+    if (n === 7) return COURSES[activeCourse].mastery7;
+    if (n >= 5) return 'Strong. The review below shows exactly which move slipped' + (weak.length ? ' (' + weak.join(', ') + ')' : '') + '. Read the explanations, then take a fresh batch. Most learners hit 7/7 on the second.';
+    if (n >= 3) return 'The core is there. Each miss below names its misconception. Read those explanations first; they were written for exactly this moment. Then retake: new batch, same coverage.';
+    return 'Rough batch? It happens, and it costs nothing here. Review below, revisit the step each miss points to, and come back for a fresh batch. Unlimited means unlimited.';
+  }
+
+  function showResult(attempt) {
+    const course = COURSES[activeCourse];
+    let html =
+      '<section class="result-card"><div class="item-num">Result</div>' +
+      '<div class="result-score">' + attempt.correct_count + ' / ' + attempt.total + '</div>' +
+      '<div class="result-pct">' + Math.round(attempt.score_pct * 100) + '% · this set covered all 4 skills · course completed ✓</div>' +
+      '<p class="result-mastery">' + esc(masteryLine(attempt)) + '</p>' +
+      '<div class="bloom-grid">' +
+      ['remember','understand','apply','analyze','evaluate'].map(b => {
+        const cell = attempt.per_bloom[b];
+        if (!cell || cell.n === 0) return '';
+        const ratio = cell.correct / cell.n;
+        const tier = ratio === 1 ? 'full' : ratio === 0 ? 'zero' : 'partial';
+        return '<div class="bloom-cell ' + tier + '"><div class="bloom-cell-label">' + b + '</div>' +
+               '<div class="bloom-cell-score">' + cell.correct + ' / ' + cell.n + '</div></div>';
+      }).join('') + '</div>' +
+      '<div class="submit-row"><button class="btn-primary" id="retake-btn">Retake (fresh batch)</button>' +
+      '<button class="btn-ghost" id="review-btn">Review answers ↓</button></div></section>' +
+      '<section class="wrap-card"><h2>What you\'re walking out with</h2><ul>' +
+      course.walkout.map(w => '<li>' + w + '</li>').join('') + '</ul>' +
+      '<div class="action-line">' + esc(course.action) + '</div></section>' +
+      renderCardHtml(activeCourse) +
+      '<div id="review-container" class="hidden"></div>';
+    assessMount.innerHTML = html;
+    fillCardValues(activeCourse);
+    renderReview(attempt);
+    document.getElementById('retake-btn').addEventListener('click', startAttempt);
+    document.getElementById('review-btn').addEventListener('click', () => {
+      const rc = document.getElementById('review-container');
+      rc.classList.toggle('hidden');
+      if (!rc.classList.contains('hidden')) rc.scrollIntoView({ behavior: 'smooth' });
+    });
+    updateNextBtn();
+    renderSidebar();
+    assessView.scrollTop = 0;
+  }
+
+  function renderCardHtml(cid) {
+    const card = COURSES[cid].card;
+    if (card.kind === 'vpc') {
+      return '<section class="hypo-card" id="phc-card">' +
+        '<div class="hypo-card-head"><h3>' + esc(card.title) + '</h3><span id="phc-status"></span></div>' +
+        '<div class="vpc-strips">' +
+        '<div class="vpc-strip"><p class="hypo-label">Value proposition</p><p class="hypo-value" id="v-f8"></p></div>' +
+        '<div class="vpc-strip"><p class="hypo-label">Customer segment</p><p class="hypo-value" id="v-f1"></p></div></div>' +
+        '<div class="vpc-grid"><div class="vpc-side vpc-square">' +
+        '<p class="vpc-side-label">Value map · the square</p>' +
+        '<div class="vpc-box"><p class="hypo-label">Products and services</p><p class="hypo-value" id="v-f7"></p></div>' +
+        '<div class="vpc-box"><p class="hypo-label">Pain relievers</p><p class="hypo-value" id="v-f5"></p></div>' +
+        '<div class="vpc-box"><p class="hypo-label">Gain creators</p><p class="hypo-value" id="v-f6"></p></div></div>' +
+        '<div class="vpc-side vpc-circle"><p class="vpc-side-label">Customer profile · the circle</p>' +
+        '<div class="vpc-box"><p class="hypo-label">Customer jobs</p><p class="hypo-value" id="v-f2"></p></div>' +
+        '<div class="vpc-box"><p class="hypo-label">Pains</p><p class="hypo-value" id="v-f3"></p></div>' +
+        '<div class="vpc-box"><p class="hypo-label">Gains</p><p class="hypo-value" id="v-f4"></p></div></div></div>' +
+        '<div class="vpc-commit"><p class="hypo-label">My commitment</p><p class="hypo-value" id="v-f9"></p></div></section>' +
+        '<div class="submit-row"><span class="progress-pill">To edit or print your canvas, go back to the &ldquo;Your canvas&rdquo; step.</span></div>';
+    }
+    return '<section class="hypo-card" id="phc-card">' +
+      '<div class="hypo-card-head"><h3>' + esc(card.title) + '</h3><span id="phc-status"></span></div>' +
+      '<div id="phc-fields"></div></section>' +
+      '<div class="submit-row"><span class="progress-pill">To edit or print your card, go back to the card step.</span></div>';
+  }
+
+  function fillCardValues(cid) {
+    const card = COURSES[cid].card;
+    let fields = {};
+    try { fields = SDM2.readAllFields(cid); } catch (e) {}
+    let filled = 0;
+    if (card.kind === 'vpc') {
+      card.fields.forEach(f => {
+        const val = (fields[f.id] || '').trim();
+        if (val) filled += 1;
+        const el = document.getElementById('v-' + f.id);
+        if (el) { el.textContent = val; el.classList.toggle('empty', !val); }
+      });
+    } else {
+      const wrap = document.getElementById('phc-fields');
+      wrap.innerHTML = card.fields.map(f => {
+        const val = (fields[f.id] || '').trim();
+        if (val) filled += 1;
+        return '<div class="hypo-row"><p class="hypo-label">' + esc(f.label) + '</p>' +
+               '<p class="hypo-value' + (val ? '' : ' empty') + '">' + esc(val) + '</p></div>';
+      }).join('');
+    }
+    const status = document.getElementById('phc-status');
+    if (status) status.textContent = cid.toUpperCase() + ' · ' + filled + ' of ' + card.fields.length + ' filled';
+  }
+
+  function renderReview(attempt) {
+    const container = document.getElementById('review-container');
+    container.innerHTML = '';
+    batch.forEach((item, idx) => {
+      const userPick = responses[item.id];
+      const correct = userPick === item.key;
+      const card = document.createElement('article');
+      card.className = 'mcq-card item-reveal';
+      let fb;
+      if (item.explanations) {
+        fb = correct
+          ? '<strong>Correct: ' + item.key + '.</strong> ' + item.explanations[item.key]
+          : '<strong>You picked ' + userPick + ':</strong> ' + item.explanations[userPick] +
+            '<br/><strong>The key is ' + item.key + ':</strong> ' + item.explanations[item.key];
+      } else {
+        fb = '<strong>Correct: ' + item.key + '.</strong> ' + (item.explanation || '');
+      }
+      card.innerHTML =
+        '<div class="item-num">Item ' + (idx + 1) + ' · ' + item.bloom + ' · ' + (correct ? '✓ correct' : '✗ incorrect') + '</div>' +
+        '<p class="mcq-stem">' + item.stem + '</p>' +
+        '<ul class="mcq-options">' +
+        ['A','B','C','D'].map(letter => {
+          const isKey = letter === item.key;
+          const isPicked = letter === userPick;
+          let cls = 'mcq-option';
+          if (isKey) cls += ' correct';
+          if (isPicked && !isKey) cls += ' incorrect';
+          if (isPicked) cls += ' user-picked';
+          return '<li><button class="' + cls + '" disabled>' +
+                 '<span class="mcq-letter">' + letter + '</span><span>' + item.options[letter] + '</span></button></li>';
+        }).join('') + '</ul>' +
+        '<div class="mcq-feedback show">' + fb + '</div>';
+      container.appendChild(card);
+    });
+  }
+
+  // ---------- landing ----------
   function refreshCourseCard(courseId) {
-    const store = SDM.readStore();
-    const c = store.courses[courseId] || {};
     const slots = COURSES[courseId].slots;
     const statusEl = document.getElementById('status-' + courseId);
     const startBtn = document.querySelector('[data-start="' + courseId + '"]');
     const assessBtn = document.querySelector('[data-assess="' + courseId + '"]');
 
+    const done = progressCount(courseId);
+    const pct = Math.round((done / slots.length) * 100);
+    const attempts = attemptsOf(courseId);
+    const best = bestScore(courseId);
+    const st = SDM.readStore();
+    const c = st.courses[courseId] || {};
     const fields = (c.artifact) ? Object.keys(c.artifact).filter(k => c.artifact[k] && (c.artifact[k].value || '').trim()).length : 0;
-    const attempts = c.attempts || [];
-    const best = attempts.reduce((m, a) => Math.max(m, a.correct_count), 0);
-    const slotIdx = Math.max(0, slots.findIndex(s => s.slot === c.last_section));
+    const cardTotal = COURSES[courseId].card.fields.length;
 
-    if (!c.last_section) {
+    if (done === 0 && !c.last_section) {
       statusEl.textContent = 'Not started';
       startBtn.textContent = 'Start course';
-    } else {
-      let s = '<strong>In progress</strong> · last at ' + slots[slotIdx].label;
-      s += ' · Card: ' + fields + ' of 7 fields';
-      if (attempts.length > 0) s += ' · Best score: <strong>' + best + '/7</strong> (' + attempts.length + ' attempt' + (attempts.length > 1 ? 's' : '') + ')';
-      statusEl.innerHTML = s;
-      startBtn.textContent = 'Resume';
-      assessBtn.style.display = 'inline-flex';
+      assessBtn.style.display = 'none';
+      return;
     }
-    return slotIdx;
+    let s = '';
+    if (isCompleted(courseId)) {
+      s += '<span class="done-chip">Completed ✓</span>';
+      s += 'Best score: <strong>' + best + '/7</strong> (' + attempts.length + ' attempt' + (attempts.length > 1 ? 's' : '') + ')';
+      startBtn.textContent = 'Review course';
+      assessBtn.textContent = 'Retake assessment';
+      assessBtn.style.display = 'inline-flex';
+    } else {
+      s += '<strong>In progress</strong> · ' + pct + '% (' + done + ' of ' + slots.length + ' steps)';
+      startBtn.textContent = 'Resume';
+      if (allContentViewed(courseId)) {
+        assessBtn.textContent = 'Take assessment';
+        assessBtn.style.display = 'inline-flex';
+      } else {
+        assessBtn.style.display = 'none';
+      }
+    }
+    s += ' · Card: ' + fields + ' of ' + cardTotal + ' fields';
+    statusEl.innerHTML = s;
   }
 
   function refreshLanding() {
-    refreshCourseCard('c02');
-    refreshCourseCard('c03');
+    Object.keys(COURSES).forEach(refreshCourseCard);
 
     const store = SDM.readStore();
     const rows = [];
-    ['c02', 'c03'].forEach(courseId => {
+    Object.keys(COURSES).forEach(courseId => {
       (store.courses[courseId] && store.courses[courseId].attempts || []).forEach(a => {
         rows.push({ course: COURSES[courseId].title, a: a });
       });
@@ -357,14 +976,8 @@ V2 PILOT BUILD · All three courses rebuilt on the SD course design playbook · 
     });
   });
 
-  document.getElementById('theme-btn').addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    SDM.setTheme(next);
-    try { frame.contentWindow.postMessage({ type: 'theme', value: next }, '*'); } catch (e) {}
-  });
   document.getElementById('reset-btn').addEventListener('click', () => {
-    if (confirm('Reset all v2 pilot progress? This clears scores and both course cards. The v1 courses are not affected.')) {
+    if (confirm('Reset all progress? This clears scores, reading progress, and all three course cards.')) {
       SDM.resetStore();
       location.reload();
     }

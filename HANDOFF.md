@@ -2,29 +2,33 @@
 
 **For:** app dev team · **Owner:** Nelle (Product & User Dev)
 **Live base:** `https://nelle3549.github.io/b2c-courses/` · **Repo:** `github.com/nelle3549/b2c-courses`
-**Last updated:** 2026-07-14
+**Last updated:** 2026-07-14 (viewer upgraded to a full LMS shell; assessments now render from `bank.json`)
 
 Three self-directed mini-courses as static HTML pages, designed to be iframed inside the app.
-Pages carry ZERO navigation: the host owns Back/Next/Exit and progress. Each page is pure
-content that talks to its host through a small postMessage contract (§4).
+Content pages carry ZERO navigation: the host owns Back/Next/Exit and progress. Each page talks
+to its host through a small postMessage contract (§4).
 
 ---
 
 ## 1 · What's in the repo
 
 ```
-index.html        reference player. Shows exactly how to drive the pages: slot order,
-                  iframing, theme relay, progress bar. NOT shipped to users.
-shared/           theme CSS (sd_course_v3_theme.css + v3_addons.css), scoring.js (SDM),
-                  interact.js (SDM2), app_bridge.js (SDMB · the integration contract, §4)
-c01/  c02/  c03/  one folder per course: 13 pages each (s00 … s12), bank.js + bank.json
-                  (assessment bank), stories_register.md (source citations), videos/
-                  (poster jpgs only; the mp4s stream from GCS)
+index.html        the LMS viewer (also the reference implementation): sidebar outline with
+                  per-step progress, scroll-gated Next button, native assessment engine fed
+                  by bank.json, completion gating, theme toggle, mobile drawer layout.
+shared/           theme CSS (sd_course_v3_theme.css + v3_addons.css), scoring.js (SDM:
+                  storage, sampling, scoring), interact.js (SDM2), app_bridge.js (SDMB, §4)
+c01/  c02/  c03/  one folder per course: 12 content pages (s00_intro … s11_myth_callout),
+                  bank.json (assessment bank · single source of truth), stories_register.md
+                  (source citations), videos/ (poster jpgs; mp4s stream from GCS)
 ```
+
+There are no assessment pages: the final assessment is rendered by the host (the viewer does
+this natively) from `cXX/bank.json`.
 
 ## 2 · Live page links
 
-Player (reference implementation): https://nelle3549.github.io/b2c-courses/index.html
+Viewer / LMS (reference implementation): https://nelle3549.github.io/b2c-courses/index.html
 
 | Slot | Course 1 · Startup PH | Course 2 · Problem First | Course 3 · Value Crafted |
 |---|---|---|---|
@@ -40,28 +44,36 @@ Player (reference implementation): https://nelle3549.github.io/b2c-courses/index
 | s09 | [apply 4](https://nelle3549.github.io/b2c-courses/c01/s09_apply_4.html) | [apply 4](https://nelle3549.github.io/b2c-courses/c02/s09_apply_4.html) | [apply 4](https://nelle3549.github.io/b2c-courses/c03/s09_apply_4.html) |
 | s10 | [reality check](https://nelle3549.github.io/b2c-courses/c01/s10_reality_check.html) | [hypothesis card](https://nelle3549.github.io/b2c-courses/c02/s10_hypothesis_card.html) | [canvas](https://nelle3549.github.io/b2c-courses/c03/s10_canvas.html) |
 | s11 | [myth](https://nelle3549.github.io/b2c-courses/c01/s11_myth_callout.html) | [myth](https://nelle3549.github.io/b2c-courses/c02/s11_myth_callout.html) | [myth](https://nelle3549.github.io/b2c-courses/c03/s11_myth_callout.html) |
-| s12 | [assessment](https://nelle3549.github.io/b2c-courses/c01/s12_final_mcq.html) | [assessment](https://nelle3549.github.io/b2c-courses/c02/s12_final_mcq.html) | [assessment](https://nelle3549.github.io/b2c-courses/c03/s12_final_mcq.html) |
+| s12 | final assessment: no page; render from [c01/bank.json](https://nelle3549.github.io/b2c-courses/c01/bank.json) | [c02/bank.json](https://nelle3549.github.io/b2c-courses/c02/bank.json) | [c03/bank.json](https://nelle3549.github.io/b2c-courses/c03/bank.json) |
 
-Serve pages in slot order (s00 → s12). Note the c01 s07/s08 swap above: its mid-lesson video
-deliberately follows Section 4. The canonical order also lives in `index.html`'s `COURSES` map;
-read it from there rather than hardcoding if you prefer.
+Serve pages in slot order (s00 → s11, then the assessment). Note the c01 s07/s08 swap: its
+mid-lesson video deliberately follows Section 4. The canonical order also lives in the
+`COURSES` map in `index.html`.
 
-Assessment banks (data files, if the app runs its own engine, §5):
-[c01/bank.json](https://nelle3549.github.io/b2c-courses/c01/bank.json) ·
-[c02/bank.json](https://nelle3549.github.io/b2c-courses/c02/bank.json) ·
-[c03/bank.json](https://nelle3549.github.io/b2c-courses/c03/bank.json)
+## 3 · The viewer (`index.html`) and its LMS behaviors
 
-## 3 · Reference player
+The viewer is a complete reference host. Its behaviors define the intended learner experience;
+replicate them in the app:
 
-`index.html` demonstrates a working host: iframe + bottom bar (Exit · progress · Back/Next),
-slot map, theme relay. Its `PAGES_BASE` constant is set to the live base, so it embeds the same
-public pages the app will. One caveat while it runs cross-origin: its landing status/history
-panels don't reflect in-course progress (storage splits by origin). The app should track
-progress via bridge events (§4), not localStorage.
+- **Outline sidebar** (drawer on mobile): all 13 steps with done/current/locked states and a
+  progress bar. Steps unlock sequentially; a step counts as done once the learner has reached
+  the bottom of its page at least once.
+- **Scroll-gated Next:** while the current page hasn't been read to the bottom, the primary
+  button reads "Scroll ↓" and scrolls the page; after bottom is reached once, it becomes
+  "Next →". Short pages count as read immediately.
+- **Final assessment** is native to the host: fetched from `cXX/bank.json`, gated until all 12
+  content steps are read, required for course completion. "Finish" unlocks only after an
+  attempt is submitted.
+- **Theme toggle** available at all times (sidebar on desktop, top bar on mobile).
+
+Implementation note: the viewer tracks reading position because its iframes are same-origin
+(`PAGES_BASE = ''`). The pages themselves carry NO gating logic, so a cross-origin host (the
+app) must implement its own read/scroll gate on its side of the iframe if it wants the same
+behavior.
 
 ## 4 · Integration contract (`shared/app_bridge.js`)
 
-Every course page loads the bridge and needs NO other wiring. Messages use
+Every content page loads the bridge and needs NO other wiring. Messages use
 `postMessage(…, '*')`; validate `event.origin === 'https://nelle3549.github.io'` on your side.
 
 **Page → app:**
@@ -71,8 +83,8 @@ Every course page loads the bridge and needs NO other wiring. Messages use
 | `{type:'requestTheme'}` | page load | reply with `theme` |
 | `{type:'visit', course, slot}` | page load | e.g. `{course:'c01', slot:'s03'}` |
 | `{type:'fieldSaved', course, field, value}` | artifact field saved (debounced) | field ids `f1`–`f9` |
-| `{type:'attemptSubmitted', course, attempt}` | assessment scored | full attempt: score, per-Bloom breakdown, item ids, timestamps |
-| `{type:'printCard', course}` | learner taps Print | see print rules below |
+| `{type:'attemptSubmitted', course, attempt}` | assessment scored | full attempt: score, per-Bloom breakdown, item ids, timestamps. Sent by the viewer too when the viewer itself is iframed. |
+| `{type:'printCard', course}` | learner taps Print (s10 card pages) | see print rules below |
 
 **App → page:**
 
@@ -107,20 +119,22 @@ window.addEventListener('message', (e) => {
 ```
 
 **Storage note:** pages also persist everything to their own localStorage (key
-`sd_mini_courses_v2`), which keeps them fully usable offline-ish. Browsers partition
-third-party iframe storage per top-level site and WebViews may clear it, so treat the bridge
-events as the source of truth for accounts and sync values server-side.
+`sd_mini_courses_v2`). Browsers partition third-party iframe storage per top-level site and
+WebViews may clear it, so treat the bridge events as the source of truth for accounts and sync
+values server-side.
 
-## 5 · Assessments: two options
+## 5 · Assessments (JSON contract)
 
-1. **Use our page (fastest):** iframe `s12_final_mcq.html`; it samples, renders, scores,
-   explains, and posts `attemptSubmitted` up. Nothing to build.
-2. **Use your engine:** consume `cXX/bank.json` (15 items: stem, 4 options, key, per-option
-   explanations, bloom level, learning-objective tag). Reproduce the sampling contract:
-   7 items per attempt = 1 remember + 2 understand + 2 apply + 1 analyze + 1 evaluate, with
-   objectives lo1–lo4 each covered at least once (reference: `sampleBatch()` in
-   `shared/scoring.js`). Show per-option explanations on review; retakes unlimited with a
-   fresh sample.
+`cXX/bank.json` is the single source of truth: 15 items, each with stem, 4 options, key,
+per-option explanations, bloom level, and learning-objective tag. Two integration routes:
+
+1. **Embed the viewer's assessment** by iframing `index.html` (it posts `attemptSubmitted`
+   upward), or
+2. **Run your own engine** against `bank.json`, reproducing the sampling contract: 7 items per
+   attempt = 1 remember + 2 understand + 2 apply + 1 analyze + 1 evaluate, with objectives
+   lo1–lo4 each covered at least once (reference: `sampleBatch()` in `shared/scoring.js`).
+   Show per-option explanations on review; retakes unlimited with a fresh sample; completion
+   of the course requires at least one submitted attempt.
 
 Heads-up: the repo is public, so answer keys are public. Fine for this learning-first design
 (unlimited retakes; the explanations ARE the product). If assessments ever become
