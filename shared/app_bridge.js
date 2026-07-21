@@ -25,6 +25,9 @@
 (function () {
   'use strict';
   var embedded = window.parent !== window;
+  if (embedded && document.documentElement) {
+    document.documentElement.classList.add('sdm-embedded');
+  }
 
   function post(msg) {
     if (!embedded) return false;

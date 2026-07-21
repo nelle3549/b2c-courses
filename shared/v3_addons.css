@@ -18,6 +18,15 @@ main{padding-bottom:calc(var(--sp-8) + 88px);}
 .lesson-section > p{margin-top:var(--sp-4);}
 .lesson-section > ul, .lesson-section > ol{margin-top:var(--sp-4);}
 
+/* ---------- Embedded in the host app (iframe) ----------
+   The host supplies its own nav + scroll, so drop the fixed-nav bottom
+   allowance (dead space when there's no nav) and hide the page scrollbar
+   (the host auto-sizes this frame to fit — nothing scrolls inside it). */
+.sdm-embedded main{padding-bottom:var(--sp-8);}
+.sdm-embedded .player-nav, .sdm-embedded .player-topbar{display:none;}
+.sdm-embedded, .sdm-embedded body{scrollbar-width:none; -ms-overflow-style:none;}
+.sdm-embedded::-webkit-scrollbar, .sdm-embedded body::-webkit-scrollbar{display:none;}
+
 /* ---------- Disclosure affordance (Nelle: announce clickability) ---------- */
 .af-example summary::before{
   content:"▶"; font-size:.6em; letter-spacing:0;
