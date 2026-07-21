@@ -100,5 +100,27 @@
     post({ type: 'fieldSaved', course: d.courseId, field: d.fieldId, value: value });
   });
 
+  // ---- iframe height (host auto-sizes the frame so there's no inner scrollbar) ----
+  function reportHeight() {
+    var el = document.scrollingElement || document.documentElement;
+    var h = Math.max(document.body ? document.body.scrollHeight : 0, el ? el.scrollHeight : 0);
+    if (h > 0) post({ type: 'iframe-height', height: h });
+  }
+  var heightQueued = false;
+  function queueHeight() {
+    if (heightQueued) return;
+    heightQueued = true;
+    setTimeout(function () { heightQueued = false; reportHeight(); }, 120);
+  }
+  window.addEventListener('resize', queueHeight);
+  window.addEventListener('load', function () {
+    reportHeight();
+    setTimeout(reportHeight, 700);
+    setTimeout(reportHeight, 1800);
+    if (window.ResizeObserver && document.body) {
+      try { new ResizeObserver(queueHeight).observe(document.body); } catch (e) {}
+    }
+  });
+
   window.SDMB = { post: post, requestPrint: requestPrint, embedded: embedded };
 })();
